@@ -1,0 +1,117 @@
+!clr_bg = #ffffff
+
+!clr_light_silver = #eeeeee
+!clr_my_black = #111111
+!clr_my_black1 = !clr_my_black + 100
+!clr_dirty_white = #F9F7ED
+!clr_straight_orange = #D15600
+!clr_smoof_orange = #ffab27
+!clr_fresh_blue = #4096EE
+!clr_dark_blue = #3F4C6B
+!clr_light_green = #CDEB8B
+!clr_dark_grey = #36393D
+!clr_dark_green = #6BBA70
+!clr_mint = #C3D9FF
+!clr_funky_red = red
+!clr_magenta = #a300d9
+!clr_silver = #aaaaaa
+!clr_iedit = !clr_light_silver
+!clr_button_green = #667711
+!clr_menubar_bg = #d5d5d5
+
+!clr_bg_green = #6dbd01
+!clr_dark_green = !clr_bg_green
+  
+// http://virtuelvis.com/gallery/css/rounded/
+.rounded
+  h1,h2
+    :padding-left 10px
+    :font-size 1.1em
+    :margin-bottom 0px
+  :background-color = !clr_dirty_white
+  > p
+    :padding 20px
+    :padding-bottom 5px
+  &:before
+    :background transparent url(/img/corner-top-right.png) no-repeat top right
+    :margin-bottom -20px
+    :height 30px
+    :display block
+    :border none
+    :content url(/img/corner-top-left.png)
+    :padding 0px
+    :line-height 0.1
+    :font-size 1px
+  &:after
+    :background url(/img/corner-bottom-right.png) no-repeat top right
+    :margin 0 0 -1px 0
+    :height 30px
+    :display block
+    :border none
+    :content url(/img/corner-bottom-left.png)
+    :padding 0px
+    :line-height 0.1
+    :font-size 1px
+a.active
+  :font-weight bolder
+body
+  :color = !clr_my_black1
+  :font-size 0.9em
+  // :background-image url(/img/topbg.png)
+  // :background-repeat repeat-x
+  :min-width 980px
+  :margin-left 10%
+  :margin-right 10%
+
+#top
+  :background-color = !clr_bg
+
+
+.silver
+  :background-color = !clr_light_silver
+
+.center
+  :text-align center
+
+#debug
+  :position absolute
+  :bottom 3px
+  :right 10%
+  :left 10%
+  
+  :padding 5px
+  :color red
+
+
+
+
+#ssearch
+  :position absolute
+  :top 16px
+  :right 10%
+#searchform
+  div
+    :background url(/img/search1.gif) no-repeat left top
+    :padding 0 10px
+    :margin 0px
+    :line-height 1px
+  .searchthingy
+    :border-top 2px solid #999
+    :border-bottom 2px solid #999
+    :border-left 0
+    :border-right 0
+    :background url(/img/search2.gif) repeat-x top
+    :padding 3px 2px 2px 0
+    :height 15px
+  input
+    :vertical-align top
+    :margin 0
+    :line-height 1
+    :outline 0
+    :display inline
+  label
+    :display inline
+
+
+
+
