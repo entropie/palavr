@@ -32,15 +32,13 @@ end
 (controller + libs).each{|lib| require lib}
 
 
-p 1
 require "../lib/palavr"
-p Palavr::DB
-
+puts "\n%s starts up\n\n" % Palavr.version if __FILE__ == $0
 Ramaze.start(:host => "localhost",
              :port => 8080
 #             :adapter => :mongrel
              )
-p 1
+
 
 
 =begin

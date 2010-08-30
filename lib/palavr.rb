@@ -57,9 +57,7 @@ end
 
 
 Palavr::Database.load_definitions
-# Rams::Database.load_definitions(false, "jobmodules/")
 
-puts "%s starts up" % Rams.version if __FILE__ == $0
 
 
 
