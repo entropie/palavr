@@ -32,6 +32,9 @@ end
 (controller + libs).each{|lib| require lib}
 
 
+p 1
+require "../lib/palavr"
+p Palavr::DB
 
 Ramaze.start(:host => "localhost",
              :port => 8080

@@ -15,7 +15,6 @@ end
 task :todo do
   files = Hash.new{|h,k| h[k] = []}
   Dir.glob('{lib,app}/**/*.rb') do |file|
-    p file
     lastline = todo = comment = long_comment = false
  
     File.readlines(file).each_with_index do |line, lineno|
@@ -61,7 +60,7 @@ task :deploy => [:umigrate, :migrate, :todo, :db_fill, :todofile] do
 end
 
 task :db_fill do
-  #ruby "script/db_migration_devel.rb"
+  ruby "script/db_migration_devel.rb"
 end
 
 task :migrate do
