@@ -20,10 +20,14 @@
     %script{:type => "text/javascript", :src => "/js/board.js"}=""
     
   %body
+    
     = render_file "view/top.haml"
     = render_file "view/search/simple.haml"
     = @content
 
     #debug{:class => "debug"}
+      %p
+        User:
+        = session_user.email rescue "&lt;none&gt;"
 
 

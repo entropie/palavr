@@ -3,7 +3,9 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+require '../ramaze/lib/ramaze'
 require "lib/palavr"
+
 include Palavr::Database::Tables
 
 task :start do

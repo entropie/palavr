@@ -1,0 +1,20 @@
+%div{:id => :top, :class => "silver", :id => :login}
+  %div{:style => "padding:20px", :class => :center}
+    %h1{:class => "center"} Palavr Auth
+    %form{:method => :post, :action => "#{AuthController.r(:login)}", :class => :loginform}
+      %fieldset{:class => "width2"}
+        %legend{:class => "column width2"}
+          You need to authenticate yourself to use this Service.
+        %div{:class => "column width1 first"}
+          %label{:class => "width1 first"}
+            Kennung
+            %input{:type => :text, :name => :username, :value => "mictro@gmail.com", :class => :text}
+        %div{:class => "column width1"}
+          %label{:class => "width1 first"}
+            Passwort
+            %input{:type => :password, :name => :password, :value => "foo", :class => "text width1"}
+        %div{:class => "column width2 first"}
+          %div{:class => :center}
+            %input{:type => :submit, :value => "Absenden", :class => ""}
+  - if flash[:error]
+    %p{:class => :ferror}= flash[:error]

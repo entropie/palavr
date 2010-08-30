@@ -6,7 +6,7 @@
 
 require "rubygems"
 require '../../ramaze/lib/ramaze'
-#require '../lib/ams'
+require "../lib/palavr"
 
 module GLog
   def self.<<(str, type = :debug)
@@ -20,7 +20,7 @@ end
 extend GLog
 
 
-controller = %w"css palavr board".map{ |lib|
+controller = %w"css palavr auth board".map{ |lib|
   File.join("controller", lib)
 }
 #libs = %w"lib".map{|lib| lib }
@@ -32,7 +32,7 @@ end
 (controller + libs).each{|lib| require lib}
 
 
-require "../lib/palavr"
+
 puts "\n%s starts up\n\n" % Palavr.version if __FILE__ == $0
 Ramaze.start(:host => "localhost",
              :port => 8080

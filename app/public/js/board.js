@@ -3,6 +3,5 @@ function debug(msg) {
 };
 
 google.setOnLoadCallback(function() {
-                           debug("foo");
-                           debug("bar");
+
 });

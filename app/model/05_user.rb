@@ -36,6 +36,7 @@ module Palavr
       def is_admin?
         not admin_user_id.nil?
       end
+
       def is_mod?
         not mod_user_id.nil?
       end
@@ -47,7 +48,7 @@ module Palavr
       end
       
 
-      def pw1; passwd; end
+      def pw1; passwd end
       def pw2; passwd end
       
       def self.pwcrypt(pw)
