@@ -1,0 +1,3 @@
+%table#threads
+- @threads.each do |thread|
+  = render_file "view/thread/_thread.haml", :thread => thread
