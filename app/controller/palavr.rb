@@ -13,10 +13,11 @@ class PalavrController < Ramaze::Controller
   #set_layout        'simple_layout' => [:login, :logout]
 
   
-  # FIXME: ~/Source/ramaze/lib/ramaze/helper/auth.rb needs to be edtited to make that auth thingy work.
   def login_required
-    flash[:error] = 'login required to view that page' unless logged_in?
-    super
+    unless logged_in?
+      flash[:error] = 'login required to view that page' 
+      call(AuthController.r(:login))
+    end
   end
   
   def session_user
