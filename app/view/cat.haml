@@ -1,3 +1,6 @@
+.backlink
+  &larr;
+  %a{:href => BoardController.r} Back to Catgories
 %table#threads
-- @threads.each do |thread|
-  = render_file "view/thread/_thread.haml", :thread => thread
+  - @threads.each do |thread|
+    = render_file "view/thread/_thread.haml", :phread => thread

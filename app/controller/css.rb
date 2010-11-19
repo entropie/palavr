@@ -8,7 +8,7 @@ class CSSController < Ramaze::Controller # def ctrl
   provide :css, :Sass
   engine :Sass
   trait :sass_options => {
-    :style => :compressed,
+    :style => :expanded,
   } 
   def base
   end

@@ -20,6 +20,37 @@ module Palavr
         end
       }
 
+
+      def self.get_category(cat)
+        if cat.scan(/[0-9]/).size == cat.size
+          Category[cat.to_i]
+        else
+          Category.find(:title => CGI.unescape(cat))
+        end
+      end
+
+      def link(opts = {})
+        o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
+        "<a #{o} class='catlink' title='Category: #{title}' href='#{url}'>#{title}</a>"
+      end
+      
+      
+      def self.mk_url(cat)
+        if cat.scan(/[0-9]/).size == cat.size
+          "/cat/" + cat
+        else
+          "/cat/" + CGI.escape(cat)
+        end
+      end
+      
+      def url
+        Category.mk_url(title)
+      end
+
+      def self.by_name(cat)
+        Category.find(:title => CGI.unescape(cat))
+      end
+      
     end
   end
 end

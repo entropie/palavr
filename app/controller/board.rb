@@ -23,9 +23,7 @@ class BoardController < PalavrController
   end
 
   def cat(cat)
-    p 1
-    p cat
-    @category = Category[cat.to_i]
+    @category = Category.get_category(cat)
     @threads = @category.phreads
   end
 end

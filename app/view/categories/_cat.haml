@@ -4,6 +4,8 @@
       .info{:title => "#{@cat.phreads.size} Posts"}= @cat.phreads.size
     .title
       %a{:href => BoardController.r(@cat.id)}= @cat.title
+      %a{:href => BoardController.r(@cat.url)}
+        >
     .img
       %img{:src => "/img/nopic.png", :height => 60, :width => 60}
     .desc

@@ -22,6 +22,73 @@
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green
 
+!block_font = dejavu sans
+  
+
+#threads
+  :margin-top 10px
+  > tbody > tr
+    &:nth-child(even)
+      :background-color = !clr_bg
+    &:nth-child(odd)
+      :background-color = !clr_dirty_white
+  td.thread
+    :padding 10px
+    .title
+      :font-weight bolder
+      :width 100%
+  a
+    :text-decoration none
+    :color = !clr_my_black
+    &:hover
+      :text-decoration underline
+#threads.sub
+  :max-width 700px  
+  :background-color = !clr_light_silver
+  td.thread
+    :padding 0px
+  > table
+    :margin 10px
+      
+a
+  &catlink, &phreadlink
+  :color = !clr_silver
+  :text-decoration none
+  &:hover
+    :color = !clr_magenta
+      
+#phread
+  .top
+    :padding-left 10px
+    h1
+      :font-family = !block_font
+      :font-size 2em
+      :color = !clr_my_black
+      :display inline
+      :margin-right 10px
+    .by
+      :font-size 2em
+      :color = !clr_silver
+      a.profile
+        :color = !clr_silver
+        :text-decoration none
+        &:hover
+          :color = !clr_fresh_blue
+    .backlink
+      :color = !clr_silver
+    .line
+      :text-align right
+      :color = !clr_silver
+      :max-width 700px
+      
+  .body
+    :margin-top 20px
+    :max-width 700px
+    :color = !clr_my_black
+    :font-family = !block_font
+    :font-size 1.2em
+    :padding 10px
+      
 #cats
   a
     :text-decoration none

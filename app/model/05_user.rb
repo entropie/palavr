@@ -72,9 +72,10 @@ module Palavr
         fname
       end
       
-      def profile_link(str = nil, opts = {})
+      def profile_link(opts = {})
+        name = email
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{str || id}</a>"
+        "<a #{o} class='profile' title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{name || id}</a>"
       end
 
       def name_link(xhr = true, img = true, w = 14, h = 14)

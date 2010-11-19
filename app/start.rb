@@ -20,7 +20,7 @@ end
 extend GLog
 
 
-controller = %w"css palavr auth board".map{ |lib|
+controller = %w"css palavr auth board thread".map{ |lib|
   File.join("controller", lib)
 }
 #libs = %w"lib".map{|lib| lib }

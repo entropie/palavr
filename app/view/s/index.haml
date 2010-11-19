@@ -1,10 +1,18 @@
 #phread
   .top
+    .backlink
+      = "&larr; " + @phread.backlink
     %h1= @phread.title
     %span.by
       by
       = @phread.from.profile_link
+    .line
+      = @phread.created_at.to_s(false)
   .body
     = @phread.body
-  
+#threads.sub
+  %table
+    - @phread.phreads.each do |thread|
+      = render_file "view/thread/_thread.haml", :phread => thread
+
 

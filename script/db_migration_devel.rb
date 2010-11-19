@@ -20,9 +20,9 @@ s=User.create(
               )
 s.save
 me=User.create(
-              :email => "mictro@gmail.com",
-              :passwd => User.pwcrypt("foo")
-              )
+               :email => "mictro@gmail.com",
+               :passwd => User.pwcrypt("foo")
+               )
 me.save
 
 
@@ -44,18 +44,48 @@ b.add_mod(me)
 b.save
 
 
-thread = Phread.create(:title => "Foobar")
-thread.op = me
-thread.save
+# thread = Phread.create(:title => Faker::Lorem.sentence)
+# thread.op = me
+# thread.body = Faker::Lorem.sentences(10 + rand(20))
+# thread.save
 
-a.add_phread(thread)
+# a.add_phread(thread)
 
-thread = Phread.create(:title => "Foobarrrr")
-thread.op = me
-thread.save
+# thread = Phread.create(:title => Faker::Lorem.sentence)
+# thread.body = Faker::Lorem.sentences(10 + rand(100))
+# thread.op = me
+# thread.save
 
-b.add_phread(thread)
-a.add_phread(thread)
+
+# b.add_phread(thread)
+# a.add_phread(thread)
+
+
+0.upto(10) do
+  thread = Phread.create(:title => Faker::Lorem.sentence)
+  thread.body = Faker::Lorem.sentences(10 + rand(100))
+  thread.op = me
+  thread.save
+  a.add_phread(thread)
+end
+
+parent = Phread[1]
+
+0.upto(10) do
+  thread = Phread.create(:title => Faker::Lorem.sentence)
+  thread.body = Faker::Lorem.sentences(10 + rand(100))
+  thread.op = me
+  thread.save
+  parent.add_phread(thread)
+  parent.save
+end
+
+parent = Phread[1].phreads.first
+  thread = Phread.create(:title => Faker::Lorem.sentence)
+  thread.body = Faker::Lorem.sentences(10 + rand(100))
+  thread.op = me
+  thread.save
+  parent.add_phread(thread)
 
 
 =begin

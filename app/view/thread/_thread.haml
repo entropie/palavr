@@ -1,1 +1,10 @@
-= @thread.id
+%tr
+  %td.thread
+    %table
+      %tr
+        %td.title
+          %a{:href => BoardController.r(@phread.url)}= @phread.title
+          by
+          = @phread.from.profile_link
+        %td.count
+          = @phread.phreads.size
