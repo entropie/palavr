@@ -13,6 +13,29 @@ class BoardController < PalavrController
   }
 
 
+  def submit
+  end
+
+
+  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid)
+  def create
+    if c=request.params["category"]
+      @category = Category[c.to_i]
+      @legend = "New Story to <em>#{@category.title}</em>"
+    else
+      @legend = "Thread"
+    end
+
+    @preview = {}
+    if request.params["title"]
+      @preview = PthreadStruct.new
+      request.params.each_pair do |k,v|
+        @preview.send("#{k}=", v)
+      end
+      pp @preview
+    end
+  end
+  
   # TODO: category images
   def index(cat = nil)
     if cat and cat.scan(/[0-9]/).size == cat.size

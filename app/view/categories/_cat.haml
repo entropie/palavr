@@ -1,11 +1,9 @@
 %tr
   %td.main
     .add
-      .info{:title => "#{@cat.phreads.size} Posts"}= @cat.phreads.size
+      .info{:title => "#{@cat.phreads.size} Stories"}= @cat.phreads.size
     .title
-      %a{:href => BoardController.r(@cat.id)}= @cat.title
-      %a{:href => BoardController.r(@cat.url)}
-        >
+      %a{:href => BoardController.r(@cat.url)}= @cat.title
     .img
       %img{:src => "/img/nopic.png", :height => 60, :width => 60}
     .desc

@@ -23,7 +23,12 @@
 !clr_dark_green = !clr_bg_green
 
 !block_font = dejavu sans
-  
+
+h1
+  :color = !clr_dark_blue
+  :font-size 2em
+  :border-bottom 1px solid
+  :border-color = !clr_dark_blue
 
 #threads
   :margin-top 10px
@@ -56,18 +61,53 @@ a
   :text-decoration none
   &:hover
     :color = !clr_magenta
-      
+
+#preview
+  :max-width 700px
+  .pbody
+    :font-family = !block_font
+    :margin-top 10px
+    :margin-bottom 30px
+    :border 5px solid
+    :border-color = !clr_light_silver
+    :padding 10px
+    h2
+      :font-size 2em
+      :margin-bottom 10px
+    .body
+      :color = !clr_my_black
+#create
+  :max-width 700px
+  fieldset
+    :border 1px solid #fff
+    :border-color = !clr_silver
+    :padding-bottom 20px
+    legend
+      :padding 4px
+    label
+      :display block
+      :float left
+      :width 100px
+    .title
+      :width 400px
+    .body
+      :width 550px
+      :height 500px
+    ul
+      :list-style-type none
+      li
+        :margin-top 10px
+    
 #phread
   .top
     :padding-left 10px
     h1
       :font-family = !block_font
       :font-size 2em
-      :color = !clr_my_black
-      :display inline
+      :color = !clr_dark_blue
       :margin-right 10px
+      :max-width 700px
     .by
-      :font-size 2em
       :color = !clr_silver
       a.profile
         :color = !clr_silver
@@ -75,7 +115,9 @@ a
         &:hover
           :color = !clr_fresh_blue
     .backlink
+      :float left      
       :color = !clr_silver
+      :width 300px
     .line
       :text-align right
       :color = !clr_silver
@@ -92,7 +134,7 @@ a
 #cats
   a
     :text-decoration none
-    :color = !clr_my_black
+    :color = !clr_dark_blue
     &:hover
       :text-decoration underline
   tr
@@ -101,10 +143,9 @@ a
     &:nth-child(odd)
       :background-color = !clr_dirty_white
   .desc
-    :color = !clr_straight_orange
+    :color = !clr_my_black
     :padding 7px
     :padding-left 70px
-
   .main
     .title
       :font-weight bold
@@ -115,7 +156,7 @@ a
       :position relative      
       .info
         :position absolute
-        :top 30px
+        :top 10px
         :right -230px
         :font-size 2em
         :color = !clr_fresh_blue

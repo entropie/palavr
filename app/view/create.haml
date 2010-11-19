@@ -1,0 +1,23 @@
+- if @preview.kind_of?(Struct)
+  #preview
+    %h1 Preview
+    .pbody
+      = render_file "view/s/preview.haml", :preview => @preview
+
+#create
+  %h1 Create Story
+  %form{:method => :post, :action => BoardController.r(:create)}
+    %input{:type => :hidden, :name => :category, :value => (@preview["category"] or (@category and @category.id))}
+    %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@phread and @phread.id))}
+    %fieldset
+      %legend= @legend
+      %ul
+        %li
+          %label{:for => :title} Topic
+          %input{:value => @preview["title"], :type => :title, :name => :title, :class => :title, :id => :title}
+        %li
+          %label{:for => :body} Text
+          %textarea{:name => :body, :class => :body, :id => :body}= @preview["body"]
+        %li
+          %label{:for => :sub} &nbsp;
+          %input{:type => :submit, :name => :submit, :class => :submit, :id => :submit, :value => "Submit"}
