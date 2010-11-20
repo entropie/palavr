@@ -5,7 +5,8 @@
     .img
       %img{:src => "/img/nopic.png", :height => 96, :width => 96}
     .title
-      %a{:href => BoardController.r(@cat.url)}= @cat.title
+      %h1
+        %a{:href => BoardController.r(@cat.url)}= @cat.title
     %p.desc
       = @cat.description
     .sec{:class => :modlist}
