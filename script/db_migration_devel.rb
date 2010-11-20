@@ -28,6 +28,13 @@ me.save
 
 cats = []
 
+a=Category.create(:title => "Testing",
+                  :description => Faker::Lorem.paragraph)
+a.add_mod(me)
+a.add_mod(s)
+a.save
+
+
 a=Category.create(:title => "Fantasy",
                   :description => Faker::Lorem.paragraph)
 a.add_mod(me)

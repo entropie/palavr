@@ -11,7 +11,7 @@
   .body
     = @phread.body
   .sub
-    %a{:class => "awesome silver medium"} Write On!
+    %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
 - if @phread.phreads.size > 0
   #threads.sub
     %threads

@@ -15,18 +15,23 @@ class BoardController < PalavrController
   def submit
   end
 
-  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview)
+  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread)
 
   def create
-
-    if c=request.params["category"]
+    pp request.params["phreadid"]
+    if pr=request.params["phreadid"] and not pr.empty?
+      pp pr
+      @parent_phread = Phread[pr.to_i]
+      @category = @parent_phread.category
+      @legend = "Thread"
+      @form_append = {:phreadid => @parent_phread.id}      
+    elsif c=request.params["category"]
       @category = Category[c.to_i]
       @legend = "New Story to <em>#{@category.title}</em>"
       @form_append = {:category => @category.id}
       # TODO: values for phread
-    else
-      @legend = "Thread"
     end
+    pp @category
 
     @preview = {}
     if request.params["title"]
@@ -37,6 +42,7 @@ class BoardController < PalavrController
       end
     end
 
+    pp @preview
     # create phread
     if @preview.kind_of?(Struct) and @preview.submit and not @preview.submit.empty?
       begin

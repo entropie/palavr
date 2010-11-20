@@ -1,9 +1,13 @@
 %h1 Create Story
 .backlink
-  &larr;
-  %a{:class => "awesome small silver", :href => BoardController.r(@category.url)}= "Back to Catgory #{@category.title}"
+  - if @parent_phread
+    &larr;
+    %a{:class => "awesome small silver", :href => @parent_phread.url}= "Back to Story <em>#{@parent_phread.title}</em>"
+  - if @category
+    &larr;
+    %a{:class => "awesome small silver", :href => BoardController.r(@category.url)}= "Back to Catgory <em>#{@category.title}</em>"
 
-- if @preview.kind_of?(Struct)
+- if @preview and @preview.kind_of?(Struct)
   #preview
     %h2 Preview
     .pbody
@@ -13,7 +17,7 @@
   %h2 Form
   %form{:method => :post, :action => BoardController.r(:create, @form_append)}
     %input{:type => :hidden, :name => :category, :value => (@preview["category"] or (@category and @category.id))}
-    %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@phread and @phread.id))}
+    %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@parent_phread and @parent_phread.id))}
     %fieldset
       %legend= @legend
       %ul

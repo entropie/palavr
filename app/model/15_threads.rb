@@ -36,7 +36,12 @@ module Palavr
                                :body  => struc.body)
         phread.op = user
         phread.save
-        category.add_phread(phread)
+        if struc.phreadid and not struc.phreadid.empty?
+          Phread.get(struc.phreadid).add_phread(phread)
+        else
+          category.add_phread(phread)
+        end
+        
         phread
       end
       
@@ -59,6 +64,8 @@ module Palavr
 
       def parent
         Phread[PhreadsPhreads.find(:phread_id => id).parent_id]
+      rescue
+        nil
       end
 
       def link(opts = {})
