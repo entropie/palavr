@@ -10,9 +10,10 @@
         = "&larr; " + @phread.backlink
   .body
     = @phread.body
-#threads.sub
-  %threads
-    - @phread.phreads.each do |thread|
-      = render_file "view/thread/_thread.haml", :phread => thread
+- if @phread.phreads.size > 0
+  #threads.sub
+    %threads
+      - @phread.phreads.each do |thread|
+        = render_file "view/thread/_thread.haml", :phread => thread
 
 

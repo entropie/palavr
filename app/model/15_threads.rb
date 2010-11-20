@@ -58,7 +58,7 @@ module Palavr
       end
       
       def url
-        "/s/" + CGI.escape(title)
+        "/s/#{id}/" + CGI.escape(title)
       end
       
     end

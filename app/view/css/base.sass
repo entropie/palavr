@@ -22,8 +22,8 @@
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green
 
-!clr_tablerow = #EEF2ED
-!clr_tablerow1 = #EDEEF2
+!clr_tablerow = #FAF7F0
+!clr_tablerow1 = #FAFFFE
   
 !block_font = dejavu sans
 
@@ -66,9 +66,9 @@ h1
         :color = !clr_my_black
     .count
       :position absolute
-      :top 0px
+      :top 5px
       :right 10px
-      :font-size 1.5em
+      :font-size 1.2em
       :color = !clr_silver
   a
     :text-decoration none
@@ -87,6 +87,8 @@ h1
     :-webkit-box-shadow none
     :-moz-box-shadow none
     :box-shadow none
+    .count
+      :top 2px
       
 a
   &catlink, &phreadlink
@@ -177,6 +179,7 @@ a
       :text-decoration underline
   .cat
     :position relative
+    :border 1px solid #aaaaaa
     :-webkit-box-shadow 2px 2px 2px #aaaaaa
     :-moz-box-shadow 2px 2px 2px #aaaaaa
     :box-shadow 2px 2px 2px #aaaaaa
@@ -214,6 +217,7 @@ a
     :padding-left 70px
     :min-height 60px
     :font-size 1.1em
+    :min-height 72px
   .main
     .sec
       :float right
@@ -229,7 +233,7 @@ a
         :top 0px
         :right 10px
         :font-size 2em
-        :color = !clr_fresh_blue
+        :color = !clr_silver
   .modlist
     :font-size 0.8em
   .img
