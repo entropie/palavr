@@ -24,8 +24,9 @@
 
 !clr_tablerow = #FAF7F0
 !clr_tablerow1 = #FAFFFE
-  
-!block_font = dejavu sans
+
+!font_family = "tahoma"
+!block_font = "dejavu sans"
 
 h1
   :color = !clr_dark_blue
@@ -34,7 +35,9 @@ h1
   :border-color = !clr_dark_blue
 #catlink
   :margin-bottom 20px
-
+.backlink
+  :margin-top 5px
+  
 #threads
   :margin-top 10px
 
@@ -139,6 +142,10 @@ a
         :margin-top 10px
     
 #phread
+  .sub
+    :margin-bottom 30px
+    :text-align right
+    :max-width 700px
   .top
     :padding-left 10px
     h1
@@ -148,6 +155,7 @@ a
       :margin-right 10px
       :max-width 700px
     .by
+      :line-height 35px
       :color = !clr_silver
       a.profile
         :color = !clr_silver
@@ -157,7 +165,6 @@ a
     .backlink
       :float left      
       :color = !clr_silver
-      :width 300px
     .line
       :text-align right
       :color = !clr_silver
@@ -246,6 +253,55 @@ a
       :opacity 0.4
       :filter alpha(opacity=40)
 
+// http://www.zurb.com/blog_uploads/0000/0617/buttons-03.html      
+.awesome
+  :background #222 url(/img/alert-overlay.png) repeat-x
+  :display inline-block
+  :padding 5px 10px 6px
+  :color #fff
+  :text-decoration none
+  :font-weight bold
+  :line-height 1
+  :-moz-border-radius 5px
+  :-webkit-border-radius 5px
+  :-moz-box-shadow 0 1px 3px #999
+  :-webkit-box-shadow 0 1px 3px #999
+  :text-shadow 0 -1px 1px #222
+  :border-bottom 1px solid #222
+  :position relative
+  :cursor pointer
+  &:hover
+    :background-color #111
+    :color #fff
+  &:active
+    :top 1px
+.small.awesome, .small.awesome:visited
+  :font-size 11px
+  :padding 3px
+  :text-shadow none
+  :font-weight normal
+.medium.awesome, .medium.awesome:visited
+  :font-size 13px
+  :font-weight bold
+  :line-height 1
+  :text-shadow 0 -1px 1px rgba(0,0,0,0.25)
+.large.awesome, .large.awesome:visited
+  :font-size 14px
+  :padding 8px 14px 9px
+.orange.awesome, .orange.awesome:visited
+  :background-color #ff5c00
+.orange.awesome:hover
+  :background-color #d45500
+.silver.awesome, .silver.awesome:visited
+  :background-color = !clr_light_silver
+  :color = !clr_dark_blue
+  :border-bottom = !clr_silver
+.silver.awesome:hover
+  :background-color = !clr_light_silver - 20
+  :color = !clr_fresh_blue
+
+
+  
 #login
   :margin-left 23%
   :margin-right 23%
@@ -285,10 +341,9 @@ a.active
 body
   :color = !clr_my_black1
   :font-size 0.9em
-  // :background-image url(/img/topbg.png)
-  // :background-repeat repeat-x
   :min-width 980px
-
+  :font-family = !font_family
+  :margin-bottom 50px
 #wrap
   :margin-left 10%
   :margin-right 10%
@@ -325,7 +380,7 @@ body
 #ssearch
   :background-color #fff
   :position absolute
-  :top 100px
+  :top 105px
   :right 10%
 #searchform
   :position relative

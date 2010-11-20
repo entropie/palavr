@@ -22,6 +22,7 @@ class BoardController < PalavrController
     if c=request.params["category"]
       @category = Category[c.to_i]
       @legend = "New Story to <em>#{@category.title}</em>"
+      @form_append = {:category => @category.id}
       # TODO: values for phread
     else
       @legend = "Thread"

@@ -31,7 +31,7 @@ module Palavr
 
       def link(opts = {})
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='catlink' title='Category: #{title}' href='#{url}'>#{title}</a>"
+        "<a #{o} class='awesome small silver catlink' title='Category: #{title}' href='#{url}'>#{title}</a>"
       end
       
       

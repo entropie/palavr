@@ -1,3 +1,8 @@
+%h1 Create Story
+.backlink
+  &larr;
+  %a{:href => BoardController.r(@category.url)}= "Back to Catgory #{@category.title}"
+
 - if @preview.kind_of?(Struct)
   #preview
     %h1 Preview
@@ -5,8 +10,8 @@
       = render_file "view/s/preview.haml", :preview => @preview
 
 #create
-  %h1 Create Story
-  %form{:method => :post, :action => BoardController.r(:create)}
+  %h1 Form
+  %form{:method => :post, :action => BoardController.r(:create, @form_append)}
     %input{:type => :hidden, :name => :category, :value => (@preview["category"] or (@category and @category.id))}
     %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@phread and @phread.id))}
     %fieldset

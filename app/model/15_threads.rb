@@ -50,7 +50,7 @@ module Palavr
 
       def link(opts = {})
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='phreadlink' title='Story: #{title}' href='#{url}'>#{title}</a>"
+        "<a #{o} class='awesome small silver phreadlink' title='Story: #{title}' href='#{url}'>#{title}</a>"
       end
       
       def backlink
