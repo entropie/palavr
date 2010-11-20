@@ -15,6 +15,8 @@ class Phread < PalavrController
 
   # TODO: category images
   def index(phread = nil)
+    redirect BoardController.r unless phread
+    
     @phread = Phread.get(phread)
   end
 

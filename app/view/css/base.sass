@@ -22,6 +22,9 @@
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green
 
+!clr_tablerow = #EEF2ED
+!clr_tablerow1 = #EDEEF2
+  
 !block_font = dejavu sans
 
 h1
@@ -29,31 +32,61 @@ h1
   :font-size 2em
   :border-bottom 1px solid
   :border-color = !clr_dark_blue
+#catlink
+  :margin-bottom 20px
 
 #threads
   :margin-top 10px
-  > tbody > tr
-    &:nth-child(even)
-      :background-color = !clr_bg
-    &:nth-child(odd)
-      :background-color = !clr_dirty_white
-  td.thread
+
+  .thread
+    :-webkit-box-shadow 1px 1px 3px #000000
+    :-moz-box-shadow 1px 1px 3px #000000
+    :box-shadow 1px 1px 3px #000000
+    :margin-bottom 10px
     :padding 10px
+    :position relative
     .title
       :font-weight bolder
-      :width 100%
+      :float left
+      :padding-right 5px
+    &:nth-child(even)
+      :background-color = !clr_tablerow
+    &:nth-child(odd)
+      :background-color = !clr_tablerow1
+    .from
+      :float left
+      
+    .more
+      :position absolute
+      :top 0px
+      :right 30px
+      :font-size 1.5em
+      :color = !clr_silver
+      &:hover
+        :color = !clr_my_black
+    .count
+      :position absolute
+      :top 0px
+      :right 10px
+      :font-size 1.5em
+      :color = !clr_silver
   a
     :text-decoration none
-    :color = !clr_my_black
+    :color = !clr_dark_blue
     &:hover
       :text-decoration underline
 #threads.sub
-  :max-width 700px  
-  :background-color = !clr_light_silver
-  td.thread
-    :padding 0px
-  > table
-    :margin 10px
+  :border 1px solid silver
+  :max-width 700px
+  :margin-left 10px
+  .thread
+    :padding 3px
+    :margin-bottom 2px
+    :font-size 0.8em
+    :background-color transparent
+    :-webkit-box-shadow none
+    :-moz-box-shadow none
+    :box-shadow none
       
 a
   &catlink, &phreadlink
@@ -65,11 +98,16 @@ a
 #preview
   :max-width 700px
   .pbody
+
+    :-webkit-box-shadow 1px 1px 5px #000000
+    :-moz-box-shadow 1px 1px 5px #000000
+    :box-shadow 1px 1px 5px #000000
+
     :font-family = !block_font
     :margin-top 10px
     :margin-bottom 30px
-    :border 5px solid
-    :border-color = !clr_light_silver
+    // :border 5px solid
+    // :border-color = !clr_light_silver
     :padding 10px
     h2
       :font-size 2em
@@ -137,16 +175,48 @@ a
     :color = !clr_dark_blue
     &:hover
       :text-decoration underline
-  tr
+  .cat
+    :position relative
+    :-webkit-box-shadow 2px 2px 2px #aaaaaa
+    :-moz-box-shadow 2px 2px 2px #aaaaaa
+    :box-shadow 2px 2px 2px #aaaaaa
+    :margin-bottom 42px
     &:nth-child(even)
-      :background-color = !clr_bg
+      .main
+        :background-color = !clr_tablerow
+        img
+          :-webkit-box-shadow 2px 2px 2px #aaaaaa 
+          :-moz-box-shadow 2px 2px 2px #aaaaaa
+          :box-shadow 2px 2px 2px #aaaaaa
+        &:hover
+          //:background-color = !clr_light_green + 40
+          .img
+            img
+              :opacity 1
+              :filter alpha(opacity=100)
+
     &:nth-child(odd)
-      :background-color = !clr_dirty_white
+      .main
+        :background-color = !clr_tablerow1
+        img
+          :-webkit-box-shadow 2px 2px 2px #aaaaaa 
+          :-moz-box-shadow 2px 2px 2px #aaaaaa 
+          :box-shadow 2px 2px 2px #aaaaaa
+        &:hover
+          //:background-color = !clr_dirty_white - 10
+          .img
+            img
+              :opacity 1
+              :filter alpha(opacity=100)
   .desc
     :color = !clr_my_black
     :padding 7px
     :padding-left 70px
+    :min-height 60px
+    :font-size 1.1em
   .main
+    .sec
+      :float right
     .title
       :font-weight bold
       :font-size 1.5em
@@ -156,19 +226,21 @@ a
       :position relative      
       .info
         :position absolute
-        :top 10px
-        :right -230px
+        :top 0px
+        :right 10px
         :font-size 2em
         :color = !clr_fresh_blue
   .modlist
-    :width 200px
+    :font-size 0.8em
   .img
     :float left
-    :border 2px solid white
-    :border-color = !clr_light_silver
-    :margin-left 10px
-    :margin-bottom 5px
-    :margin-right 10px
+    :margin-top 15px
+    :margin-left 20px
+    :margin-bottom 30px
+    :margin-right 20px
+    img
+      :opacity 0.4
+      :filter alpha(opacity=40)
 
 #login
   :margin-left 23%
@@ -212,11 +284,20 @@ body
   // :background-image url(/img/topbg.png)
   // :background-repeat repeat-x
   :min-width 980px
+
+#wrap
   :margin-left 10%
   :margin-right 10%
-
+  
+    
 #top
   :background-color = !clr_bg
+  :background #e5e5e5
+  :background -moz-linear-gradient(top, #e5e5e5 27%, #ffffff 100%)
+  :background -webkit-gradient(linear, left top, left bottom, color-stop(27%,#e5e5e5), color-stop(100%,#ffffff))
+  :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 )
+  :height 100px
+
 
 
 .silver
@@ -238,10 +319,13 @@ body
 
 
 #ssearch
+  :background-color #fff
   :position absolute
-  :top 16px
+  :top 100px
   :right 10%
 #searchform
+  :position relative
+  :right -10px
   div
     :background url(/img/search1.gif) no-repeat left top
     :padding 0 10px

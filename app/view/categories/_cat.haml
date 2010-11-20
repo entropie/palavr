@@ -1,12 +1,14 @@
-%tr
-  %td.main
+.cat
+  .main
     .add
       .info{:title => "#{@cat.phreads.size} Stories"}= @cat.phreads.size
+    .img
+      %img{:src => "/img/nopic.png", :height => 96, :width => 96}
     .title
       %a{:href => BoardController.r(@cat.url)}= @cat.title
-    .img
-      %img{:src => "/img/nopic.png", :height => 60, :width => 60}
-    .desc
+    %p.desc
       = @cat.description
-  %td{:class => :modlist}= @cat.mods.map(&:email).join(", ")
+    .sec{:class => :modlist}
+      %em Moderators:
+      = @cat.mods.map(&:profile_link).join(", ")      
   

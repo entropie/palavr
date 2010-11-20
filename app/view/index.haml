@@ -1,3 +1,4 @@
-%table#cats
+%h1{:id => :catlink} Categories
+#cats
   - @categories.each do |cat|
     = render_file "view/categories/_cat.haml", :cat => cat

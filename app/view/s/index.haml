@@ -11,7 +11,7 @@
   .body
     = @phread.body
 #threads.sub
-  %table
+  %threads
     - @phread.phreads.each do |thread|
       = render_file "view/thread/_thread.haml", :phread => thread
 

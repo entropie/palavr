@@ -4,6 +4,6 @@
   %a{:href => BoardController.r} Back to Catgories
   &crarr;
   %a{:href => BoardController.r(:create, :category => @category.id)} Create
-%table#threads
+#threads
   - @threads.each do |thread|
     = render_file "view/thread/_thread.haml", :phread => thread

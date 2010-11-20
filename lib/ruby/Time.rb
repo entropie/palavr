@@ -66,7 +66,7 @@ class Time
 
   def to_s(wago = true)
     if wago
-      ago(Time.now, true)
+      ago(Time.now, true) + " ago"
     else
       strftime("%d %b. %y")
     end

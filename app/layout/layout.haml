@@ -22,8 +22,9 @@
   %body
     
     = render_file "view/top.haml"
-    = render_file "view/search/simple.haml"
-    = @content
+    #wrap
+      = render_file "view/search/simple.haml"
+      = @content
 
     // #debug{:class => "debug"}
     //   %p

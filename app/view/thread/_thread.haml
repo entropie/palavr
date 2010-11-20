@@ -1,10 +1,11 @@
-%tr
-  %td.thread
-    %table
-      %tr
-        %td.title
-          %a{:href => BoardController.r(@phread.url)}= @phread.title
-          by
-          = @phread.from.profile_link
-        %td.count
-          = @phread.phreads.size
+.thread
+  // .vote
+  //   &uarr;
+  .title
+    %a{:href => BoardController.r(@phread.url)}= @phread.title
+  .from= "by " + @phread.from.profile_link
+  .date{:title => @phread.created_at }= ", " + @phread.created_at.to_s(false)
+  // .more
+  //   &darr;
+  .count{:title => "#{@phread.phreads.size} Childs"}= @phread.phreads.size
+  
