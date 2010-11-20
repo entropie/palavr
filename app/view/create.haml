@@ -1,16 +1,16 @@
 %h1 Create Story
 .backlink
   &larr;
-  %a{:href => BoardController.r(@category.url)}= "Back to Catgory #{@category.title}"
+  %a{:class => "awesome small silver", :href => BoardController.r(@category.url)}= "Back to Catgory #{@category.title}"
 
 - if @preview.kind_of?(Struct)
   #preview
-    %h1 Preview
+    %h2 Preview
     .pbody
       = render_file "view/s/preview.haml", :preview => @preview
 
 #create
-  %h1 Form
+  %h2 Form
   %form{:method => :post, :action => BoardController.r(:create, @form_append)}
     %input{:type => :hidden, :name => :category, :value => (@preview["category"] or (@category and @category.id))}
     %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@phread and @phread.id))}
@@ -24,5 +24,10 @@
           %label{:for => :body} Text
           %textarea{:name => :body, :class => :body, :id => :body}= @preview["body"]
         %li
-          %label{:for => :sub} &nbsp;
-          %input{:type => :submit, :name => :submit, :class => :submit, :id => :submit, :value => "Submit"}
+          - if @preview.kind_of?(Struct)
+            %label{:for => :sub} &nbsp;
+            %input{:type => :submit, :name => :submit, :class => "awesome submit", :id => :submit, :value => "Submit"}
+
+          %label{:for => :preview} &nbsp;
+          %input{:type => :submit, :name => :preview, :class => "awesome preview", :id => :preview, :value => "Preview"}
+        

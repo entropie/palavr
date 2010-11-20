@@ -3,6 +3,10 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+class MissingInput < Exception
+end
+
+
 class PalavrController < Ramaze::Controller
   engine :Haml
   helper :auth

@@ -15,7 +15,7 @@ class BoardController < PalavrController
   def submit
   end
 
-  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid)
+  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview)
 
   def create
 
@@ -34,6 +34,16 @@ class BoardController < PalavrController
       # copy values to PthreadStruct
       request.params.each_pair do |k,v|
         @preview.send("#{k}=", v)
+      end
+    end
+
+    # create phread
+    if @preview.kind_of?(Struct) and @preview.submit and not @preview.submit.empty?
+      begin
+        phread = Phread.create_from_struct(@preview, session_user, @category)
+        redirect phread.url
+      rescue MissingInput => e
+        flash[:error] = e
       end
     end
 

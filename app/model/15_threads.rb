@@ -19,14 +19,27 @@ module Palavr
           foreign_key   :category_id
           foreign_key   :op_id
 
-          datetime     :created_at
-          datetime     :updated_at
+          datetime      :created_at
+          datetime      :updated_at
           
           text          :title
           text          :body
         end
       }
 
+
+      def self.create_from_struct(struc, user, category, org = nil)
+        [:title, :body].each do |e|
+          raise MissingInput, "missing #{e}" if struc.send(e).to_s.strip.empty?
+        end
+        phread = Phread.create(:title => struc.title,
+                               :body  => struc.body)
+        phread.op = user
+        phread.save
+        category.add_phread(phread)
+        phread
+      end
+      
       def before_create
         self.created_at = Time.now
       end

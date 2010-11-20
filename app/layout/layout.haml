@@ -24,6 +24,9 @@
     = render_file "view/top.haml"
     #wrap
       = render_file "view/search/simple.haml"
+      - if flash[:error]
+        #error
+          = flash[:error]
       = @content
 
     // #debug{:class => "debug"}
