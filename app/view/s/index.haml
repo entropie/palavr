@@ -9,7 +9,7 @@
       .backlink
         = "&larr; " + @phread.backlink
   .body
-    = @phread.body
+    = @phread.html_body
   .sub
     %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
 - if @phread.phreads.size > 0

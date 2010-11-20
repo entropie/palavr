@@ -189,11 +189,31 @@ a
       :max-width 700px
   .body
     :margin-top 2px
-    :max-width 700px
     :color = !clr_my_black
     :font-family = !block_font
     :font-size 1.2em
     :padding 10px
+    > .para
+      :margin-bottom 30px
+      :position relative
+      > p
+        :max-width 700px
+      .writemore
+
+        //:display none
+        
+        :opacity 0.2
+        :filter alpha(opacity=20)
+        :position absolute
+        :bottom 10px
+        :right 150px
+      &:hover
+        .writemore
+          :opacity 1
+          :filter alpha(opacity=100)
+          
+
+
       
 #cats
   a

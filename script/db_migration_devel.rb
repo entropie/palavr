@@ -10,6 +10,14 @@ require "faker"
 
 include Palavr::Database::Tables
 
+def make_para
+  str = ''
+  0.upto(10 + rand(10)) do
+    str << Faker::Lorem.paragraph(5+rand(10)) + "\r\n\r\n"
+  end
+  str
+end
+
 
 
 letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
@@ -59,7 +67,7 @@ cats << b
 
 0.upto(30) do
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
-  thread.body = Faker::Lorem.sentences(10 + rand(100))
+  thread.body = make_para
   thread.op = me
   thread.save
   cats.sort_by{rand}.first.add_phread(thread)
@@ -69,16 +77,16 @@ end
 0.upto(30) do
   parent = Phread[rand(25)] || Phread.first
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
-  thread.body = Faker::Lorem.sentences(10 + rand(100))
+  thread.body = make_para
   thread.op = me
   thread.save
   parent.add_phread(thread)
   parent.save
 end
 
-parent = Phread[1].phreads.first
+parent = Phread[1].phreads.first rescue Phread[2].phreads.first
 thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
-thread.body = Faker::Lorem.sentences(10 + rand(100))
+thread.body = make_para
 thread.op = me
 thread.save
 parent.add_phread(thread)

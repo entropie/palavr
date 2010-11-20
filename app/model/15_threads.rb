@@ -46,15 +46,18 @@ module Palavr
       end
 
       def html_body
-        ret = []
-        para,i = 0, 0
-        body.each_line do |line|
-          if line.strip.empty?
-            para += 1
+        ret, para, i = [], 0, 0
+        line_size = body.split("\r\n").reject{|l| l.empty?}.size
+
+        body.strip.each_line do |line|
+          if line.strip.empty? then para += 1
           else
-            ret << "<div class='para' id='para#{i}'>" <<
-              "<div class='writemore'><a class='awesome medium silver' href='#para#{i}'>Write</a></div><p>" <<
-              line.strip << "</p></div>"
+            ret << "<div class='para' id='para#{i}'>"
+            # skip last paragraph link
+            if line_size -1 != i
+              ret << "<div class='writemore'><a class='awesome medium silver' href='#para#{i}'>Write</a></div>"
+            end
+            ret << "<p>" << line.strip << "</p></div>"
             para = 0
             i+=1
           end
