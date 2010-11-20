@@ -44,7 +44,24 @@ module Palavr
         
         phread
       end
-      
+
+      def html_body
+        ret = []
+        para,i = 0, 0
+        body.each_line do |line|
+          if line.strip.empty?
+            para += 1
+          else
+            ret << "<div class='para' id='para#{i}'>" <<
+              "<div class='writemore'><a class='awesome medium silver' href='#para#{i}'>Write</a></div><p>" <<
+              line.strip << "</p></div>"
+            para = 0
+            i+=1
+          end
+        end
+        ret.join
+      end
+
       def before_create
         self.created_at = Time.now
       end
@@ -78,7 +95,7 @@ module Palavr
       end
       
       def url
-        "/s/#{id}/" + CGI.escape(title)
+        "/s/#{id}/" + CGI.escape(title.delete("..").strip)
       end
       
     end
