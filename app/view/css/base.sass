@@ -22,8 +22,8 @@
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green
 
-!clr_tablerow = #FAF7F0
-!clr_tablerow1 = #FAFFFE
+!clr_tablerow = #f9f9f9
+!clr_tablerow1 = #ebebf7
 
 !font_family = "tahoma"
 !block_font = "dejavu sans"
@@ -54,14 +54,30 @@ h2
 .backlink
   :margin-top 5px
   :margin-bottom 20px
+
+#top
+  :background-color = !clr_bg
+  :background #e5e5e5
+  :background -moz-linear-gradient(top, #e5e5e5 27%, #ffffff 100%)
+  :background -webkit-gradient(linear, left top, left bottom, color-stop(27%,#e5e5e5), color-stop(100%,#ffffff))
+  :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 )
+  :height 100px
+
+#logo
+  :background url(/img/logo.png) no-repeat
+  :height 300px
+  :width 300px
+  :position absolute
+  :top -30px
+  :left 5%
+
   
+// TODO: Find a good way to let the user know if he already visited a Thread (link-styles) and maybe update link styles if there are new entries  
 #threads
   :margin-top 10px
-
   .thread
-    :-webkit-box-shadow 1px 1px 3px #000000
-    :-moz-box-shadow 1px 1px 3px #000000
-    :box-shadow 1px 1px 3px #000000
+    :-moz-border-radius 6px
+    :border-radius 6px
     :margin-bottom 10px
     :padding 10px
     :position relative
@@ -121,16 +137,13 @@ a
   :margin-top 20px
   :max-width 700px
   .pbody
-
-    :-webkit-box-shadow 1px 1px 5px #000000
-    :-moz-box-shadow 1px 1px 5px #000000
-    :box-shadow 1px 1px 5px #000000
+    :-webkit-box-shadow inset 1px 1px 5px #000000
+    :-moz-box-shadow inset 1px 1px 5px #000000
+    :box-shadow inset 1px 1px 5px #000000
 
     :font-family = !block_font
     :margin-top 10px
     :margin-bottom 30px
-    // :border 5px solid
-    // :border-color = !clr_light_silver
     :padding 10px
     h2
       :font-size 2em
@@ -199,9 +212,6 @@ a
       > p
         :max-width 700px
       .writemore
-
-        //:display none
-        
         :opacity 0.2
         :filter alpha(opacity=20)
         :position absolute
@@ -212,49 +222,42 @@ a
           :opacity 1
           :filter alpha(opacity=100)
           
-
-
-      
 #cats
   a
     :text-decoration none
-    :color = !clr_dark_blue
+    :color = !clr_fresh_blue
     &:hover
       :text-decoration underline
   .cat
+    :-moz-border-radius 15px
+    :border-radius 15px
     :position relative
-    :border 1px solid #aaaaaa
-    :-webkit-box-shadow 2px 2px 2px #aaaaaa
-    :-moz-box-shadow 2px 2px 2px #aaaaaa
-    :box-shadow 2px 2px 2px #aaaaaa
+    :border 5px solid #aaaaaa
     :margin-bottom 42px
+    .img > img
+      :-webkit-box-shadow 2px 2px 2px #aaaaaa 
+      :-moz-box-shadow 2px 2px 2px #aaaaaa
+      :box-shadow 2px 2px 2px #aaaaaa
     &:nth-child(even)
+      :border-color = !clr_tablerow - 10
       .main
         :background-color = !clr_tablerow
-        img
-          :-webkit-box-shadow 2px 2px 2px #aaaaaa 
-          :-moz-box-shadow 2px 2px 2px #aaaaaa
-          :box-shadow 2px 2px 2px #aaaaaa
         &:hover
-          //:background-color = !clr_light_green + 40
-          .img
-            img
-              :opacity 1
-              :filter alpha(opacity=100)
-
+          .img img
+            :opacity 1
+            :filter alpha(opacity=100)
+        .desc
+          :color = !clr_dark_blue
     &:nth-child(odd)
+      :border-color = !clr_tablerow1 - 10
       .main
         :background-color = !clr_tablerow1
-        img
-          :-webkit-box-shadow 2px 2px 2px #aaaaaa 
-          :-moz-box-shadow 2px 2px 2px #aaaaaa 
-          :box-shadow 2px 2px 2px #aaaaaa
         &:hover
-          //:background-color = !clr_dirty_white - 10
-          .img
-            img
-              :opacity 1
-              :filter alpha(opacity=100)
+          .img img
+            :opacity 1
+            :filter alpha(opacity=100)
+        .desc
+          :color = !clr_dark_blue
   .desc
     :color = !clr_my_black
     :padding 7px
@@ -269,6 +272,11 @@ a
       :font-weight bold
       :font-size 1.5em
       :padding 7px
+      :color red
+      h1
+        :letter-spacing 2px
+        :border none
+        :font-size 1.3em
     .add
       :background-color red
       :position relative      
@@ -279,7 +287,13 @@ a
         :font-size 2em
         :color = !clr_silver
   .modlist
+    :margin-top 5px
     :font-size 0.8em
+    a
+      :text-decoration none
+      :color = !clr_silver
+      &:hover
+        :text-decoration underline
   .img
     :float left
     :margin-top 15px
@@ -338,43 +352,9 @@ a
   :color = !clr_fresh_blue
 
 
-  
 #login
   :margin-left 23%
   :margin-right 23%
-  
-// http://virtuelvis.com/gallery/css/rounded/
-.rounded
-  h1,h2
-    :padding-left 10px
-    :font-size 1.1em
-    :margin-bottom 0px
-  :background-color = !clr_dirty_white
-  > p
-    :padding 20px
-    :padding-bottom 5px
-  &:before
-    :background transparent url(/img/corner-top-right.png) no-repeat top right
-    :margin-bottom -20px
-    :height 30px
-    :display block
-    :border none
-    :content url(/img/corner-top-left.png)
-    :padding 0px
-    :line-height 0.1
-    :font-size 1px
-  &:after
-    :background url(/img/corner-bottom-right.png) no-repeat top right
-    :margin 0 0 -1px 0
-    :height 30px
-    :display block
-    :border none
-    :content url(/img/corner-bottom-left.png)
-    :padding 0px
-    :line-height 0.1
-    :font-size 1px
-a.active
-  :font-weight bolder
 body
   :color = !clr_my_black1
   :font-size 0.9em
@@ -386,24 +366,6 @@ body
   :margin-right 10%
   
     
-#top
-  :background-color = !clr_bg
-  :background #e5e5e5
-  :background -moz-linear-gradient(top, #e5e5e5 27%, #ffffff 100%)
-  :background -webkit-gradient(linear, left top, left bottom, color-stop(27%,#e5e5e5), color-stop(100%,#ffffff))
-  :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 )
-  :height 100px
-
-#logo
-  :background url(/img/logo.png) no-repeat
-  :height 300px
-  :width 300px
-  :position absolute
-  :top -30px
-  :left 5%
-
-
-
 .silver
   :background-color = !clr_light_silver
 
