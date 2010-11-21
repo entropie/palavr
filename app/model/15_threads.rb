@@ -31,9 +31,7 @@ module Palavr
 
       def category
         res = super
-        if res.nil?
-          return parent.category
-        end
+        return parent.category if res.nil?
         res
       end
       
