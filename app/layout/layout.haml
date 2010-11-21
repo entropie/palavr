@@ -21,7 +21,9 @@
     
   %body
 
-    #logo
+    %a{:href => "/"}
+      #logo
+      
     = render_file "view/top.haml"
     #wrap
       = render_file "view/search/simple.haml"

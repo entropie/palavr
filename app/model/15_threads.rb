@@ -29,6 +29,14 @@ module Palavr
         end
       }
 
+      def category
+        res = super
+        if res.nil?
+          return parent.category
+        end
+        res
+      end
+      
 
       def self.create_from_struct(struc, user, category, org = nil)
         pp struc
@@ -134,13 +142,20 @@ module Palavr
 
       def link(with_anchor = true, opts = {})
         phread = opts[:phread]
-        anc = with_anchor ? ("#para#{phread.after_parent_chap}" || "#phread") : ""
+        anc = with_anchor ? ("#para#{phread.after_parent_chap}" || "#phread") : "" rescue "#phread"
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
         "<a #{o} class='awesome small silver phreadlink' title='Story: #{title}' href='#{url}#{anc}'>#{title}</a>"
       end
       
       def backlink(with_anchor = true)
-        link = category ? category.link : parent.link(true, :phread => self)
+        link = parent.link(true, :phread => self)
+        link
+      rescue
+        ''
+      end
+
+      def cat_backlink(with_anchor = true)
+        link = category.link
         link
       end
       

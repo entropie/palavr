@@ -59,6 +59,12 @@ h1
   :font-size 2em
   :border-bottom 1px solid
   :border-color = !clr_dark_blue
+  :position relative
+  .icn
+    :position absolute
+    :left -30px
+    :top 3px
+
 #catlink
   :margin-bottom 20px
 
@@ -73,6 +79,8 @@ h2
 .backlink
   :margin-top 5px
   :margin-bottom 20px
+  .icon
+    :margin-top 2px
 
 #top
   :background-color = !clr_bg
@@ -289,8 +297,9 @@ a
     a
       :color = !clr_dark_blue
   h1
-    :margin-bottom 20px
     :padding-right 150px
+  .line
+    :margin-bottom 10px
   .thread
     :background-color = !clr_tablerow
   > .box > .thread

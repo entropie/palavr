@@ -1,13 +1,18 @@
 #phread
   .top
-    %h1= @phread.title
+    %h1
+      .icn
+        %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
+      = @phread.title
     .line
       %span.by
         by
         = @phread.from.profile_link + ", "
         = @phread.created_at.to_s(false)
       .backlink
-        = "&larr; " + @phread.backlink
+        - if @phread.parent
+          = "&larr; " + @phread.backlink
+        = "&larr; " + @phread.category.link
   .body{:id => "phread_#{@phread.id}"}
     = @phread.html_body
   .sub

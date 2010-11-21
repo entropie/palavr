@@ -58,8 +58,6 @@ task :todofile => [:todo] do
 end
 
 
-# keke@rofl.de
-
 task :deploy => [:umigrate, :migrate, :todo, :db_fill, :todofile] do
 end
 
@@ -77,14 +75,9 @@ end
 
 
 task :foo do
-  phread = Palavr::Database::Tables::Phread[67]
-  #pp Palavr::Database::Tables::Phread.get_chapters(phread).map{|l| l[0..50]}
-  # phread.chapters do |chap, index|
-  #   p index
-  #   p chap[0..10]
-    
-  # end
-  p phread
+  phread = Palavr::Database::Tables::Phread[76]
+  p phread.category
+  
 end
 
 
