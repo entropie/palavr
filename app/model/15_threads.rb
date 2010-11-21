@@ -28,13 +28,12 @@ module Palavr
           int           :after_parent_chap
         end
       }
-
+      
       def category
         res = super
         return parent.category if res.nil?
         res
       end
-      
 
       def self.create_from_struct(struc, user, category, org = nil)
         [:title, :body].each do |e|
@@ -112,12 +111,10 @@ module Palavr
         phreads.select{|phr| phr.after_parent_chap == chapter} || []
       end
 
-      
       def before_create
         self.created_at = Time.now
       end
 
-      
       def Phread.get(phread)
         if phread.scan(/[0-9]/).size == phread.size
           Phread[phread.to_i]
