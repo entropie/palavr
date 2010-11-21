@@ -58,6 +58,11 @@ task :todofile => [:todo] do
 end
 
 
+task :migrate => [:deploy] do
+end
+
+# keke@rofl.de
+
 task :deploy => [:umigrate, :migrate, :todo, :db_fill, :todofile] do
 end
 
