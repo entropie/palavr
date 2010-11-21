@@ -13,6 +13,35 @@ class PhreadController < PalavrController
   }
 
 
+  # gernerates a tree of all phreads and subphreads
+  def phreadsub(mphread, o = 0)
+    str = ''
+    margin = o == 0 ? 0 : 20
+    str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
+
+    sthreads = mphread.phreads.select{|mp| mp.after_parent_chap }
+    sthreads.each do |phread|
+      str << render_file("view/thread/_thread.haml", :phread => phread, :inline => true)
+      str << phreadsub(phread, o+=1)
+    end
+    
+    rthreads = mphread.phreads.reject{|mp| mp.after_parent_chap }
+    rthreads.each do |phread|
+      str << render_file("view/thread/_thread.haml", :phread => phread)
+      str << phreadsub(phread, o+=1)
+    end
+    str << "</div>"    
+    str
+  end
+  private :phreadsub
+  
+
+  def tree(id, phread = nil)
+    redirect BoardController.r unless phread or id
+    @phread = Phread[id.to_i]
+  end
+  
+
   def phreads_for(phreadid, para)
     phreadid = phreadid.to_i
     para = para.delete("para").to_i
@@ -21,7 +50,7 @@ class PhreadController < PalavrController
   
   
   # TODO: category images
-  def index(id, phread = nil)
+  def index(id = nil, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i]
   end

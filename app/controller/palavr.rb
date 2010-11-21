@@ -16,6 +16,10 @@ class PalavrController < Ramaze::Controller
   set_layout_except 'layout' # => [:login, :logout]
   #set_layout        'simple_layout' => [:login, :logout]
 
+
+  def Icon(which, clr = "orange", h = 12, w = 12, icons = 16)
+    "<img width=\"#{w}\" height=\"#{h}\" class=\"icon\" src=\"/img/ics/#{which}_#{clr}_#{icons}.png\" />"
+  end
   
   def login_required
     unless logged_in?

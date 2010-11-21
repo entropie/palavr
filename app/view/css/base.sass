@@ -38,6 +38,9 @@
 .inv
   :display none
 
+.unimp
+  :color = !clr_light_silver
+  
 .spinner
   :position absolute
 
@@ -45,8 +48,13 @@ ul
   :list-style-type none
   :margin 0px
 
+.icon
+  :opacity 0.6
+  :filter alpha(opacity=60)
+  
   
 h1
+  :padding-bottom 5px
   :color = !clr_dark_blue
   :font-size 2em
   :border-bottom 1px solid
@@ -97,6 +105,10 @@ h2
     :background-color = !clr_tablerow
   &:nth-child(odd)
     :background-color = !clr_tablerow1
+  .append
+    :float left
+    :padding-left 0px
+    :padding-right 0px
   .from
     :float left
   .more
@@ -270,8 +282,39 @@ a
           :color = !clr_dark_blue
           &:hover
     .moar
+#tree
+  a
+    :color = !clr_fresh_blue
+  .from
+    a
+      :color = !clr_dark_blue
+  h1
+    :margin-bottom 20px
+    :padding-right 150px
+  .thread
+    :background-color = !clr_tablerow
+  > .box > .thread
+    :margin-bottom 20px
+    :margin-top 20px
+    :background-color = !clr_mint
+  > .box
+    :margin-bottom 30px
+  .thread.inline, .inline
+    :font-size 0.8em
+    :background-color = !clr_tablerow1
+    :padding 3px
+    :margin-top 3px
+    :margin-bottom 3px
+    :margin-left 10px
+    :margin-right 10px
+    .count
+      :font-size 0.7em
+    // a
+    //   :color = !clr_straight_orange + 50
+    + .box
+      :padding-left 10px
 
-          
+
 #cats
   a
     :text-decoration none

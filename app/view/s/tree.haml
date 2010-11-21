@@ -1,0 +1,6 @@
+#tree
+  %h1
+    Tree for
+    %em= @phread.title
+    = "<span class='unimp'>(#{@phread.category.title})" rescue ''
+  = phreadsub(phread)
