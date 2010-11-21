@@ -1,4 +1,4 @@
 .subphread{:class => :inv}
-  %a.x x
+  %a{:class => "x awesome silver"} Close
   - @phreads.each do |phread|
     = render_file "view/thread/_thread.haml", :phread => phread
