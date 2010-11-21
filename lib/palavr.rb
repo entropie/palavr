@@ -41,13 +41,22 @@ module Palavr
   Opts = {}
   Opts[:public_dir] = pd="public"
   Opts[:data_dir]   = "#{pd}/data"
-  
-  DB = Sequel.mysql('palavr_devel',
-                    :user => 'root',
-                    :password => '',
-                    :logger => Logger.new( STDOUT ),
-                    :host => "localhost",
-                    :socket => "/tmp/mysql.sock")
+  if `hostname`.strip == "t2062.greatnet.de"
+    DB = Sequel.mysql('palavr_devel',
+                      :user => 'palavr',
+                      :password => 'palavr',
+                      :logger => Logger.new( STDOUT ),
+                      :host => "localhost")
+
+  else
+    
+    DB = Sequel.mysql('palavr_devel',
+                      :user => 'root',
+                      :password => '',
+                      :logger => Logger.new( STDOUT ),
+                      :host => "localhost",
+                      :socket => "/tmp/mysql.sock")
+  end
   def self.version
     str = "Palavr-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]

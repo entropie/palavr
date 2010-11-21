@@ -34,10 +34,15 @@ end
 
 
 puts "\n%s starts up\n\n" % Palavr.version if __FILE__ == $0
-Ramaze.start(:host => "localhost",
-             :port => 8080
-#             :adapter => :mongrel
-             )
+
+if `hostname`.strip == "t2062.greatnet.de"
+  Ramaze.start(:host => "t2062.greatnet.de",
+               :port => 8090)
+else
+  Ramaze.start(:host => "localhost",
+               :port => 8080)
+end
+
 
 
 
