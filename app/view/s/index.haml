@@ -8,14 +8,16 @@
         = @phread.created_at.to_s(false)
       .backlink
         = "&larr; " + @phread.backlink
-  .body
+  .body{:id => "phread_#{@phread.id}"}
     = @phread.html_body
   .sub
     %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
+
 - if @phread.phreads.size > 0
   #threads.sub
     %threads
       - @phread.phreads.each do |thread|
-        = render_file "view/thread/_thread.haml", :phread => thread
+        - unless thread.after_parent_chap
+          = render_file "view/thread/_thread.haml", :phread => thread
 
 

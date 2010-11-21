@@ -12,15 +12,14 @@ class BoardController < PalavrController
     login_required
   }
 
+
   def submit
   end
 
-  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread)
+  PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread, :p)
 
   def create
-    pp request.params["phreadid"]
     if pr=request.params["phreadid"] and not pr.empty?
-      pp pr
       @parent_phread = Phread[pr.to_i]
       @category = @parent_phread.category
       @legend = "Thread"
@@ -31,7 +30,8 @@ class BoardController < PalavrController
       @form_append = {:category => @category.id}
       # TODO: values for phread
     end
-    pp @category
+
+    @form_append.merge!(:p => request.params["p"]) if request.params["p"]
 
     @preview = {}
     if request.params["title"]
@@ -42,7 +42,6 @@ class BoardController < PalavrController
       end
     end
 
-    pp @preview
     # create phread
     if @preview.kind_of?(Struct) and @preview.submit and not @preview.submit.empty?
       begin

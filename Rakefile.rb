@@ -74,6 +74,18 @@ task :umigrate do
 end
 
 
+task :foo do
+  phread = Palavr::Database::Tables::Phread.first
+  #pp Palavr::Database::Tables::Phread.get_chapters(phread).map{|l| l[0..50]}
+  # phread.chapters do |chap, index|
+  #   p index
+  #   p chap[0..10]
+    
+  # end
+  p phread.chapters(0)
+end
+
+
 task :pptables do
   Palavr::Database.definitions.each do |tbl|
     puts

@@ -24,18 +24,25 @@ module Palavr
           
           text          :title
           text          :body
+
+          int           :after_parent_chap
         end
       }
 
 
       def self.create_from_struct(struc, user, category, org = nil)
+        pp struc
         [:title, :body].each do |e|
           raise MissingInput, "missing #{e}" if struc.send(e).to_s.strip.empty?
         end
+
         phread = Phread.create(:title => struc.title,
                                :body  => struc.body)
         phread.op = user
+        phread.after_parent_chap = struc.p.to_i if struc.p and not struc.p.empty?
+
         phread.save
+        
         if struc.phreadid and not struc.phreadid.empty?
           Phread.get(struc.phreadid).add_phread(phread)
         else
@@ -45,26 +52,64 @@ module Palavr
         phread
       end
 
-      def html_body
+      def Phread.get_chapters(phread)
         ret, para, i = [], 0, 0
-        line_size = body.split("\r\n").reject{|l| l.empty?}.size
+        line_size = phread.body.split("\r\n").reject{|l| l.empty?}.size
 
-        body.strip.each_line do |line|
+        phread.body.strip.each_line do |line|
           if line.strip.empty? then para += 1
           else
-            ret << "<div class='para' id='para#{i}'>"
-            # skip last paragraph link
-            if line_size -1 != i
-              ret << "<div class='writemore'><a class='awesome medium silver' href='#para#{i}'>Write</a></div>"
-            end
-            ret << "<p>" << line.strip << "</p></div>"
+            ret << line.strip
             para = 0
             i+=1
           end
         end
+        ret
+      end
+
+      def chapters(index = nil)
+        i, ret = -1, Phread.get_chapters(self)
+
+        ret.each do |chapter|
+          yield chapter.strip, i+=1
+        end if block_given?
+
+        ret.map!{ |chap| [chap, ret.index(chap)] }
+        if index
+          ret.select{ |r,i| i == index}.first
+        else
+          ret
+        end
+      end
+
+      def html_body
+        ret = []
+        chaps = chapters
+        chaps.each do |chap, i|
+          ret << "<div class='para' id='para#{i}'><ul>"
+          # skip last paragraph link
+
+          str = if (fs=phreads_for_chapter(i).size) > 0
+                  "<li class=\"moar\"><a class=\"awesome medium silver\">Follow Ups (#{fs})</a></li>"
+          end || ""
+          unless (chaps.size-1)==i
+            link = "<li ><a class='awesome medium silver' href='/create?phreadid=#{id};p=#{i}'>Write</a></li>"
+            ret << "<div class='writemore'>#{link}#{str}</div>"
+          end
+          
+          ret << "</ul><p>" << chap << "</p>"
+
+          ret << "</div>"
+        end
         ret.join
       end
 
+      def phreads_for_chapter(chapter)
+        pp phreads.map{|p| p.after_parent_chap}
+        phreads.select{|phr| phr.after_parent_chap == chapter} || []
+      end
+
+      
       def before_create
         self.created_at = Time.now
       end

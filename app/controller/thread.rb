@@ -3,9 +3,9 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-class Phread < PalavrController
+class PhreadController < PalavrController
   map "/s"
-  set_layout("layout") # => [:index]) {|path, wish| not request.xhr? }
+  set_layout_except("layout" => [:phreads_for]) # => [:index]) {|path, wish| not request.xhr? }
 
   helper :auth
   before_all(){
@@ -13,6 +13,13 @@ class Phread < PalavrController
   }
 
 
+  def phreads_for(phreadid, para)
+    phreadid = phreadid.to_i
+    para = para.delete("para").to_i
+    @phreads = Phread[phreadid].phreads_for_chapter(para)
+  end
+  
+  
   # TODO: category images
   def index(id, phread = nil)
     redirect BoardController.r unless phread or id
