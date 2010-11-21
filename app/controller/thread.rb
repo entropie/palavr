@@ -19,17 +19,20 @@ class PhreadController < PalavrController
     margin = o == 0 ? 0 : 20
     str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
-    sthreads = mphread.phreads.select{|mp| mp.after_parent_chap }
-    sthreads.each do |phread|
+    phreads = mphread.phreads
+
+    # inline
+    phreads.select{|mp| mp.after_parent_chap }.each do |phread|
       str << render_file("view/thread/_thread.haml", :phread => phread, :inline => true)
       str << phreadsub(phread, o+=1)
     end
-    
-    rthreads = mphread.phreads.reject{|mp| mp.after_parent_chap }
-    rthreads.each do |phread|
+
+    # standard
+    phreads.reject{|mp| mp.after_parent_chap }.each do |phread|
       str << render_file("view/thread/_thread.haml", :phread => phread)
       str << phreadsub(phread, o+=1)
     end
+    
     str << "</div>"    
     str
   end
