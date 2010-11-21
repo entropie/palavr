@@ -39,7 +39,6 @@ module Palavr
       
 
       def self.create_from_struct(struc, user, category, org = nil)
-        pp struc
         [:title, :body].each do |e|
           raise MissingInput, "missing #{e}" if struc.send(e).to_s.strip.empty?
         end
@@ -62,7 +61,6 @@ module Palavr
 
       def Phread.get_chapters(phread)
         ret, para, i = [], 0, 0
-        line_size = phread.body.split("\r\n").reject{|l| l.empty?}.size
 
         phread.body.strip.each_line do |line|
           if line.strip.empty? then para += 1
