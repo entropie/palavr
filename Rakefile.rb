@@ -75,14 +75,14 @@ end
 
 
 task :foo do
-  phread = Palavr::Database::Tables::Phread.first
+  phread = Palavr::Database::Tables::Phread[67]
   #pp Palavr::Database::Tables::Phread.get_chapters(phread).map{|l| l[0..50]}
   # phread.chapters do |chap, index|
   #   p index
   #   p chap[0..10]
     
   # end
-  p phread.chapters(0)
+  p phread
 end
 
 

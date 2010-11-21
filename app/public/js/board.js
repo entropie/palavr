@@ -16,7 +16,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
       body.find(".para").each(function(){
         var p = this;
         var phreadid = body.attr("id").split("_")[1];
-        var url = "/s/phreads_for/" + phreadid + "/" + $(this).attr("id");
+        var url = "/s/phreads_for/" + phreadid + "/" + $(this).attr("id") + "?offset=0";
 
         $(".moar", p).find("a").click(function(){
           var link = $(this);

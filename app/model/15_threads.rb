@@ -90,7 +90,7 @@ module Palavr
           # skip last paragraph link
 
           str = if (fs=phreads_for_chapter(i).size) > 0
-                  "<li class=\"moar\"><a class=\"awesome medium silver\">Follow Ups (#{fs})</a></li>"
+                  "<li class=\"moar\"><a class=\"awesome medium orange\">Follow Ups (#{fs})</a></li>"
           end || ""
           unless (chaps.size-1)==i
             link = "<li ><a class='awesome medium silver' href='/create?phreadid=#{id};p=#{i}'>Write</a></li>"
@@ -105,7 +105,6 @@ module Palavr
       end
 
       def phreads_for_chapter(chapter)
-        pp phreads.map{|p| p.after_parent_chap}
         phreads.select{|phr| phr.after_parent_chap == chapter} || []
       end
 
@@ -133,13 +132,16 @@ module Palavr
         nil
       end
 
-      def link(opts = {})
+      def link(with_anchor = true, opts = {})
+        phread = opts[:phread]
+        anc = with_anchor ? ("#para#{phread.after_parent_chap}" || "#phread") : ""
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='awesome small silver phreadlink' title='Story: #{title}' href='#{url}'>#{title}</a>"
+        "<a #{o} class='awesome small silver phreadlink' title='Story: #{title}' href='#{url}#{anc}'>#{title}</a>"
       end
       
-      def backlink
-        category ? category.link : parent.link
+      def backlink(with_anchor = true)
+        link = category ? category.link : parent.link(true, :phread => self)
+        link
       end
       
       def url
