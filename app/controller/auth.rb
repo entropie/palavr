@@ -34,7 +34,7 @@ class AuthController < PalavrController
   def logout
     session[:username] = nil
     session[:password] = nil
-    redirect BoardController.r
+    redirect BoardController.r(:/)
   end
   
 end
