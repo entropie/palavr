@@ -10,6 +10,7 @@ module Palavr
       many_to_one      :category
       many_to_one      :op, :class => User
       many_to_many     :phreads, :class => Phread, :left_key => :parent_id, :right_key => :phread_id
+      many_to_many     :phread_like, :class => :User, :left_key => :phread_id, :right_key => :user_id
 
       
       Shema = proc{
@@ -28,7 +29,11 @@ module Palavr
           int           :after_parent_chap
         end
       }
-      
+
+      def liker
+        phread_like
+      end
+
       def category
         res = super
         return parent.category if res.nil?
@@ -155,6 +160,11 @@ module Palavr
       
       def url
         "/s/#{id}/" + CGI.escape(title.delete("..").strip)
+      end
+
+      def star(user)
+        cls, title = "star", "Like"
+        "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/starred-small-g.png\" height=\"16\" width=\"16\" title=\"#{title}\" />"
       end
       
     end

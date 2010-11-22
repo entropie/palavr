@@ -31,17 +31,18 @@ module Palavr
 
     end
 
-    # # cat <-> threads
-    # class CategoriesPhreads < Table(:categories_phreads)
 
-    #   Shema = proc{
-    #     DB.create_table :categories_phreads do
-    #       foreign_key   :phread_id
-    #       foreign_key   :category_id
-    #     end
-    #   }
+    class PhreadsUsers < Table(:phreads_users)
 
-    # end
+      Shema = proc{
+        DB.create_table :phreads_users do
+          foreign_key   :user_id
+          foreign_key   :phread_id
+        end
+      }
+
+    end
+
   end
 end
 

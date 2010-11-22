@@ -75,8 +75,15 @@ end
 
 
 task :foo do
-  phread = Palavr::Database::Tables::Phread[76]
-  p phread.category
+  usr = User[2]
+  phread = Phread[1]
+
+  usr.unlike(phread)
+  
+  usr.like(phread)
+  
+  
+  p phread.liker
   
 end
 

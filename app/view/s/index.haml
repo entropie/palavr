@@ -5,6 +5,8 @@
         %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
       = @phread.title
     .line
+      .rating
+        = @phread.star(session_user)
       %span.by
         by
         = @phread.from.profile_link + ", "

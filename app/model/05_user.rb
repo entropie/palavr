@@ -19,6 +19,9 @@ module Palavr
       
       many_to_one :admin
       many_to_one :mod            
+
+      many_to_many :phread_like, :class => :Phread, :right_key => :phread_id, :left_key => :user_id
+
       
       Shema = proc{
         DB.create_table :user do
@@ -32,6 +35,14 @@ module Palavr
         end
       }
 
+      def like(obj)
+        add_phread_like(obj) unless obj.liker.include?(self)
+      end
+
+      def unlike(obj)
+        remove_phread_like(obj) if obj.liker.include?(self)
+      end
+      
       
       def is_admin?
         not admin_user_id.nil?
