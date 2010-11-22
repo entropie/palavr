@@ -38,16 +38,8 @@ module Palavr
       end
       
       
-      def self.mk_url(cat)
-        if cat.scan(/[0-9]/).size == cat.size
-          "/cat/" + cat
-        else
-          "/cat/" + CGI.escape(cat)
-        end
-      end
-      
       def url
-        Category.mk_url(title)
+        "/cat/#{id}/" + CGI.escape(title)
       end
 
       def self.by_name(cat)

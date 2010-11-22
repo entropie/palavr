@@ -59,10 +59,11 @@ class BoardController < PalavrController
     @categories = Category.all
   end
 
-  def cat(cat = nil)
-    call(:index) unless cat
-    
-    @category = Category.get_category(cat)
+  def cat(catid, title = nil)
+    call(:index) unless catid
+    puts
+    p catid
+    @category = Category[catid.to_i]
     @threads = @category.phreads_sorted
   end
 end
