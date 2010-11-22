@@ -24,17 +24,22 @@ letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
 
 s=User.create(
               :email => "system@syst.em",
-              :passwd => User.pwcrypt("system")
+              :passwd => User.pwcrypt("system"),
+              :name  => "root"
+              
               )
 s.save
 me=User.create(
                :email => "mictro@gmail.com",
-               :passwd => User.pwcrypt("foo")
+               :passwd => User.pwcrypt("foo"),
+               :name  => "Michael Trommer"
                )
 me.save
 
 0.upto(50) do
-  u=User.create(:email => Faker::Internet.email, :passwd => User.pwcrypt("foo"))
+  fname, lname = Faker::Name.first_name, Faker::Name.last_name
+  
+  u=User.create(:email => Faker::Internet.email(lname), :passwd => User.pwcrypt("foo"), :name => "#{fname} #{lname}")
   u.save
 end
 
