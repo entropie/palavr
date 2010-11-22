@@ -38,7 +38,17 @@ class PhreadController < PalavrController
   end
   private :phreadsub
   
+  def my(arg = nil)
+    @topic, @phreads =
+      case arg
+      when 'liked'
+        ["Stories I like", session_user.liked]
+      else
+        ["My Stories", session_user.phreads_sorted]
+      end
+  end
 
+  
   def like(id)
     phread = Phread[id.to_i]
     session_user.like(phread)

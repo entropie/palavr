@@ -1,0 +1,5 @@
+#phreads
+  %h1= @topic
+  .backlink
+  - @phreads.each do |phread|
+    = render_file "view/thread/_thread.haml", :phread => phread

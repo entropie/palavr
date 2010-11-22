@@ -76,15 +76,7 @@ end
 
 task :foo do
   usr = User[2]
-  phread = Phread[1]
-
-  usr.unlike(phread)
-  
-  usr.like(phread)
-  
-  p usr.liked.size
-  p phread.liker
-  
+  p usr.phreads
 end
 
 

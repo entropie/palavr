@@ -21,7 +21,7 @@ module Palavr
       }
 
       def phreads_sorted
-        phreads.sort_by{|phread| phread.liker.size }.reverse
+        Phreads.sort(phreads)
       end
 
       def self.get_category(cat)

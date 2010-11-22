@@ -30,8 +30,12 @@ module Palavr
         end
       }
 
-      def phreads_sorted
+      def self.sort(phreads)
         phreads.sort_by{|phread| phread.liker.size }.reverse
+      end
+      
+      def phreads_sorted
+        Phread.sort(phreads)
       end
       
       def liker

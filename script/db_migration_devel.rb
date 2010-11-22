@@ -78,7 +78,7 @@ cats << b
 0.upto(30) do
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
   thread.body = make_para
-  thread.op = User[rand(50)]
+  thread.op = User[rand(50)] || me
   thread.save
   cats.sort_by{rand}.first.add_phread(thread)
 end
@@ -88,7 +88,7 @@ end
   parent = Phread[rand(25)] || Phread.first
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
   thread.body = make_para
-  thread.op = User[rand(50)]
+  thread.op = User[rand(50)] || me
   thread.save
   parent.add_phread(thread)
   parent.save
@@ -97,7 +97,7 @@ end
 parent = Phread[1].phreads.first rescue Phread[2].phreads.first
 thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
 thread.body = make_para
-thread.op = User[rand(50)]
+thread.op = User[rand(50)] || me
 thread.save
 parent.add_phread(thread)
 

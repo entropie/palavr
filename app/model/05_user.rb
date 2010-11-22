@@ -15,13 +15,12 @@ module Palavr
       one_to_many :posts
       one_to_many :threads
       one_to_many :privmsgs
-      one_to_many :shouts
 
-      #one_to_many :jobs, :class => :Job, :key => :orderer_id
-      
       many_to_one :admin
       many_to_one :mod            
 
+      one_to_many :phreads, :key => :op_id
+      
       many_to_many :phread_like, :class => Phread, :right_key => :phread_id, :left_key => :user_id
 
       
@@ -39,8 +38,12 @@ module Palavr
         end
       }
 
+      def phreads_sorted
+        Phread.sort(phreads)
+      end
+      
       def liked
-        phread_like
+        Phread.sort(phread_like)
       end
       
       def like(obj)
