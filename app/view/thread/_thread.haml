@@ -7,7 +7,7 @@
     .append
       , In Response to paragraph
       %b
-        %a{:href => "#{@phread.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
+        %a{:href => "#{@phread.parent.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
   .date{:title => @phread.created_at }= ", " + @phread.created_at.to_s(false)
   .count{:title => "#{@phread.phreads.size} Childs"}= @phread.phreads.size
   .rating= @phread.liker.size
