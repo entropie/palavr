@@ -11,7 +11,8 @@ class AuthController < PalavrController
   
   def login
 
-    @backto = request.params["backto"]
+    @ruri = request.params["ruri"]
+
     unless request.post?
       @all_user = User.all[1..-1]
     else
@@ -22,11 +23,11 @@ class AuthController < PalavrController
         session[:logged_in] = true
         session[:username] = username
         session[:password] = User.pwcrypt(password)
-        redirect @backto
+        redirect @ruri
       else
         flash[:error] = "Unbekannter Benutzer oder falsches Passwort."
       end
-      redirect AuthController.r(:login, :backto => @backto)
+      redirect AuthController.r(:login, :ruri => @ruri)
     end
   end
   
@@ -38,6 +39,7 @@ class AuthController < PalavrController
   
 end
 
+#.split(";").map{#|str| str.split("=")}
 
 
 =begin

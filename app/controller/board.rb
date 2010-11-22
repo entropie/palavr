@@ -8,7 +8,7 @@ class BoardController < PalavrController
   set_layout("layout") # => [:index]) {|path, wish| not request.xhr? }
 
   helper :auth
-  before_all(){
+  before(:create){
     login_required
   }
 
@@ -61,8 +61,6 @@ class BoardController < PalavrController
 
   def cat(catid, title = nil)
     call(:index) unless catid
-    puts
-    p catid
     @category = Category[catid.to_i]
     @threads = @category.phreads_sorted
   end

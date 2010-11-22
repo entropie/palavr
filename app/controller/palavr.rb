@@ -24,7 +24,7 @@ class PalavrController < Ramaze::Controller
   def login_required
     unless logged_in?
       flash[:error] = 'login required to view that page'
-      call(AuthController.r(:login, :backto => request.path_info))
+      call(AuthController.r(:login, :ruri => request.request_uri))
     end
   end
   

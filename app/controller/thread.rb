@@ -8,7 +8,7 @@ class PhreadController < PalavrController
   set_layout_except("layout" => [:phreads_for, :like, :unlike]) # => [:index]) {|path, wish| not request.xhr? }
 
   helper :auth
-  before_all(){
+  before(:my, :like, :unlike){
     login_required
   }
 
