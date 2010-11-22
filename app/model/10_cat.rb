@@ -20,6 +20,9 @@ module Palavr
         end
       }
 
+      def phreads_sorted
+        phreads.sort_by{|phread| phread.liker.size }.reverse
+      end
 
       def self.get_category(cat)
         if cat.scan(/[0-9]/).size == cat.size

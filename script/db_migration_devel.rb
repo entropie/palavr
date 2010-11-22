@@ -102,6 +102,14 @@ thread.save
 parent.add_phread(thread)
 
 
+phreads = Phread.all
+ps = phreads.size
+User.all.each do |usr|
+  phreads.sort_by{rand}.last(rand(phreads.size) / (rand(3)+1)).each do |phr|
+    usr.like(phr)
+  end
+end
+
 =begin
 Local Variables:
   mode:ruby

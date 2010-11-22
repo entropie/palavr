@@ -1,6 +1,6 @@
 .thread{:class => @inline ? "inline" : ""}
   .title
-    %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart)
+    %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart)
     %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
   .from= "by " + @phread.from.profile_link
   - if @inline
@@ -10,5 +10,6 @@
         %a{:href => "#{@phread.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
   .date{:title => @phread.created_at }= ", " + @phread.created_at.to_s(false)
   .count{:title => "#{@phread.phreads.size} Childs"}= @phread.phreads.size
+  .rating= @phread.liker.size
   
 

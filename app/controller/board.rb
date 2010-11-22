@@ -63,7 +63,7 @@ class BoardController < PalavrController
     call(:index) unless cat
     
     @category = Category.get_category(cat)
-    @threads = @category.phreads
+    @threads = @category.phreads_sorted
   end
 end
 

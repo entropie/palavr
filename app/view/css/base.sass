@@ -63,7 +63,7 @@ h1
   .icn
     :position absolute
     :left -30px
-    :top 3npx
+    :top 3px
 
 #catlink
   :margin-bottom 20px
@@ -105,6 +105,16 @@ h2
   :margin-bottom 10px
   :padding 10px
   :position relative
+  .rating
+    :position absolute
+    :top 2px
+    :left -30px
+    :font-size 1.5em
+    :color = !clr_light_silver
+    :text-align right
+    :width 20px
+    &:hover
+      :color = !clr_magenta
   .title
     :font-weight bolder
     :float left
@@ -236,6 +246,14 @@ a
       :text-align right
       :color = !clr_silver
       :max-width 700px
+    .srating
+      :color= !clr_light_silver
+      :position absolute
+      :top 80px
+      :left -70px
+      :font-size 2em
+      &:hover
+        :color= !clr_magenta
     .rating
       :margin-top 2px
       :float right
