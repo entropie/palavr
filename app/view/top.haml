@@ -1,8 +1,9 @@
 #top
-  #usermenu
-    .name= session_user.profile_link
-    %ul
-      %li.own{:class => "awesome silver small"}
-        %a{:href => PhreadController.r(:my), :style => "awesome orange small"} My Stories
-      %li.liked{:class => "awesome silver small"}
-        %a{:href => PhreadController.r(:my, :liked), :style => "awesome orange small"} My Liked Stories
+  - if session_user
+    #usermenu
+      .name= session_user.profile_link
+      %ul
+        %li.own{:class => "awesome silver small"}
+          %a{:href => PhreadController.r(:my), :style => "awesome orange small"} My Stories
+        %li.liked{:class => "awesome silver small"}
+          %a{:href => PhreadController.r(:my, :liked), :style => "awesome orange small"} My Liked Stories
