@@ -1,7 +1,7 @@
 %div{:id => :top, :class => "silver rounded", :id => :login}
   %div{:style => "padding:20px", :class => :center}
     %h1{:class => "center"} Palavr Auth
-    %form{:method => :post, :action => "#{AuthController.r(:login)}", :class => :loginform}
+    %form{:method => :post, :action => "#{AuthController.r(:login, :backto => @backto)}", :class => :loginform}
       %fieldset{:class => "width2"}
         %legend{:class => "column width2"}
           You need to authenticate yourself to use this Service.
