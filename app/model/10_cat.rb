@@ -21,7 +21,7 @@ module Palavr
       }
 
       def phreads_sorted
-        Phreads.sort(phreads)
+        Phread.sort(phreads)
       end
 
       def self.get_category(cat)
