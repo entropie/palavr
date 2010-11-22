@@ -7,7 +7,9 @@ require "digest/md5"
 
 module Palavr
   module Database::Tables
-
+    class Phread < Table(:phread)
+    end
+    
     class User < Table(:user)
 
       one_to_many :posts
@@ -20,7 +22,7 @@ module Palavr
       many_to_one :admin
       many_to_one :mod            
 
-      many_to_many :phread_like, :class => :Phread, :right_key => :phread_id, :left_key => :user_id
+      many_to_many :phread_like, :class => Phread, :right_key => :phread_id, :left_key => :user_id
 
       
       Shema = proc{
@@ -35,6 +37,10 @@ module Palavr
         end
       }
 
+      def liked
+        phread_like
+      end
+      
       def like(obj)
         add_phread_like(obj) unless obj.liker.include?(self)
       end

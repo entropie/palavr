@@ -82,7 +82,7 @@ task :foo do
   
   usr.like(phread)
   
-  
+  p usr.liked.size
   p phread.liker
   
 end

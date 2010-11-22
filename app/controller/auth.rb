@@ -11,7 +11,7 @@ class AuthController < PalavrController
   
   def login
     unless request.post?
-      p 11
+      @all_user = User.all[1..-1]
     else
       @title = "Authentifizierung"
       username = request[:username].strip

@@ -33,6 +33,11 @@ me=User.create(
                )
 me.save
 
+0.upto(50) do
+  u=User.create(:email => Faker::Internet.email, :passwd => User.pwcrypt("foo"))
+  u.save
+end
+
 
 cats = []
 
@@ -68,7 +73,7 @@ cats << b
 0.upto(30) do
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
   thread.body = make_para
-  thread.op = me
+  thread.op = User[rand(50)]
   thread.save
   cats.sort_by{rand}.first.add_phread(thread)
 end
@@ -78,7 +83,7 @@ end
   parent = Phread[rand(25)] || Phread.first
   thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
   thread.body = make_para
-  thread.op = me
+  thread.op = User[rand(50)]
   thread.save
   parent.add_phread(thread)
   parent.save
@@ -87,7 +92,7 @@ end
 parent = Phread[1].phreads.first rescue Phread[2].phreads.first
 thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
 thread.body = make_para
-thread.op = me
+thread.op = User[rand(50)]
 thread.save
 parent.add_phread(thread)
 

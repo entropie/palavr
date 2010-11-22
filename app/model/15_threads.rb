@@ -10,7 +10,7 @@ module Palavr
       many_to_one      :category
       many_to_one      :op, :class => User
       many_to_many     :phreads, :class => Phread, :left_key => :parent_id, :right_key => :phread_id
-      many_to_many     :phread_like, :class => :User, :left_key => :phread_id, :right_key => :user_id
+      many_to_many     :phread_like, :class => User, :left_key => :phread_id, :right_key => :user_id
 
       
       Shema = proc{
@@ -162,9 +162,15 @@ module Palavr
         "/s/#{id}/" + CGI.escape(title.delete("..").strip)
       end
 
-      def star(user)
-        cls, title = "star", "Like"
-        "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/starred-small-g.png\" height=\"16\" width=\"16\" title=\"#{title}\" />"
+      def star(user, xhr = false)
+        cls, title, img = 
+          if liker.include?(user)
+            [:star, :unlike, "starred-small"]
+          else
+            [:gstar, :like, "starred-small-g"]
+          end
+        link = "<a class='like_link' href=\"/s/#{title}/#{id}\">%s</a>"
+        link % "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/#{img}.png\" height=\"16\" width=\"16\" title=\"#{title}\" />"
       end
       
     end

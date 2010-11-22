@@ -8,7 +8,10 @@
         %div{:class => "column width1 first"}
           %label{:class => "width1 first"}
             Kennung
-            %input{:type => :text, :name => :username, :value => "mictro@gmail.com", :class => :text}
+            //%input{:type => :text, :name => :username, :value => "mictro@gmail.com", :class => :text}
+            %select{:name => :username}
+              - @all_user.each do |usr|
+                %option{:value => usr.email}= usr.email
         %div{:class => "column width1"}
           %label{:class => "width1 first"}
             Passwort

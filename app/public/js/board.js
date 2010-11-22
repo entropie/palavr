@@ -8,7 +8,26 @@ function debug(msg) {
 spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 (function( $ ){
-
+  $.fn.mk_like = function() {
+    var p = $(this);
+    var ll = $(this).find(".like_link");
+    var url = ll.attr("href");
+    ll.click(function(){
+      ll.html(spinner);
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function(data){
+          ll.parent().html(data);
+        },
+        complete: function(){
+          ll.unbind("click");
+          $(p).mk_like();
+        }
+      });
+      return false;
+    });
+  };
 
   $.fn.mk_chapterLinks = function() {
     $(this).each(function(){
@@ -47,7 +66,9 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 google.setOnLoadCallback(function() {
 
-  if($("#phread").length)
+  if($("#phread").length){
     $("#phread").mk_chapterLinks();
+    $("#phread").mk_like();
+  };
 
 });
