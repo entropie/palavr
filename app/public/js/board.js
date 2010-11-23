@@ -36,11 +36,13 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
         var p = this;
         var phreadid = body.attr("id").split("_")[1];
         var url = "/s/phreads_for/" + phreadid + "/" + $(this).attr("id") + "?offset=0";
-
+        var index = $(body).find(".para").index(p);
+        var rest = $(body).find(".para:gt(" + index + ")");
         $(".moar", p).find("a").click(function(){
           var link = $(this);
           link.hide();
           $(p).append(spinner);
+          rest.toggleClass("dim");
           $.ajax({
             type: "GET",
             url: url,
@@ -50,9 +52,6 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
             complete: function(){
               $(p).find(".inv").slideDown("slow");
               $(p).find(".spinner").fadeOut();
-              var index = $(body).find(".para").index(p);
-              var rest = $(body).find(".para:gt(" + index + ")");
-              rest.toggleClass("dim");
               $(p).find(".x").click(function(){
                 $(p).find(".subphread").slideUp(function(){ $(this).remove(); link.fadeIn(); rest.toggleClass("dim"); });
               });
