@@ -64,6 +64,11 @@ class BoardController < PalavrController
     @category = Category[catid.to_i]
     @threads = @category.phreads_sorted
   end
+
+  def help
+    "asd"
+  end
+  
 end
 
 

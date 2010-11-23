@@ -1,4 +1,7 @@
 #top
+  #help
+    %span
+      %a{:href => BoardController.r(:help), :class => "awesome orange small"} Help
   - if session_user
     #usermenu
       .name= session_user.profile_link

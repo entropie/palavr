@@ -54,12 +54,15 @@ ul
   
   
 h1
+  :text-shadow -1px -1px 2px silver
+  :filter dropshadow(color=silver, offx=-1, offy=-1)
   :padding-bottom 5px
   :color = !clr_dark_blue
   :font-size 2em
   :border-bottom 1px solid
   :border-color = !clr_dark_blue
   :position relative
+
   .icn
     :opacity 0.2
     :position absolute
@@ -100,6 +103,7 @@ h2
   :background -webkit-gradient(linear, left top, left bottom, color-stop(27%,#e5e5e5), color-stop(100%,#ffffff))
   :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 )
   :height 100px
+
 #usermenu
   :text-align right
   :position absolute
@@ -116,6 +120,17 @@ h2
     :float right
     a
       :color = !clr_silver
+
+#help
+  :font-size 0.9em
+  :text-align right
+  :position absolute
+  :width 700px
+  :right 10%
+  :top 1px
+  span
+    :margin-right -40px
+  
 
 #logo
   :background url(/img/logo.png) no-repeat
@@ -323,7 +338,7 @@ a
         :opacity 0.2
         :filter alpha(opacity=20)
         :position absolute
-        :top 30%
+        :top 70%
         :left 720px
       .moar
       &:hover
@@ -399,6 +414,9 @@ a
 
 
 #cats
+  h1
+    a:link, a:visited
+      :color = !clr_dark_blue
   a
     :text-decoration none
     :color = !clr_fresh_blue
