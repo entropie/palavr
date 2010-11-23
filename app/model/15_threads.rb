@@ -122,7 +122,7 @@ module Palavr
       end
 
       def phreads_for_chapter(chapter)
-        phreads.select{|phr| phr.after_parent_chap == chapter} || []
+        Phread.sort(phreads.select{|phr| phr.after_parent_chap == chapter}) || []
       end
 
       def before_create

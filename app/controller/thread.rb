@@ -17,9 +17,11 @@ class PhreadController < PalavrController
   def phreadsub(mphread, o = 0)
     str = ''
     margin = o == 0 ? 0 : 20
-    str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
     phreads = mphread.phreads_sorted
+    return '' unless phreads.size > 0
+    
+    str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
     # inline
     phreads.select{|mp| mp.after_parent_chap }.each do |phread|

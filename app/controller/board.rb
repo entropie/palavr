@@ -19,6 +19,7 @@ class BoardController < PalavrController
   PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread, :p)
 
   def create
+    # variables
     if pr=request.params["phreadid"] and not pr.empty?
       @parent_phread = Phread[pr.to_i]
       @category = @parent_phread.category
@@ -28,7 +29,6 @@ class BoardController < PalavrController
       @category = Category[c.to_i]
       @legend = "New Story to <em>#{@category.title}</em>"
       @form_append = {:category => @category.id}
-      # TODO: values for phread
     end
 
     @form_append.merge!(:p => request.params["p"]) if request.params["p"]
