@@ -1,6 +1,6 @@
 .thread{:class => @inline ? "inline" : ""}
   .title
-    %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart)
+    %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, :blue)
     %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
   .from= "by " + @phread.from.profile_link
   - if @inline

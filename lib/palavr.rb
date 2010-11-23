@@ -41,6 +41,8 @@ module Palavr
   Opts = {}
   Opts[:public_dir] = pd="public"
   Opts[:data_dir]   = "#{pd}/data"
+  Opts[:www_data_dir]   = "/data"
+  
   if `hostname`.strip == "t2062.greatnet.de"
     DB = Sequel.mysql('palavr_devel',
                       :user => 'palavr',

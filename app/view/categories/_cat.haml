@@ -3,7 +3,7 @@
     .add
       .info{:title => "#{@cat.phreads.size} Stories"}= @cat.phreads.size
     .img
-      %img{:src => "/img/nopic.png", :height => 96, :width => 96}
+      %img{:src => "#{@cat.pic}", :height => 96, :width => 96}
     .title
       %h1
         %a{:href => BoardController.r(@cat.url)}= @cat.title

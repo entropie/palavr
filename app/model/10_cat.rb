@@ -37,6 +37,24 @@ module Palavr
         "<a #{o} class='awesome small silver catlink' title='Category: #{title}' href='#{url}'>#{title}</a>"
       end
       
+      def public_dir
+        ud = Palavr::Opts[:data_dir] + "/category/#{id}/"
+        FileUtils.mkdir_p(ud)
+        ud
+      end
+
+      def pic?
+        File.exist?(File.join(public_dir, "category.jpg"))
+      end
+
+      def pic
+        if pic? then
+          "#{Palavr::Opts[:www_data_dir]}/category/#{id}/category.jpg"
+        else
+          "/img/nopic.png"
+        end
+      end
+      
       
       def url
         "/cat/#{id}/" + CGI.escape(title)
