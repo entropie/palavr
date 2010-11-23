@@ -162,15 +162,14 @@ module Palavr
       end
 
       def cat_backlink(with_anchor = true)
-        link = category.link
-        link
+        category.link
       end
       
       def url
         "/s/#{id}/" + CGI.escape(title.delete("..").strip)
       end
 
-      def star(user, xhr = false)
+      def star(user)
         cls, title, img = 
           if liker.include?(user)
             [:star, :unlike, "starred-small"]
