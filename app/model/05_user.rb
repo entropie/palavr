@@ -38,10 +38,6 @@ module Palavr
         end
       }
 
-      def phreads_sorted
-        Phread.sort(phreads)
-      end
-      
       def liked
         Phread.sort(phread_like)
       end
