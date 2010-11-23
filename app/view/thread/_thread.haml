@@ -2,7 +2,7 @@
   .title
     %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart)
     %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
-  .from= "by " + @phread.from.profile_link rescue 'fooooo'
+  .from= "by " + @phread.from.profile_link
   - if @inline
     .append
       , In Response to paragraph

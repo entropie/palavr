@@ -284,9 +284,19 @@ a
     :font-family = !block_font
     :font-size 1.2em
     :padding 10px
+    .dim
+      :transition opacity 2s ease-in-out
+      :-webkit-transition opacity 2s ease-in-out
+      :-moz-transition opacity 2s ease-in-out
+      :-o-transition opacity 2s ease-in-out
+      :opacity 0.1
     > .para
       :margin-bottom 30px
       :position relative
+      :transition opacity 1s ease-in-out
+      :-webkit-transition opacity 1s ease-in-out
+      :-moz-transition opacity 1s ease-in-out
+      :-o-transition opacity 1s ease-in-out
       > p
         :max-width 700px
       li

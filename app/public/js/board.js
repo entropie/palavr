@@ -50,8 +50,11 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
             complete: function(){
               $(p).find(".inv").slideDown("slow");
               $(p).find(".spinner").fadeOut();
+              var index = $(body).find(".para").index(p);
+              var rest = $(body).find(".para:gt(" + index + ")");
+              rest.toggleClass("dim");
               $(p).find(".x").click(function(){
-                $(p).find(".subphread").slideUp(function(){ $(this).remove(); link.fadeIn(); });
+                $(p).find(".subphread").slideUp(function(){ $(this).remove(); link.fadeIn(); rest.toggleClass("dim"); });
               });
             }
           });
