@@ -17,8 +17,8 @@ module Palavr
 
   Version = {
     :major => 0,
-    :minor => 1,
-    :suffix => "pre-alpha"
+    :minor => 3,
+    :suffix => "alpha"
   }
   
   # load stdlib exts
