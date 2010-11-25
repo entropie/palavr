@@ -5,8 +5,8 @@
 
 class BoardController < PalavrController
   map :/
-  set_layout("layout") # => [:index]) {|path, wish| not request.xhr? }
-
+  set_layout_except("layout" => [:help])
+  
   helper :auth
   before(:create){
     login_required

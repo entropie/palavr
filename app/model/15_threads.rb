@@ -176,7 +176,7 @@ module Palavr
           else
             [:gstar, :like, "starred-small-g"]
           end
-        link = "<a class='like_link' href=\"/s/#{title}/#{id}\">%s</a>"
+        link = "<a class='like_link' href=\"/s/like/#{title}/#{id}\">%s</a>"
         link % "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/#{img}.png\" height=\"16\" width=\"16\" title=\"#{title}\" />"
       end
       

@@ -8,6 +8,28 @@ function debug(msg) {
 spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 (function( $ ){
+
+  $.fn.toggleHelp = function(){
+    $(this).click(function(){
+      $.ajax({
+        type: "GET",
+        url: "/help",
+        success: function(data){
+          $.modal(data, {
+                    overlayClose:true,
+                    maxWidth:"60%",
+                    minHeight:"60%",
+                    autoResize: true,
+                    opacity: 90
+          });
+        },
+        complete: function(){
+        }
+      });
+      return false;
+    });
+  };
+
   $.fn.mk_like = function() {
     var p = $(this);
     var ll = $(this).find(".like_link");
@@ -65,8 +87,9 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 })(jQuery);
 
-
 google.setOnLoadCallback(function() {
+
+  $("#helplink").toggleHelp();
 
   if($("#phread").length){
     $("#phread").mk_chapterLinks();
