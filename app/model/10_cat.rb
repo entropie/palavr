@@ -48,7 +48,7 @@ module Palavr
       end
 
       def pic
-        if pic? then
+        if pic?
           "#{Palavr::Opts[:www_data_dir]}/category/#{id}/category.jpg"
         else
           "/img/nopic.png"

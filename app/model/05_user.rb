@@ -6,7 +6,11 @@
 require "digest/md5"
 
 module Palavr
-  module Database::Tables
+  module Database::Tables      def phreads_sorted
+        Phread.sort(phreads)
+      end
+      
+
     class Phread < Table(:phread)
     end
     

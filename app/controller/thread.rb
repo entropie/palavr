@@ -19,6 +19,8 @@ class PhreadController < PalavrController
     margin = o == 0 ? 0 : 20
 
     phreads = mphread.phreads_sorted
+
+    # skip if there is nothing to do
     return '' unless phreads.size > 0
     
     str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
@@ -40,6 +42,7 @@ class PhreadController < PalavrController
   end
   private :phreadsub
   
+
   def my(arg = nil)
     @topic, @phreads =
       case arg
