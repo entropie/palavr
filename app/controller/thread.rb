@@ -5,7 +5,7 @@
 
 class PhreadController < PalavrController
   map "/s"
-  set_layout_except("layout" => [:phreads_for, :like, :unlike]) # => [:index]) {|path, wish| not request.xhr? }
+  set_layout_except("layout" => [:phreads_for, :like, :unlike])
 
   helper :auth
   before(:my, :like, :unlike){
@@ -54,26 +54,18 @@ class PhreadController < PalavrController
   end
 
   
-  def like(id)
+  def like(what, id)
+    raise "not allowed" unless ["like", "unlike"].include?(what)
     phread = Phread[id.to_i]
-    session_user.like(phread)
+    session_user.send(what.to_sym, phread)
     unless request.xhr?
       redirect phread.url
     else
-      phread.star(session_user, true)
+      phread.star(session_user)
     end
   end
   
-  def unlike(id)
-    phread = Phread[id.to_i]
-    session_user.unlike(phread)
-    unless request.xhr?
-      redirect phread.url
-    else
-      phread.star(session_user, true)
-    end
-  end
-  
+ 
   def tree(id, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i]
