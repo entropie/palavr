@@ -210,11 +210,24 @@ h2
     a
       &:hover
 #threads.sub
-  :border 1px solid silver
+  :margin-top 10px
+  :padding-bottom 10px
+  :background-color = !clr_dirty_white
+  :-webkit-box-shadow inset 2px 2px 2px #aaaaaa
+  :-moz-box-shadow inset 2px 2px 2px #aaaaaa
+  :box-shadow inset 2px 2px 2px #aaaaaa
+  h2
+    :margin-bottom 15px
+    :padding 10px
+    :padding-left 10px
+    :border none
+  :-moz-border-radius 5px
+  :border-radius 5px
   :max-width 700px
   :margin-left 10px
   .thread
     :padding 3px
+    :padding-left 10px
     :margin-bottom 2px
     :font-size 0.8em
     :background-color transparent
@@ -235,7 +248,6 @@ a
     :-webkit-box-shadow inset 1px 1px 5px #000000
     :-moz-box-shadow inset 1px 1px 5px #000000
     :box-shadow inset 1px 1px 5px #000000
-
     :font-family = !block_font
     :margin-top 10px
     :margin-bottom 30px
@@ -293,13 +305,15 @@ a
       .tagit-choice
         :-moz-border-radius 5px
         :border-radius 5px
+        &:hover
+          :color = !clr_dark_blue
     ul
       li
         :display inline
   .sub
     :margin-bottom 30px
     :text-align right
-    :max-width 700px
+    :max-width 710px
   .top
     :padding-left 10px
     h1
@@ -331,7 +345,7 @@ a
       :font-size 2em
       :z-index 100
       &:hover
-        :color= !clr_magenta
+        :color= !clr_silver
     .rating
       :margin-top 2px
       :float right
