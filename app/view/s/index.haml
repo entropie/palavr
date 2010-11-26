@@ -22,6 +22,12 @@
     = @phread.html_body
   .sub
     %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
+  .tagline
+    %label{:for => :mytags} Tags
+    %div.tags
+      - @phread.tags.each do |tag|
+        %span= tag.tag
+    %ul#mytags
 
 - if @phread.phreads.size > 0
   #threads.sub

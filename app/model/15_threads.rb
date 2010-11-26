@@ -11,7 +11,8 @@ module Palavr
       many_to_one      :op, :class => User
       many_to_many     :phreads, :class => Phread, :left_key => :parent_id, :right_key => :phread_id
       many_to_many     :phread_like, :class => User, :left_key => :phread_id, :right_key => :user_id
-
+      many_to_many     :tags
+      
       
       Shema = proc{
         DB.create_table :phread do

@@ -43,6 +43,17 @@ module Palavr
 
     end
 
+    class PhreadTags < Table(:phreads_tags)
+
+      Shema = proc{
+        DB.create_table :phreads_tags do
+          foreign_key   :phread_id
+          foreign_key   :tag_id
+        end
+      }
+
+    end
+
   end
 end
 

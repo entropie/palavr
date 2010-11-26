@@ -7,7 +7,38 @@ function debug(msg) {
 
 spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
+    // $("#mytags").tagit({
+    //   availableTags: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"],
+    //   startingTags: ["foo", "bar"]
+
+    // });
+
+
 (function( $ ){
+
+   $.fn.mk_tags = function(){
+     var allTags;
+     var tags = [];
+     $(this).find(".tags span").each(function(){
+       tags.push($(this).html());
+     });
+
+     $.ajax({
+       type: "GET",
+       url: "/t/all",
+       success: function(data){
+         $("#mytags").tagit({
+           startingTags: tags,
+           availableTags: data.split(" ")
+         });
+       },
+       complete: function(){
+       }
+     });
+
+
+
+   },
 
   $.fn.toggleHelp = function(){
     $(this).click(function(){
@@ -92,6 +123,7 @@ google.setOnLoadCallback(function() {
   $("#helplink").toggleHelp();
 
   if($("#phread").length){
+    $(".tagline").mk_tags();
     $("#phread").mk_chapterLinks();
     $("#phread").mk_like();
   };

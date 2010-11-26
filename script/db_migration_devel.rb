@@ -19,6 +19,14 @@ def make_para
 end
 
 
+def add_tag(phread)
+  0.upto(rand(3)+1) do
+    tag = %w'foo bar baz geheim toll schlecht kagge uber uberuber true false bum batz'.sort_by{rand}.first
+    t = Tag.find_or_create(:tag => tag)
+    phread.add_tag(t) unless phread.tags.include?(t)
+  end
+end
+
 
 letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
 
@@ -80,6 +88,7 @@ cats << b
   thread.body = make_para
   thread.op = User[rand(50)] || me
   thread.save
+  add_tag(thread)
   cats.sort_by{rand}.first.add_phread(thread)
 end
 
@@ -90,6 +99,7 @@ end
   thread.body = make_para
   thread.op = User[rand(50)] || me
   thread.save
+  add_tag(thread)
   parent.add_phread(thread)
   parent.save
 end
@@ -98,6 +108,7 @@ parent = Phread[1].phreads.first rescue Phread[2].phreads.first
 thread = Phread.create(:title => Faker::Lorem.sentence[0..-2])
 thread.body = make_para
 thread.op = User[rand(50)] || me
+add_tag(thread)
 thread.save
 parent.add_phread(thread)
 

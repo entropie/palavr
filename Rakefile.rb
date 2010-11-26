@@ -76,7 +76,7 @@ end
 
 task :foo do
   usr = User[2]
-  p usr.phreads
+  p usr.phreads.first.tags
 end
 
 
