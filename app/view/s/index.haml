@@ -23,7 +23,7 @@
   .sub
     %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
   = render_file "view/t/tag_for.haml", :phread => @phread
-- if @phread.phreads.size > 0
+- if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0
   #threads.sub
     %h2 Follow Ups
     %threads
