@@ -66,9 +66,11 @@ class BoardController < PalavrController
   end
 
   def help
-    "asd"
   end
-  
+
+  def logout
+    redirect AuthController.r(:logout)
+  end
 end
 
 
