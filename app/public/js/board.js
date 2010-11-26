@@ -16,7 +16,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
        tags.push($(this).html());
      });
 
-     var phreadid = $(this).attr("id").split("_")[1];
+     var phreadid = $(this).find("label").attr("id").split("_")[1];
 
      $.ajax({
        type: "GET",
@@ -129,7 +129,8 @@ google.setOnLoadCallback(function() {
   $("#helplink").toggleHelp();
 
   if($("#phread").length){
-    $(".tagline").mk_tags();
+    if($(".tagline").length)
+      $(".tagline").mk_tags();
     $("#phread").mk_chapterLinks();
     $("#phread").mk_like();
   };

@@ -1,13 +1,13 @@
 - if session_user
-  .tagline{:id => "phreadid_#{phread.id}"}
-    %label{:for => :mytags} Tags
+  .tagline
+    %label{:for => :mytags, :id => "phreadid_#{phread.id}"} Tags
     %div.tags
       - @phread.tags.each do |tag|
         %span= tag.tag
     %ul#mytags
 - else
   .tagline-no
-    %label{:for => :mytags} Tags
+    %label{:for => :mytags, :id => "phreadid_#{phread.id}"} Tags
     %div.tags
       - @phread.tags.each do |tag|
         %span
