@@ -7,13 +7,6 @@ function debug(msg) {
 
 spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
-    // $("#mytags").tagit({
-    //   availableTags: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"],
-    //   startingTags: ["foo", "bar"]
-
-    // });
-
-
 (function( $ ){
 
    $.fn.mk_tags = function(){
