@@ -6,10 +6,7 @@
 require "digest/md5"
 
 module Palavr
-  module Database::Tables      def phreads_sorted
-        Phread.sort(phreads)
-      end
-      
+  module Database::Tables
 
     class Phread < Table(:phread)
     end
@@ -41,6 +38,11 @@ module Palavr
           varchar     :passwd, :size => 32
         end
       }
+
+      def phreads_sorted
+        Phread.sort(phreads)
+      end
+
 
       def liked
         Phread.sort(phread_like)
