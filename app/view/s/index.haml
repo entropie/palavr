@@ -12,8 +12,8 @@
         by
         = @phread.from.profile_link + ", "
         = @phread.created_at.to_s(false)
-        .srating{:title => "#{@phread.liker.size} people like this"}
-          = @phread.liker.size
+        //.srating{:title => "#{@phread.liker.size} people like this"}
+        //  = @phread.liker.size
       .backlink
         - if @phread.parent
           = "&larr; " + @phread.backlink
