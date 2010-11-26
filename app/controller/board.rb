@@ -71,6 +71,9 @@ class BoardController < PalavrController
   def logout
     redirect AuthController.r(:logout)
   end
+  def login
+    redirect AuthController.r(:login)
+  end
 end
 
 

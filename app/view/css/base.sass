@@ -286,8 +286,9 @@ a
     :max-width 680px
     :padding 10px
     :margin 10px
+    :margin-top 20px
+    :margin-bottom 20px
     :background-color = !clr_light_silver
-    :margin-bottom 10px
     :-moz-border-radius 5px
     :border-radius 5px
     :-webkit-box-shadow inset 2px 2px 4px #aaaaaa 
@@ -312,6 +313,48 @@ a
     ul
       li
         :display inline
+  .tagline-no
+    :max-width 670px
+    :padding 15px
+    :margin 10px
+    :margin-top 20px
+    :margin-bottom 20px
+    :background-color = !clr_light_silver
+    :-moz-border-radius 5px
+    :border-radius 5px
+    :-webkit-box-shadow inset 2px 2px 4px #aaaaaa 
+    :-moz-box-shadow inset 2px 2px 4px #aaaaaa
+    :box-shadow inset 2px 2px 4px #aaaaaa
+    label
+      :font-size 1.3em
+      :float left
+      :margin-top -5px
+      :margin-right 5px
+      :margin-left -5px
+    .tags
+      :border 1px solid
+      :border-color = !clr_silver
+      :padding 10px
+      :background-color = !clr_bg
+      :-moz-border-radius 5px
+      :border-radius 5px
+      :display inline
+      > span
+        :padding 5px
+        :background-color = !clr_mint
+        :border 1px solid
+        :border-color = !clr_mint - 30
+        :-moz-border-radius 5px
+        :border-radius 5px
+        :margin-right 4px
+        :margin 2px
+        &:hover
+          :border-color = !clr_fresh_blue
+        a
+          color = !clr_dark_blue
+          &:hover
+            :color = !clr_dark_blue + 20
+
   .sub
     :margin-bottom 30px
     :text-align right
@@ -603,6 +646,18 @@ a
 #login
   :margin-left 23%
   :margin-right 23%
+  :margin-top 10%
+  :-moz-border-radius 15px
+  :border-radius 15px
+  :-webkit-box-shadow 5px 5px 10px #aaa 
+  :-moz-box-shadow 5px 5px 10px #aaa
+  :box-shadow 5px 5px 10px #aaa
+  :border 10px solid
+  :border-color = !clr_silver
+  legend
+    :padding-bottom 20px
+    :text-align center
+  
 body
   :color = !clr_my_black1
   :font-size 0.9em

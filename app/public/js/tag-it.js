@@ -26,6 +26,8 @@
 
     $(this).click(function(e){
       if (e.target.tagName == 'A') {
+        var tag = $(e.target).parent().text().split("\n")[1];
+        options.onRemove(tag);
         $(e.target).parent().remove();
       } else {
         tag_input.focus();
@@ -48,6 +50,7 @@
         if (typed != "") {
 	  if (is_new (typed)) {
 	    create_choice (typed);
+            options.onAdd(typed);
 	  }
 	  // Cleaning the input.
 	  tag_input.val("");
@@ -59,6 +62,7 @@
       source: options.availableTags,
       select: function(event,ui){
         if (is_new (ui.item.value)) {
+          options.onAdd(ui.item.value);
           create_choice (ui.item.value);
         }
         // Cleaning the input.
@@ -89,6 +93,7 @@
       el += "<input type=\"hidden\" style=\"display:none;\" value=\""+value+"\" name=\"item[tags][]\">\n";
       el += "</li>\n";
       var li_search_tags = this.tag_input.parent();
+
       $(el).insertBefore (li_search_tags);
       this.tag_input.val("");
     }

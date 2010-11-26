@@ -1,4 +1,4 @@
-%div{:id => :top, :class => "silver rounded", :id => :login}
+%div{:id => :top, :class => "silver", :id => :login}
   %div{:style => "padding:20px", :class => :center}
     %h1{:class => "center"} Palavr Auth
     %form{:method => :post, :action => "#{AuthController.r(:login, :ruri => @ruri)}", :class => :loginform}
@@ -19,5 +19,4 @@
         %div{:class => "column width2 first"}
           %div{:class => :center}
             %input{:type => :submit, :value => "Absenden", :class => ""}
-  - if flash[:error]
-    %p{:class => :ferror}= flash[:error]
+

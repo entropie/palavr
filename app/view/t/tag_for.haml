@@ -1,6 +1,14 @@
-.tagline
-  %label{:for => :mytags} Tags
-  %div.tags
-    - @phread.tags.each do |tag|
-      %span= tag.tag
-  %ul#mytags
+- if session_user
+  .tagline{:id => "phreadid_#{phread.id}"}
+    %label{:for => :mytags} Tags
+    %div.tags
+      - @phread.tags.each do |tag|
+        %span= tag.tag
+    %ul#mytags
+- else
+  .tagline-no
+    %label{:for => :mytags} Tags
+    %div.tags
+      - @phread.tags.each do |tag|
+        %span
+          %a{:href => TagsController.r(:tag, tag.tag)}= tag.tag

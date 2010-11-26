@@ -6,7 +6,7 @@
 
 class TagsController < PalavrController
   map "/t"
-  set_layout_except("layout" => [:all])
+  set_layout_except("layout" => [:all, :phread])
   
   helper :auth
 
@@ -17,6 +17,18 @@ class TagsController < PalavrController
   # json output probably better
   def all
     Tag.all.map{|t| "#{t.tag} "}
+  end
+
+  def phread(action, id, tag)
+    phread = Phread[id.to_i]
+    tag = Tag.find_or_create(:tag => tag)
+    case action
+    when "remove"
+      phread.remove_tag(tag)
+    when "add"
+      phread.add_tag(tag)
+    end
+    ''
   end
 end
 

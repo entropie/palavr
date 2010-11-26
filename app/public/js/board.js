@@ -16,22 +16,35 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
        tags.push($(this).html());
      });
 
+     var phreadid = $(this).attr("id").split("_")[1];
+
      $.ajax({
        type: "GET",
        url: "/t/all",
        success: function(data){
+
          $("#mytags").tagit({
            startingTags: tags,
-           availableTags: data.split(" ")
+           availableTags: data.split(" "),
+           onAdd: function(tag){
+             $.ajax({
+               type: "GET",
+               url: "/t/phread/add/" + phreadid + "/" + tag
+             });
+           },
+           onRemove: function(tag){
+             $.ajax({
+               type: "GET",
+               url: "/t/phread/remove/" + phreadid + "/" + tag
+             });
+           }
          });
        },
+
        complete: function(){
        }
      });
-
-
-
-   },
+   };
 
   $.fn.toggleHelp = function(){
     $(this).click(function(){
