@@ -21,7 +21,7 @@
   .body{:id => "phread_#{@phread.id}"}
     = @phread.html_body
   .sub
-    %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
+    %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
   = render_file "view/t/tag_for.haml", :phread => @phread
 - if @phread.phreads.size > 0
   #threads.sub

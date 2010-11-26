@@ -4,7 +4,7 @@
 
 		var el = this;
 
-		const BACKSPACE		= 8;
+		const BACKSPACE   		= 8;
 		const ENTER			= 13;
 		const SPACE			= 32;
 		const COMMA			= 44;
