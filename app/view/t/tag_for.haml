@@ -1,0 +1,6 @@
+.tagline
+  %label{:for => :mytags} Tags
+  %div.tags
+    - @phread.tags.each do |tag|
+      %span= tag.tag
+  %ul#mytags
