@@ -1,8 +1,6 @@
 #phread
   .top
     %h1
-      .srating{:title => "#{@phread.liker.size} people like this"}
-        = @phread.liker.size
       .icn
         %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
       = @phread.title
@@ -14,6 +12,8 @@
         by
         = @phread.from.profile_link + ", "
         = @phread.created_at.to_s(false)
+        .srating{:title => "#{@phread.liker.size} people like this"}
+          = @phread.liker.size
       .backlink
         - if @phread.parent
           = "&larr; " + @phread.backlink
