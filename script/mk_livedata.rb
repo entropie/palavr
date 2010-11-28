@@ -22,7 +22,7 @@ Dir.chdir("livedata/cats") do
     aemail, author = file_contents.pop, file_contents.pop
 
     puts title
-    usr = User.find_or_create(:email => aemail, :passwd=> User.pwcrypt("test125"))
+    usr = User.find_or_create(:email => aemail.strip, :passwd => User.pwcrypt("test"))
     phread = Phread.create(:title => title, :body => file_contents.join("\r\n"))
     cat = Category[catid.to_i-1]
     cat.add_phread(phread)
