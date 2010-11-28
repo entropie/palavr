@@ -61,6 +61,10 @@ end
 task :deploy => [:umigrate, :migrate, :todo, :db_fill, :todofile] do
 end
 
+task :live => [:umigrate, :migrate, :todo, :production, :mk_live] do
+end
+
+
 task :db_fill do
   ruby "script/db_migration_devel.rb"
 end
@@ -87,6 +91,14 @@ task :pptables do
     puts
     tbl.print
   end
+end
+
+task :mk_live do
+  ruby "script/mk_livedata.rb"
+end
+
+task :production do
+  ruby "script/db_production.rb"
 end
 
 

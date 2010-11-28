@@ -66,7 +66,6 @@ a=Category.create(:title => "Fantasy",
 a.add_mod(me)
 a.add_mod(s)
 a.save
-
 cats << a
 
 b=Category.create(:title => "Science Fiction",

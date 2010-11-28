@@ -28,6 +28,9 @@ module Palavr
           text          :body
 
           int           :after_parent_chap
+
+          int           :readonly, :default => false
+          
         end
       }
 
@@ -104,7 +107,7 @@ module Palavr
                 end || ""
 
           # skip last paragraph link
-          unless (chaps.size-1)==i
+          unless (chaps.size-1)==i or readonly?
             link = "<li ><a class='awesome medium silver' href='/create?phreadid=#{id};p=#{i}'>Write</a></li>"
             ret << "<div class='writemore'>#{link}#{str}</div>"
           end
@@ -114,6 +117,10 @@ module Palavr
           ret << "</div>"
         end
         ret.join
+      end
+
+      def readonly?
+        readonly == 1
       end
 
       def phreads_for_chapter(chapter)

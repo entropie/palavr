@@ -1,8 +1,9 @@
 #phread
   .top
     %h1
-      .icn
-        %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
+      - unless @phread.readonly?
+        .icn
+          %a{:href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
       = @phread.title
     .line
       - if session_user
@@ -20,8 +21,9 @@
         = "&larr; " + @phread.category.link
   .body{:id => "phread_#{@phread.id}"}
     = @phread.html_body
-  .sub
-    %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
+  - unless @phread.readonly?
+    .sub
+      %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
   = render_file "view/t/tag_for.haml", :phread => @phread
 - if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0
   #threads.sub

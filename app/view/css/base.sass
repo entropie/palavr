@@ -160,7 +160,7 @@ h2
     :text-align right
     :width 20px
     &:hover
-      :color = !clr_magenta
+      :color = !clr_fresh_blue
   .title
     :font-weight bolder
     :float left
@@ -310,13 +310,14 @@ a
     :-webkit-transition opacity 2s ease-in-out
     :-moz-transition opacity 2s ease-in-out
     :-o-transition opacity 2s ease-in-out
-    :background-color = !clr_mint
     :opacity 1
     :color = !clr_dark_blue
     a
       :text-decoration underline
      
 #phread
+  .readonly
+    :display none
   .tagline
     :max-width 680px
     :padding 10px
@@ -481,8 +482,8 @@ a
       .spinner
         :margin-left 345px
     .subphread
-      :border 1px solid
-      :border-color = !clr_light_silver
+      // :border 1px solid
+      // :border-color = !clr_light_silver
       :padding-top 10px
       :padding-top 5px
       :margin-top 25px
