@@ -5,6 +5,19 @@
 
 class String
 
+  def chapters
+    para, i = 0, 0
+    strip.each_line do |line|
+      if line.strip.empty? then para += 1
+        # Boh!
+      else
+        yield line.strip, i
+        para = 0
+        i+=1
+      end
+    end
+  end
+  
   def shorten(d = '...', s = 100)
     if size > s
       self[0..s] + " " + d

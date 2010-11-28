@@ -2,6 +2,8 @@
   .title
     %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, :blue)
     %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
+    - if session_user and session_user.liked.include?(@phread)
+      = @phread.star(session_user, 12, 12)
   .from= "by " + @phread.from.profile_link
   - if @inline
     .append

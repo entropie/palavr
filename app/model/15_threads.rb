@@ -71,15 +71,9 @@ module Palavr
       end
 
       def Phread.get_chapters(phread)
-        ret, para, i = [], 0, 0
-
-        phread.body.strip.each_line do |line|
-          if line.strip.empty? then para += 1
-          else
-            ret << line.strip
-            para = 0
-            i+=1
-          end
+        ret = []
+        phread.body.chapters do |chapter, index|
+          ret << chapter
         end
         ret
       end
@@ -170,7 +164,7 @@ module Palavr
         "/s/#{id}/" + CGI.escape(title.delete("..").strip)
       end
 
-      def star(user)
+      def star(user, x = 16, y = 16)
         cls, title, img = 
           if liker.include?(user)
             [:star, :unlike, "starred-small"]
@@ -178,7 +172,7 @@ module Palavr
             [:gstar, :like, "starred-small-g"]
           end
         link = "<a class='like_link' href=\"/s/like/#{title}/#{id}\">%s</a>"
-        link % "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/#{img}.png\" height=\"16\" width=\"16\" title=\"#{title}\" />"
+        link % "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/#{img}.png\" height=\"#{x}\" width=\"#{y}\" title=\"#{title}\" />"
       end
       
     end

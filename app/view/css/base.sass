@@ -247,9 +247,9 @@ a
   :margin-top 20px
   :max-width 700px
   .pbody
-    :-webkit-box-shadow inset 1px 1px 5px #000000
-    :-moz-box-shadow inset 1px 1px 5px #000000
-    :box-shadow inset 1px 1px 5px #000000
+    :-webkit-box-shadow inset 1px 1px 5px #aaa
+    :-moz-box-shadow inset 1px 1px 5px #aaa
+    :box-shadow inset 1px 1px 5px #aaa
     :font-family = !block_font
     :margin-top 10px
     :margin-bottom 30px
@@ -259,6 +259,8 @@ a
       :margin-bottom 10px
     .body
       :color = !clr_my_black
+      p
+        :margin-bottom 20px
 #create
   :max-width 700px
   fieldset
@@ -475,6 +477,9 @@ a
           &:hover
     .moar
 #tree
+  .rating
+    :left -40px
+    :font-size 1.1em
   h1
     :padding-right 150px
   .line
@@ -502,11 +507,9 @@ a
     .from
       a
         :color = !clr_dark_blue
-  > .box
-    :margin-bottom 30px
   .thread.inline, .inline
     :font-size 0.8em
-    :background-color = !clr_tablerow1 - 25
+    :background-color = !clr_tablerow1 + 10
     :padding 3px
     :margin-top 3px
     :margin-bottom 3px
@@ -516,7 +519,12 @@ a
     :border none
     + .box
       :padding-left 10px
-
+  .box
+    :border-left 1px dashed
+    :border-color = !clr_silver
+  > .box
+    :margin-bottom 30px
+    :border none
 
 #cats
   h1

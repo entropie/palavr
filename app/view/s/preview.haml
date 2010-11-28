@@ -1,6 +1,8 @@
 .prev
   %h1= @preview.title
-  .body= @preview.body
+  .body
+    - @preview.body.chapters do |chapter, i|
+      %p= chapter
   .right
     %a.submit{:class => "awesome meduim"} Submit
 
