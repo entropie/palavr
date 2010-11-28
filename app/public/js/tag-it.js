@@ -25,10 +25,12 @@
     }
 
     $(this).click(function(e){
-      if (e.target.tagName == 'A') {
+      if (e.target.tagName == 'SPAN') {
         var tag = $(e.target).parent().text().split("\n")[1];
         options.onRemove(tag);
         $(e.target).parent().remove();
+      } else if (e.target.tagName == "A"){
+        alert(e.target);
       } else {
         tag_input.focus();
       }
@@ -88,13 +90,13 @@
     function create_choice (value){
       var el = "";
       el  = "<li class=\"tagit-choice\">\n";
-      el += value + "\n";
-      el += "<a class=\"close\">x</a>\n";
+      el += "<a href=\"/t/tag/" + value + "\" class=\"value\">" +  value + "</a>\n";
+      el += "<span class=\"close\">x</span>\n";
       el += "<input type=\"hidden\" style=\"display:none;\" value=\""+value+"\" name=\"item[tags][]\">\n";
       el += "</li>\n";
       var li_search_tags = this.tag_input.parent();
 
-      $(el).insertBefore (li_search_tags);
+      $(el).insertBefore(li_search_tags);
       this.tag_input.val("");
     }
   };

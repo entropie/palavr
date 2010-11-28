@@ -313,6 +313,14 @@ a
     ul
       li
         :display inline
+    a
+      color = !clr_dark_blue
+      &:hover
+        :color = !clr_dark_blue + 20
+    .close
+      :cursor pointer
+      &:hover
+        :color = !clr_funky_red
   .tagline-no
     :max-width 670px
     :padding 15px
@@ -341,7 +349,7 @@ a
       :display inline
       > span
         :padding 5px
-        :background-color = !clr_mint
+        :background-color = !clr_light_silver
         :border 1px solid
         :border-color = !clr_mint - 30
         :-moz-border-radius 5px
