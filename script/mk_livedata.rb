@@ -35,6 +35,9 @@ Dir.chdir("livedata/cats") do
         tag = Tag.find_or_create(:tag => t)
         phread.add_tag(tag)
       }
+      # on request
+      phread.created_at = Time.mktime(1992, 5, 13)
+
       phread.readonly = 1
       phread.save
     end
