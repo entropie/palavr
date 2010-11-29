@@ -51,7 +51,7 @@ moduleb Palavr
   elsif `hostname`.strip == "io"
     DB = Sequel.mysql('palavr_devel',
                       :user => 'palavr',
-                      :password => "/home/entropy/mysql.pw"join.strip,
+                      :password => "/home/entropy/mysql.pw".join.strip,
                       :logger => Logger.new( STDOUT ),
                       :host => "localhost")
   else
