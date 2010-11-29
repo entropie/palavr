@@ -3,6 +3,7 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+require 'rubygems'
 require '../ramaze/lib/ramaze'
 require "lib/palavr"
 
