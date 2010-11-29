@@ -9,7 +9,7 @@ def log(str)
 end
 
 
-module Palavr
+moduleb Palavr
 
   Source = File.dirname(File.dirname(File.expand_path(__FILE__)))
 
@@ -51,7 +51,7 @@ module Palavr
   elsif `hostname`.strip == "io"
     DB = Sequel.mysql('palavr_devel',
                       :user => 'palavr',
-                      :password => File.readlines("/home/entropy/mysql.pw")).join.strip,
+                      :password => "/home/entropy/mysql.pw"join.strip,
                       :logger => Logger.new( STDOUT ),
                       :host => "localhost")
   else
