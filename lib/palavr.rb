@@ -9,7 +9,7 @@ def log(str)
 end
 
 
-moduleb Palavr
+module Palavr
 
   Source = File.dirname(File.dirname(File.expand_path(__FILE__)))
 
