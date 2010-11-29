@@ -65,7 +65,6 @@ end
 task :live => [:umigrate, :migrate, :todo, :production, :mk_live] do
 end
 
-
 task :db_fill do
   ruby "script/db_migration_devel.rb"
 end
