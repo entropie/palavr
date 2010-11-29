@@ -44,8 +44,6 @@ Dir.chdir("livedata/cats") do
   end
 end
 
-
-
 =begin
 Local Variables:
   mode:ruby

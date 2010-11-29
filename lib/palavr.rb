@@ -27,8 +27,6 @@ module Palavr
   require "rubygems"
   require "sequel"
 
-  require "redcloth"
-
   gem 'haml'
 
   require 'sass'  
@@ -50,7 +48,14 @@ module Palavr
                       :logger => Logger.new( STDOUT ),
                       :host => "localhost")
 
+  elsif `hostname`.strip == "io"
+    DB = Sequel.mysql('palavr_devel',
+                      :user => 'palavr',
+                      :password => File.readlines(File.join(Source, "mysql.pw")).join.strip,
+                      :logger => Logger.new( STDOUT ),
+                      :host => "localhost")
   else
+    
     
     DB = Sequel.mysql('palavr_devel',
                       :user => 'root',
