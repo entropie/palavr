@@ -19,12 +19,16 @@ class PalavrController < Ramaze::Controller
 
   def self.ttip(what = nil)
     {
-      :write_on => "write on blabla",
-      :write    => "bla",
-      :tags     => "tags help",
-      :tags_mod => "tags help mod",
+      :write_on   => "write on blabla",
+      :write      => "bla",
+      :tags       => "tags help",
+      :tags_mod   => "tags help mod",
       :follow_ups => "follow ups help",
-      :tree_link => "tree"
+      :tree_link  => "tree",
+      :create_acc => "Create an account. Its a matter of seconds!",
+      :email      => "email add",
+      :passwd     => "password",
+      :rpasswd    => "repeat password"
     }
   end
   
@@ -69,7 +73,6 @@ class PalavrController < Ramaze::Controller
     if usr = User[:email => email, :passwd => pw]
       true
     else
-      flash[:error] = 'Falscher Benutzername und/oder Passwort.'      
       false
     end
   end  

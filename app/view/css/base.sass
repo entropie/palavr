@@ -115,21 +115,22 @@ h2
       :display inline
       :margin-left 5px
   .name
-    :padding-top 2px
+    :padding-top 0px
     :padding-left 10px
     :float right
     a
       :color = !clr_silver
+      :font-size 1.1em
 
 #help
-  :font-size 0.9em
   :text-align right
   :position absolute
   :width 700px
   :right 10%
-  :top 1px
+  :top 2px
   span
-    :margin-right -40px
+    :margin-right -60px
+    
   
 
 #logo
@@ -241,7 +242,7 @@ a
   :color = !clr_silver
   :text-decoration none
   &:hover
-    :color = !clr_magenta
+    :color = !clr_dirty_white
 
 #preview
   :margin-top 20px
@@ -673,7 +674,6 @@ a
   :background #222 url(/img/alert-overlay.png) repeat-x
   :display inline-block
   :padding 5px 10px 6px
-  :color #fff
   :text-decoration none
   :font-weight bold
   :line-height 1
@@ -715,10 +715,19 @@ a
   :background-color = !clr_light_silver - 20
   :color = !clr_fresh_blue
 
-
+#login-link
+  :position absolute
+  :top 2px
+  :right 10%
+  
 #login
-  :margin-left 23%
-  :margin-right 23%
+  .nice
+    :margin-top 10px
+    :padding 5px
+    :background-color = !clr_light_silver + 10
+    :margin-right -10px
+  :margin-left 17%
+  :margin-right 17%
   :margin-top 10%
   :-moz-border-radius 15px
   :border-radius 15px
@@ -727,10 +736,30 @@ a
   :box-shadow 5px 5px 10px #aaa
   :border 10px solid
   :border-color = !clr_silver
+  .newuser
+    :text-align right
   legend
     :padding-bottom 20px
     :text-align center
-  
+  label
+    :font-size 1.5em
+    :color = !clr_my_black
+  input
+    :display block
+    :padding 5px
+    :font-size 1.5em
+    &.submit
+    &.text
+      :width 100%
+      :margin-bottom 20px
+  .lbox
+    :padding 50px
+  .submitr
+    :margin-top 10px
+    :margin-left 40%
+  .center
+    :text-align center
+
 body
   :color = !clr_my_black1
   :font-size 0.9em

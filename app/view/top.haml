@@ -1,12 +1,17 @@
 #top
   #help
     %span
-      %a{:href => BoardController.r(:help), :class => "awesome orange small", :id => :helplink} Help
+      %a{:href => BoardController.r(:help), :class => "awesome silver", :id => :helplink} Help
   - if session_user
     #usermenu
       .name= session_user.profile_link
       %ul
-        %li.own{:class => "awesome silver small"}
-          %a{:href => PhreadController.r(:my), :style => "awesome orange small"} My Stories
-        %li.liked{:class => "awesome silver small"}
-          %a{:href => PhreadController.r(:my, :liked), :style => "awesome orange small"} My Liked Stories
+        %li.own{:class => "awesome silver"}
+          %a{:href => AuthController.r(:logout)} Logout
+        %li.own{:class => "awesome"}
+          %a{:href => PhreadController.r(:my)} My Stories
+        %li.liked{:class => "awesome"}
+          %a{:href => PhreadController.r(:my, :liked)} My Liked Stories
+  - else
+    #login-link
+      %a{:class => "awesome", :href => AuthController.r(:login, :ruri => request.request_uri)} Login

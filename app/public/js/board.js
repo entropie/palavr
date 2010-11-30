@@ -67,6 +67,14 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     });
   };
 
+  $.fn.mk_loginForm = function(){
+    var t = $(this);
+    $(this).find(".link").click(function(){
+      $(t).find(".regform").slideDown();
+      return false;
+    });
+  };
+
   $.fn.mk_like = function() {
     var p = $(this);
     var ll = $(this).find(".like_link");
@@ -143,6 +151,8 @@ google.setOnLoadCallback(function() {
     $("#phread").mk_chapterLinks();
     $("#phread").mk_like();
   };
+  if($("#login").length)
+    $("#login").mk_loginForm();
   $("html").mkHelp();
 
 });

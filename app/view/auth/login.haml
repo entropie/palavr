@@ -1,19 +1,29 @@
 %div{:id => :top, :class => "silver", :id => :login}
-  %div{:style => "padding:20px", :class => :center}
+  %div{:class => :lbox}
     %h1{:class => "center"} Palavr Auth
     %form{:method => :post, :action => "#{AuthController.r(:login, :ruri => @ruri)}", :class => :loginform}
       %fieldset{:class => "width2"}
         %legend{:class => "column width2"}
           You need to authenticate yourself to use this Service.
-        %div{:class => "column width1 first"}
-          %label{:class => "width1 first"}
-            Kennung
-            %input{:type => :text, :name => :username, :value => "", :class => :text}
-        %div{:class => "column width1"}
-          %label{:class => "width1 first"}
-            Passwort
-            %input{:type => :password, :name => :password, :value => "", :class => "text width1"}
-        %div{:class => "column width2 first"}
-          %div{:class => :center}
-            %input{:type => :submit, :value => "Absenden", :class => ""}
+        %div{:class => ""}
+          %label{}
+            E-Mail
+            %input{:type => :text, :name => :username, :value => @username, :class => "ttip text", :title => Tooltip(:email)}
+        %div{:class => ""}
+          %label{:class => "t"}
+            Password
+            %input{:type => :password, :name => :password, :value => @password, :class => "ttip text", :title => Tooltip(:passwd)}
+
+        %div{:class => "newuser"}
+          %a{:class => "link awesome silver small ttip", :title => Tooltip(:create_acc)} No Login Data?
+          - acls = @login_failed.nil? ? ' inv ' : ''
+          %div{:class => "#{acls} regform"}
+            %p.nice Not registred yet? Just confirm your password and you're in!
+            %label
+              Repeat Password
+              %input{:name => :rpw, :type => :password, :class => "text ttip", :title => Tooltip(:rpasswd)}
+          
+        %div{:class => "submitr"}
+          .center
+            %input{:type => :submit, :value => "Absenden", :class => "submit awesome silver"}
 
