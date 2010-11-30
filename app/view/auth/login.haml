@@ -18,7 +18,7 @@
           %a{:class => "link awesome silver small ttip", :title => Tooltip(:create_acc)} No Login Data?
           - acls = @login_failed.nil? ? ' inv ' : ''
           %div{:class => "#{acls} regform"}
-            %p.nice Not registred yet? Just confirm your password and you're in!
+            %p.nice Not registered yet? Just confirm your password and you're in!
             %label
               Repeat Password
               %input{:name => :rpw, :type => :password, :class => "text ttip", :title => Tooltip(:rpasswd)}
