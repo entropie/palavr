@@ -314,15 +314,33 @@ a
     :color = !clr_dark_blue
     a
       :text-decoration underline
-     
+
+#tooltip
+  :position absolute
+  :z-index 3000
+  :border 1px solid #111
+  :background-color #eee
+  :padding 5px
+  :opacity 0.85
+  :-moz-border-radius 5px
+  :border-radius 5px
+  :-webkit-box-shadow 2px 2px 4px #aaaaaa 
+  :-moz-box-shadow 2px 2px 4px #aaaaaa
+  :box-shadow 2px 2px 4px #aaaaaa
+
+#tooltip h3, #tooltip div
+  :margin 0
+      
+      
 #phread
+  :position relative
   .readonly
     :display none
   .tagline
     :max-width 680px
     :padding 10px
     :margin 10px
-    :margin-top 20px
+    :margin-top 50px    
     :margin-bottom 20px
     :background-color = !clr_light_silver
     :-moz-border-radius 5px
@@ -358,10 +376,13 @@ a
       &:hover
         :color = !clr_funky_red
   .tagline-no
+    .info
+      :font-size 1.1em
+      :color = !clr_dark_blue
     :max-width 670px
     :padding 15px
     :margin 10px
-    :margin-top 20px
+    :margin-top 50px
     :margin-bottom 20px
     :background-color = !clr_light_silver
     :-moz-border-radius 5px
@@ -458,7 +479,7 @@ a
       :-o-transition opacity 2s ease-in-out
       :opacity 0.1
     > .para
-      :margin-bottom 30px
+      :margin-bottom 20px
       :position relative
       :transition opacity 1s ease-in-out
       :-webkit-transition opacity 1s ease-in-out

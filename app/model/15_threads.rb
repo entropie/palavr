@@ -103,12 +103,12 @@ module Palavr
           ret << "<div class='para' id='para#{i}'><ul>"
 
           str = if (fs=phreads_for_chapter(i).size) > 0
-                  "<li class=\"moar\"><a class=\"awesome medium orange\">Follow Ups (#{fs})</a></li>"
+                  "<li id=\"follow_ups\" class=\"moar\"><a class=\"awesome medium orange\">Follow Ups (#{fs})</a></li>"
                 end || ""
 
           # skip last paragraph link
           unless (chaps.size-1)==i or readonly?
-            link = "<li ><a class='awesome medium silver' href='/create?phreadid=#{id};p=#{i}'>Write</a></li>"
+            link = "<li><a title=\"#{PalavrController::Tooltip(:write)}\" class='ttip awesome medium silver' href='/create?phreadid=#{id};p=#{i}'>Write</a></li>"
             ret << "<div class='writemore'>#{link}#{str}</div>"
           end
           

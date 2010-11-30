@@ -20,7 +20,7 @@ end
 extend GLog
 
 
-controller = %w"css palavr auth board thread tags".map{ |lib|
+controller = %w"css palavr auth board thread tags help".map{ |lib|
   File.join("controller", lib)
 }
 #libs = %w"lib".map{|lib| lib }
@@ -39,7 +39,7 @@ if `hostname`.strip == "t2062.greatnet.de"
   Ramaze.start(:host => "t2062.greatnet.de",
                :port => 8090)
 elsif `hostname`.strip == "io"
-  Ramaze.start(:host => "io",
+  Ramaze.start(:host => "kommunism.us",
                :port => 8090)
 else
   Ramaze.start(:host => "localhost",

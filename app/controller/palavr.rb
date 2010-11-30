@@ -17,6 +17,29 @@ class PalavrController < Ramaze::Controller
   #set_layout        'simple_layout' => [:login, :logout]
 
 
+  def self.ttip(what = nil)
+    {
+      :write_on => "write on blabla",
+      :write    => "bla",
+      :tags     => "tags help",
+      :tags_mod => "tags help mod",
+      :follow_ups => "follow ups help",
+      :tree_link => "tree"
+    }
+  end
+  
+  def Tooltip(what)
+    PalavrController::ttip[what]
+  end
+
+  def self.Tooltip(what)
+    PalavrController::ttip[what]    
+  end
+  
+  def lala
+    "lala"
+  end
+  
   def Icon(which, clr = "orange", h = 12, w = 12, icons = 16)
     "<img width=\"#{w}\" height=\"#{h}\" class=\"icon\" src=\"/img/ics/#{which}_#{clr}_#{icons}.png\" />"
   end

@@ -12,19 +12,16 @@ class AuthController < PalavrController
   def login
 
     @ruri = request.params["ruri"]
+    @ruri.gsub!(/https?:\/\//, '')
+    @ruri = @ruri.split("/")[1..-1].join("/")
 
     unless request.post?
       @all_user = User.all[1..-1]
     else
-      pp request
       @title = "Authentifizierung"
       username = request[:username].strip
       password = request[:password].strip
 
-      p password, username
-      p password.size
-      p check_auth(username, User.pwcrypt(password))
-      
       if check_auth(username, password)
         session[:logged_in] = true
         session[:username] = username

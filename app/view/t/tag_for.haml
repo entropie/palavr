@@ -1,14 +1,19 @@
 - if session_user
-  .tagline
+  %div{:class => "tagline ttip", :title => "#{Tooltip(:tags_mod)}"}
     %label{:for => :mytags, :id => "phreadid_#{phread.id}"} Tags
     %div.tags
       - @phread.tags.each do |tag|
         %span= tag.tag
     %ul#mytags
 - else
-  .tagline-no
-    %label{:for => :mytags, :id => "phreadid_#{phread.id}"} Tags
-    %div.tags
-      - @phread.tags.each do |tag|
-        %span
-          %a{:href => TagsController.r(:tag, tag.tag)}= tag.tag
+  - unless @phread.tags.empty?
+    %div{:class => "tagline-no ttip", :title => "#{Tooltip(:tags)}"}
+      %label{:for => :mytags, :id => "phreadid_#{phread.id}"} Tags
+      %div.tags
+        - @phread.tags.each do |tag|
+          %span
+            %a{:href => TagsController.r(:tag, tag.tag)}= tag.tag
+  -else
+    .tagline-no
+      .info
+        No tags.
