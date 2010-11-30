@@ -10,9 +10,9 @@ class AuthController < PalavrController
   map "/auth"
   
   def login
-    pp request.params
+    redirect BoardController.r if session_user
+
     @ruri = request.params["ruri"]
-    p @ruri
     if @ruri =~ /^http/
       @ruri.gsub!(/https?:\/\//, '')
       @ruri = @ruri.split("/")[1..-1].join("/")
@@ -40,7 +40,7 @@ class AuthController < PalavrController
           session[:username] = @username
           session[:password] = User.pwcrypt(@password)
           redirect @ruri                  
-        else
+        else 
           @login_failed = true          
           flash[:error] = "Passwords dont match!"
         end
