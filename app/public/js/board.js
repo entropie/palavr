@@ -88,6 +88,38 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     });
   };
 
+  $.fn.mkHelp = function() {
+    var helphtml = '<div class="inv inline_help"></div>';
+    $("#wrap").find(".help").each(function(){
+      var p = $(this);
+      var id = $(this).attr("id");
+      $(this).hover(function() {
+        $(p).find(".inline_help").remove();
+        var spin = '<div class="inline_help">'+spinner+'</div>';
+        $(p).append(spin);
+        $(p).find(".spinner").show();
+        $.ajax({
+          type: 'GET',
+          url: "/help/" + id,
+          success: function(data){
+            var helphtml = '<div class="inv inline_help"><p>'+data+'</p></div>';
+            $(p).append($(helphtml));
+            $(p).find(".inline_help").fadeIn();
+            $(p).find(".spinner").remove();
+          },
+          complete: function(o){
+            $(p).hover(function(){
+              $(p).find(".inline_help p").fadeOut();
+            });
+          }
+        });
+      }, function(){
+        //
+      });
+      //alert($(this).attr("id"));
+    });
+  };
+
   $.fn.mk_chapterLinks = function() {
     $(this).each(function(){
       var body = $(".body", this);
@@ -134,5 +166,6 @@ google.setOnLoadCallback(function() {
     $("#phread").mk_chapterLinks();
     $("#phread").mk_like();
   };
+  $("html").mkHelp();
 
 });
