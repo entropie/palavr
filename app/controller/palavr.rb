@@ -28,7 +28,9 @@ class PalavrController < Ramaze::Controller
       :create_acc => "Create an account. Its a matter of seconds!",
       :email      => "email add",
       :passwd     => "password",
-      :rpasswd    => "repeat password"
+      :rpasswd    => "repeat password",
+      :phread_cr_title => "title",
+      :phread_cr_body  => "body"
     }
   end
   

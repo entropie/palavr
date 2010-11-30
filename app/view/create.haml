@@ -22,11 +22,13 @@
       %legend= @legend
       %ul
         %li
-          %label{:for => :title} Topic
-          %input{:value => @preview["title"], :type => :title, :name => :title, :class => :title, :id => :title}
+          %label{:for => :title}
+            %span.inv Topic
+          %input{:title => Tooltip(:phread_cr_title), :value => @preview["title"], :type => :title, :name => :title, :class => "ttip title", :id => :title}
         %li
-          %label{:for => :body} Text
-          %textarea{:name => :body, :class => :body, :id => :body}= @preview["body"]
+          %label{:for => :body}
+            %span.inv Text
+          %textarea{:title => Tooltip(:phread_cr_body), :name => :body, :class => "ttip body", :id => :body}= @preview["body"]
         %li
           - if @preview.kind_of?(Struct)
             %label{:for => :sub} &nbsp;
