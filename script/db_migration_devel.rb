@@ -33,14 +33,15 @@ letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
 s=User.create(
               :email => "system@syst.em",
               :passwd => User.pwcrypt("system"),
-              :name  => "root"
-              
+              :name  => "root",
+              :nick  => "Gott"              
               )
 s.save
 me=User.create(
                :email => "mictro@gmail.com",
                :passwd => User.pwcrypt("foo"),
-               :name  => "Michael Trommer"
+               :name  => "Michael Trommer",
+               :nick  => "entropie"
                )
 me.save
 

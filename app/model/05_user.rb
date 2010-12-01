@@ -33,6 +33,8 @@ module Palavr
           foreign_key :mod_user_id
 
           varchar     :name
+
+          varchar     :nick
           
           varchar     :email, :unique => true, :size => 255
           varchar     :passwd, :size => 32

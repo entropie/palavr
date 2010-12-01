@@ -5,9 +5,19 @@
 
 class AuthController < PalavrController
 
-  set_layout("layout") # => [:index]) {|path, wish| not request.xhr? }
+  set_layout_except("layout" => [:check_username])
   
   map "/auth"
+
+  def check_username
+    un = request.params["username"].to_s.strip
+    return "1" if un.empty?
+    if User.find(:nick => un)
+      "0"
+    else
+      "1"
+    end
+  end
   
   def login
     redirect BoardController.r if session_user

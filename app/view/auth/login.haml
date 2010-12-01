@@ -5,11 +5,11 @@
       %fieldset{:class => "width2"}
         %legend{:class => "column width2"}
           You need to authenticate yourself to use this Service.
-        %div{:class => ""}
+        %div.nick
           %label{}
-            E-Mail
-            %input{:type => :text, :name => :username, :value => @username, :class => "ttip text", :title => Tooltip(:email)}
-        %div{:class => ""}
+            Username
+            %input{:id => :username, :type => :text, :name => :username, :value => @username, :class => "ttip text", :title => Tooltip(:email)}
+        %div
           %label{:class => "t"}
             Password
             %input{:type => :password, :name => :password, :value => @password, :class => "ttip text", :title => Tooltip(:passwd)}
@@ -25,5 +25,5 @@
           
         %div{:class => "submitr"}
           .center
-            %input{:type => :submit, :value => "Submit", :class => "submit awesome"}
+            %input{:type => :submit, :value => "Submit", :class => "submit awesome silver"}
 

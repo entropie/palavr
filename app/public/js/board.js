@@ -70,10 +70,47 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
   $.fn.mk_loginForm = function(){
     var t = $(this);
     $(this).find(".link").click(function(){
+      $(t).find(".email").append("<div class='spinner'>" + spinner + "</div>");
       $(t).find(".regform").slideDown();
+      if($(t).find(".regform:visible").length)
+        $(t).checkAvailability();
+      $(this).unbind("click").slideUp();
       return false;
     });
+
+    if($(t).find(".regform:visible").length)
+      $(t).checkAvailability();
   };
+
+
+  $.fn.checkAvailability = function() {
+    $("#username").change(function() {
+    if ( $('#username').attr("value") != '') {
+      $(".nick").find("input").removeClass("valid");
+      $(".nick").find("input").removeClass("invalid");
+      $('.spinner').fadeIn();
+      var username = $('#username').val().toLowerCase();
+      $.get("/auth/check_username", { username:username } , function(data) {
+        if (data == 0) {
+          $(".nick").find("input").addClass("invalid");
+          $('.spinner').hide();
+          $('.error').remove();
+          $('.available').remove();
+          $('#username').after('<span class="error"></span>');
+          $('.error').text('Username is already taken.');
+        } else {
+          $(".nick").find("input").addClass("valid");
+          $('.spinner').hide();
+          $('.error').remove();
+          $('.available').remove();
+          $('#username').after('<span class="available"></span>');
+          $('span.available').text('Username is available.');
+        }
+      });
+    }
+    });
+  };
+
 
   $.fn.mk_like = function() {
     var p = $(this);

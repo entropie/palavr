@@ -58,7 +58,9 @@ class PalavrController < Ramaze::Controller
   end
   
   def session_user
-    User.find(:email => session[:username]) if session
+    if session and session[:username].to_s.strip.size > 0
+      User.find(:email => session[:username]) or User.find(:nick => session[:username])
+    end
   end
   
   def logged_in?
@@ -72,7 +74,9 @@ class PalavrController < Ramaze::Controller
     else
       pw = User.pwcrypt(pass)
     end
-    if usr = User[:email => email, :passwd => pw]
+    if User[:email => email, :passwd => pw]
+      true
+    elsif User[:nick => email, :passwd => pw]
       true
     else
       false

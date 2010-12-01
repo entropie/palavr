@@ -5,10 +5,13 @@
 
 class HelpController < PalavrController
   map "/help"
-  set_layout_except("layout" => [:write_on, :write_more])
+  set_layout_except("layout" => [:index, :write_on, :write_more])
 
   helper :auth
 
+  def index
+  end
+  
   def write_on
     "Use this to make a follow up of the current story. The natural history of each story, and the parts of it, is made by user contributions. Thats You! "
   end

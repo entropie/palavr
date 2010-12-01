@@ -10,6 +10,7 @@
 !clr_dark_blue = #3F4C6B
 !clr_light_green = #CDEB8B
 !clr_dark_grey = #36393D
+!clr_light_red = #aa0000
 !clr_dark_green = #6BBA70
 !clr_mint = #C3D9FF
 !clr_funky_red = red
@@ -740,6 +741,18 @@ a
   :right 10%
   
 #login
+  h1
+    :font-size 3em
+  :position relative
+  .invalid, .error
+    :color = !clr_light_red
+  .valid, .available
+    :color = !clr_bg_green
+  .spinner
+    :position absolute
+    :top 91px
+    :right 25px
+    :display none
   .nice
     :margin-top 10px
     :padding 5px
@@ -748,22 +761,24 @@ a
   :margin-left 17%
   :margin-right 17%
   :margin-top 10%
-  :-moz-border-radius 15px
-  :border-radius 15px
+  :-moz-border-radius 25px
+  :border-radius 25px
   :-webkit-box-shadow 5px 5px 10px #aaa 
   :-moz-box-shadow 5px 5px 10px #aaa
   :box-shadow 5px 5px 10px #aaa
   :border 10px solid
-  :border-color = !clr_silver
+  :border-color = !clr_dark_blue
   .newuser
     :text-align right
+  form
+    :margin-top 20px
   legend
     :padding-bottom 20px
     :text-align center
   label
     :font-size 1.5em
     :color = !clr_my_black
-  input
+  input[type=text],input[type=password]
     :display block
     :padding 5px
     :font-size 1.5em
@@ -771,7 +786,10 @@ a
     :border-radius 10px
     :background-color = !clr_dirty_white
     :color = !clr_my_black1
-    
+    :width 100%
+  input[type=submit]
+    :font-size 2em
+    :width 100%
     &.submit
     &.text
       :width 100%
@@ -780,7 +798,8 @@ a
     :padding 50px
   .submitr
     :margin-top 10px
-    :margin-left 40%
+    :margin-left 30%
+    :margin-right 30%
   .center
     :text-align center
 
