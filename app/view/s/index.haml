@@ -1,6 +1,7 @@
 #phread
   .top
     %h1
+      = @phread.readonly?
       - unless @phread.readonly?
         .icn
           %a{:class => "ttip", :title => "#{Tooltip(:tree_link)}", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)

@@ -59,14 +59,18 @@ task :todofile => [:todo] do
 end
 
 
-task :deploy => [:umigrate, :migrate, :todo, :db_fill, :todofile] do
+task :deploy => [:umigrate, :migrate, :todo, :production, :todofile] do
 end
 
 task :live => [:umigrate, :migrate, :todo, :production, :mk_live] do
 end
 
-task :db_fill do
+task :development do
   ruby "script/db_migration_devel.rb"
+end
+
+task :production do
+  ruby "script/db_production.rb"
 end
 
 task :migrate do
@@ -105,10 +109,6 @@ end
 
 task :mk_live do
   ruby "script/mk_livedata.rb"
-end
-
-task :production do
-  ruby "script/db_production.rb"
 end
 
 

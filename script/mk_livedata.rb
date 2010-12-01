@@ -30,7 +30,9 @@ Dir.chdir("livedata/cats") do
 
 
     # very special case
-    if title = "Die Zarin der Pseudo-Reinkarnation"
+    puts title
+    sleep 1
+    if title == "Die Zarin der Pseudo-Reinkarnation"
       ["poetry", "surrealism"].each {|t|
         tag = Tag.find_or_create(:tag => t)
         phread.add_tag(tag)
