@@ -34,7 +34,7 @@ module Palavr
 
           varchar     :name
 
-          varchar     :nick
+          varchar     :nick, :unique => true, :size => 120
           
           varchar     :email, :unique => true, :size => 255
           varchar     :passwd, :size => 32
@@ -97,18 +97,30 @@ module Palavr
         return "/img/uuser.gif" unless has_userpic?
         fname
       end
+
+      def display_name
+        ret = ''
+        ret << (nick||name).to_s
+        unless (name.to_s.size + name.to_s.size) > 0
+          ret << email.split("@").first + "@"
+        end
+        ret
+      end
+      
+      def display_html
+        ret = ''
+        ret << '<em>' + nick + '</em>' if nick.to_s.size > 0
+        ret << "<strong>#{name}</strong>"
+
+        unless (name.to_s.size + name.to_s.size) > 0
+          ret << "asdkj"
+        end
+        "<div class='namelink'>%s</div>" % ret
+      end
       
       def profile_link(opts = {})
-        n = name||email
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='profile' title='#{n}s Profil' href='/user/profile/#{id}'>#{n || id}</a>"
-      end
-
-      def name_link(xhr = true, img = true, w = 14, h = 14)
-        add = xhr ? " alink" : ''
-        admin_add = is_admin? ? " <img src='/img/mics/star_full.png' width='#{w}' height='#{h}' title='Admin' />" : ""
-        ia = "<img src='#{userpic}' width='#{w}' height='#{h}' alt='Benutzerbild' /> %s" % [name]
-        "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>#{admin_add}" % [id, (img ? ia : name)]
+        "<a #{o} class='profile' href='/user/profile/#{id}'>#{display_name}</a>"
       end
 
     end
