@@ -4,7 +4,7 @@
       %a{:href => BoardController.r(:help), :class => "awesome silver", :id => :helplink} Help
   - if session_user
     #usermenu
-      .name= session_user.profile_link
+      .name= session_user.display_name
       %ul
         %li.own{:class => "awesome silver"}
           %a{:href => AuthController.r(:logout)} Logout
