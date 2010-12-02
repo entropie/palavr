@@ -11,6 +11,17 @@ class CategoryController < PalavrController
   before(:create){
     login_required
   }
+
+  def cat(catid, title = nil)
+  end
+
+  
+  def index(catid, title = nil)
+    redirect BoardController.r unless catid
+    @category = Category[catid.to_i]
+    @threads = @category.phreads_sorted
+  end
+  
   def choose_cat
     @categories = Category.all
   end

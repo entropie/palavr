@@ -61,7 +61,7 @@ module Palavr
       
       
       def url
-        "/cat/#{id}/" + CGI.escape(title)
+        "/c/#{id}/" + CGI.escape(title)
       end
 
       def self.by_name(cat)

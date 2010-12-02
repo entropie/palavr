@@ -23,12 +23,6 @@ class BoardController < PalavrController
     @categories = Category.all
   end
 
-  def cat(catid, title = nil)
-    call(:index) unless catid
-    @category = Category[catid.to_i]
-    @threads = @category.phreads_sorted
-  end
-
   def help
   end
 
