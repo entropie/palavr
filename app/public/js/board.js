@@ -130,6 +130,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 
   $.fn.checkAvailability = function() {
+    $("#login .nick").append(spinner);
     $("#username").change(function(){ $(this).checkUserNameInput(); });
   };
 

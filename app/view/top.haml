@@ -6,12 +6,14 @@
     #usermenu
       .name= session_user.display_name
       %ul
-        %li.own{:class => "awesome silver"}
-          %a{:href => AuthController.r(:logout)} Logout
+        %li.createst{:class => "awesome"}
+          %a{:href => BoardController.r(:create)} Create Story
         %li.own{:class => "awesome"}
           %a{:href => PhreadController.r(:my)} My Stories
         %li.liked{:class => "awesome"}
           %a{:href => PhreadController.r(:my, :liked)} My Liked Stories
+        %li.logout{:class => "awesome silver"}
+          %a{:href => AuthController.r(:logout)} Logout
   - else
     #login-link
       %a{:class => "awesome", :href => AuthController.r(:login, :ruri => request.request_uri)} Login

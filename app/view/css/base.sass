@@ -109,12 +109,20 @@ h2
   :text-align right
   :position absolute
   :width 700px
+  :top 5px
   :right 10%
   ul
     :display inline
     li
       :display inline
       :margin-left 5px
+    .logout
+      :margin-left 20px
+    .createst
+      a
+        :color = !clr_smoof_orange
+        &:hover
+          :color = !clr_straight_orange + 30
   .name
     :padding-top 0px
     :padding-left 10px
@@ -132,7 +140,19 @@ h2
   span
     :margin-right -60px
     
-  
+#choose_cat
+  fieldset
+    :padding 20px
+    :max-width 700px
+    :border 5px solid
+    :border-color = !clr_light_silver - 10
+    :-moz-border-radius 10px
+    :border-radius 10px
+    legend
+      :padding 5px
+    select
+      :width 100%
+
 
 #logo
   :background url(/img/logo.png) no-repeat
@@ -759,8 +779,8 @@ a
     :color = !clr_bg_green
   .spinner
     :position absolute
-    :top 91px
-    :right 25px
+    :top 219px
+    :right 45px
     :display none
   .nice
     :margin-top 10px

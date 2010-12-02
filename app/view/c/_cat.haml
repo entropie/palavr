@@ -12,5 +12,5 @@
       = @cat.description
     .sec{:class => :modlist}
       %em Moderators:
-      = @cat.mods.map(&:profile_link).join(", ")      
+      = @cat.mods.map{|mod| mod.display_name}.join(", ")
   

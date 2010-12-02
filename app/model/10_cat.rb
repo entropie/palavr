@@ -32,6 +32,10 @@ module Palavr
         end
       end
 
+      def html_title
+        title
+      end
+
       def link(opts = {})
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
         "<a #{o} class='awesome small silver catlink' title='Category: #{title}' href='#{url}'>#{title}</a>"

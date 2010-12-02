@@ -96,6 +96,10 @@ module Palavr
         end
       end
 
+      def html_title
+        title
+      end
+      
       def html_body
         ret = []
         chaps = chapters

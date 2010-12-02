@@ -15,7 +15,7 @@
 
 #create
   %h2 Form
-  %form{:method => :post, :action => BoardController.r(:create, @form_append)}
+  %form{:method => :post, :action => PhreadController.r(:create, @form_append)}
     %input{:type => :hidden, :name => :category, :value => (@preview["category"] or (@category and @category.id))}
     %input{:type => :hidden, :name => :phreadid, :value => (@preview["phreadid"] or (@parent_phread and @parent_phread.id))}
     %fieldset

@@ -1,0 +1,9 @@
+#choose_cat
+  %form{:action => PhreadController.r(:create), :method => :get}
+    %fieldset
+      %legend Select a Category
+      %select{:name => :category}
+        - @categories.each do |cat|
+          %option{:value => cat.id}= cat.html_title
+      %input{:type => :submit}
+
