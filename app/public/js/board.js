@@ -82,6 +82,21 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
       $(t).checkAvailability();
   };
 
+   $.fn.setupUplink = function(){
+     var app =  "<div class=\'inv app\'><ul>";
+     var uid =$(this).find(".uplink").attr("href").split("/").reverse()[0];
+     app += "<li class='pm'><a href='#/pm/" + uid + "'>Personal Message</a></li>";
+     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
+     app += "</ul></div>";
+     $(this).hover(function(){
+       $(this).append(app);
+       $(this).find(".app").delay(800).fadeIn();
+     }, function(){
+       $(this).find(".app").remove();
+       $(this).removeClass("act");
+     });
+   };
+
 
   $.fn.checkAvailability = function() {
     $("#username").change(function() {
@@ -192,4 +207,5 @@ google.setOnLoadCallback(function() {
     $("#login").mk_loginForm();
   $("html").mkHelp();
 
+  $(".uplinkb").each(function(){ $(this).setupUplink(); });
 });

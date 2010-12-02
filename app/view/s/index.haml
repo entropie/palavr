@@ -11,8 +11,8 @@
           = @phread.star(session_user)
       %span.by
         by
-        = @phread.from.profile_link + ", "
-        = @phread.created_at.to_s(false)
+        = @phread.from.profile_link
+        %span.date= @phread.created_at.to_s(false)
         //.srating{:title => "#{@phread.liker.size} people like this"}
         //  = @phread.liker.size
       .backlink

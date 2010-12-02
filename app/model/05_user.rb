@@ -117,10 +117,14 @@ module Palavr
         end
         "<div class='namelink'>%s</div>" % ret
       end
+
+      def profile_url
+        "/u/#{nick||id}"
+      end
       
       def profile_link(opts = {})
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='profile' href='/user/profile/#{id}'>#{display_name}</a>"
+        "<span class='uplinkb'><a #{o} class='uplink' href='#{profile_url}'>#{display_name}</a></span>"
       end
 
     end

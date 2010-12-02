@@ -4,13 +4,13 @@
     %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
     - if session_user and session_user.liked.include?(@phread)
       = @phread.star(session_user, 12, 12)
+  .date{:title => @phread.created_at }= @phread.created_at.to_s(false)
   .from= "by " + @phread.from.profile_link
   - if @inline
     .append
-      , In Response to paragraph
+      %span In Response to paragraph
       %b
         %a{:href => "#{@phread.parent.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
-  .date{:title => @phread.created_at }= ", " + @phread.created_at.to_s(false)
   .count{:title => "#{@phread.phreads.size} Childs"}= @phread.phreads.size
   .rating= @phread.liker.size
   

@@ -144,6 +144,10 @@ h2
 
 
 .thread
+  .date
+    :color = !clr_silver
+    :float right
+    :margin-right 50px
   &:hover
     .rating
       :color = !clr_magenta
@@ -176,7 +180,6 @@ h2
     :padding-left 0px
     :padding-right 0px
   .from
-    :float left
     a
       :color = !clr_dark_blue
   .more
@@ -352,6 +355,10 @@ a
       
       
 #phread
+  .date
+    &:before
+      :content " - "
+    
   :position relative
   .readonly
     :display none
@@ -894,3 +901,59 @@ body
   p
     :margin-bottom 30px
     :color = !clr_my_black
+
+.uplinkb
+  :position relative
+  :nowrap nowrap
+  :z-index 100
+  &:hover
+    :background-color = !clr_light_silver
+    :color = !clr_dark_blue
+    // :border 5px solid
+    // :border-color = !clr_light_silver - 10
+    :padding 10px
+    :margin-left -11px
+    :margin-right -11px    
+    :-moz-border-radius 15px
+    :border-radius 15px
+    :-webkit-box-shadow inset 1px 1px 2px #111 
+    :-moz-box-shadow inset 1px 1px 2px #111
+    :box-shadow inset 1px 1px 2px #111
+    &:after
+      :margin-top 2px
+      :margin-right 60px
+      :content " "
+    .uplink
+      :color = !clr_dark_blue
+  .app
+    :opacity 0.9
+    :position absolute
+    :top 25px
+    :left 50px
+    :color = !clr_my_black
+    :width 130px
+    :background-color = !clr_mint - 10
+    :-webkit-box-shadow 1px 1px 2px #111 
+    :-moz-box-shadow 1px 1px 2px #111
+    :box-shadow 1px 1px 2px #111
+    :padding 10px
+    :-moz-border-radius 5px
+    :border-radius 5px
+    ul
+      li
+        :white-space nowrap
+        :margin-left 20px
+        :padding-bottom 0px
+      li.pm
+        :list-style-image url(/img/ics/telephone_red_16.png)
+      li.stry
+        :list-style-image url(/img/ics/flowchart_red_16.png)
+      li:hover
+
+    a
+      :white-space nowrap
+      :margin-bottom 8px
+      :color = !clr_dark_blue
+      &:hover
+        :color = !clr_my_black
+

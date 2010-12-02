@@ -38,6 +38,8 @@ class AuthController < PalavrController
       @password = request[:password].strip
       @rpw      = request[:rpw].to_s.strip
 
+      ut = @username.include?("@") ? :email : :nick
+      
       if check_auth(@username, @password)
         session[:logged_in] = true
         session[:username] = @username
@@ -45,7 +47,7 @@ class AuthController < PalavrController
         redirect @ruri
       elsif @rpw.size > 0
         if @rpw == @password
-          usr = User.create(:email => @username, :passwd => User.pwcrypt(@password))
+          usr = User.create(ut => @username, :passwd => User.pwcrypt(@password))
           session[:logged_in] = true
           session[:username] = @username
           session[:password] = User.pwcrypt(@password)
