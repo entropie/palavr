@@ -3,11 +3,11 @@
     .add
       .info{:title => "#{@cat.phreads.size} Stories"}= @cat.phreads.size
     .img
-      %a{:href => BoardController.r(@cat.url)}
+      %a{:href => @cat.url}
         %img{:src => "#{@cat.pic}", :height => 96, :width => 96}
     .title
       %h1
-        %a{:href => BoardController.r(@cat.url)}= @cat.title
+        %a{:href => @cat.url}= @cat.title
     %p.desc
       = @cat.description
     .sec{:class => :modlist}
