@@ -909,8 +909,6 @@ body
   &:hover
     :background-color = !clr_light_silver
     :color = !clr_dark_blue
-    // :border 5px solid
-    // :border-color = !clr_light_silver - 10
     :padding 10px
     :margin-left -11px
     :margin-right -11px    
@@ -919,6 +917,7 @@ body
     :-webkit-box-shadow inset 1px 1px 2px #111 
     :-moz-box-shadow inset 1px 1px 2px #111
     :box-shadow inset 1px 1px 2px #111
+    :z-index 1000
     &:after
       :margin-top 2px
       :margin-right 60px
@@ -926,6 +925,7 @@ body
     .uplink
       :color = !clr_dark_blue
   .app
+    :z-index 1000
     :opacity 0.9
     :position absolute
     :top 25px
