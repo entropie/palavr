@@ -5,6 +5,10 @@
       %fieldset{:class => "width2"}
         %legend{:class => "column width2"}
           You need to authenticate yourself to use this Service.
+        - if @login_failed.nil?
+          .info
+            Not registered yet? No problem! <br/>
+            Enter your desired Nickname or Email address and continue.
         %div.nick
           %label{}
             Username

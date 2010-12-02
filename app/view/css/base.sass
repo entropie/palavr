@@ -765,6 +765,7 @@ a
   :color = !clr_fresh_blue
 
 #login-link
+  :z-index 500
   :position absolute
   :top 2px
   :right 10%
@@ -772,6 +773,12 @@ a
 #login
   h1
     :font-size 3em
+  .info
+    :background-color = !clr_light_silver + 8
+    :margin-right -10px
+    :padding 5px
+    :color = !clr_dark_blue
+    
   :position relative
   .invalid, .error
     :color = !clr_light_red
