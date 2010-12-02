@@ -101,8 +101,8 @@ module Palavr
       def display_name
         ret = ''
         ret << (nick||name).to_s
-        unless (name.to_s.size + name.to_s.size) > 0
-          ret << email.split("@").first + "@"
+        unless (nick.to_s.size + name.to_s.size) > 0
+          ret << email.to_s.split("@").first + "@"
         end
         ret
       end
