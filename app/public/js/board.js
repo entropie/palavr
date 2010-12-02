@@ -57,7 +57,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
                     maxWidth:"60%",
                     minHeight:"60%",
                     autoResize: true,
-                    opacity: 90
+                    opacity: 90,
+                    position: ["100px", "10%"]
           });
         },
         complete: function(){

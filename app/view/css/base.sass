@@ -459,13 +459,13 @@ a
       :margin-right 10px
       :max-width 700px
     .by
-      :line-height 35px
-      :color = !clr_silver
-      a.profile
-        :color = !clr_silver
-        :text-decoration none
-        &:hover
-          :color = !clr_fresh_blue
+      :display block
+      :margin-top 7px
+      :float right
+      ul
+        :margin 0px
+        li
+          :padding 0px
     .backlink
       :float left      
       :color = !clr_silver
@@ -486,6 +486,7 @@ a
         :color= !clr_silver
     .rating
       :margin-top 2px
+      :display block
       :float right
       :padding-left 10px
       :line-height 35px
@@ -493,6 +494,7 @@ a
         :position static
       
   .body
+    :clear both
     :margin-top 2px
     :color = !clr_my_black
     :font-family = !block_font
@@ -940,7 +942,9 @@ body
     :border-radius 5px
     ul
       li
+        :margin 0px
         :white-space nowrap
+        :padding 0px
         :margin-left 20px
         :padding-bottom 0px
       li.pm
@@ -951,7 +955,6 @@ body
 
     a
       :white-space nowrap
-      :margin-bottom 8px
       :color = !clr_dark_blue
       &:hover
         :color = !clr_my_black
