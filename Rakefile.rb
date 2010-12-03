@@ -59,7 +59,7 @@ task :todofile => [:todo] do
 end
 
 
-task :deploy => [:umigrate, :migrate, :todo, :production, :todofile] do
+task :deploy => [:umigrate, :migrate, :todo, :development, :todofile] do
 end
 
 task :live => [:umigrate, :migrate, :todo, :production, :mk_live] do

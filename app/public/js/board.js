@@ -91,7 +91,11 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      var uid =$(this).find(".uplink").attr("href").split("/").reverse()[0];
      app += "<li class='pm'><a href='#/pm/" + uid + "'>Personal Message</a></li>";
      app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
-     app += "</ul></div>";
+     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories Lalal Keke Foo</a></li>";
+     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
+     app += "</ul>";
+     app += '<img class="pic" src="/img/uuser.gif" />';
+     app += "</div>";
      $(this).hover(function(){
        $(this).append(app);
        $(this).find(".app").delay(800).fadeIn();

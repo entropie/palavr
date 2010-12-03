@@ -157,7 +157,7 @@ module Palavr
         phread = opts[:phread]
         anc = with_anchor ? ("#para#{phread.after_parent_chap}" || "#phread") : "" rescue "#phread"
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
-        "<a #{o} class='awesome small silver phreadlink' title='Story: #{title}' href='#{url}#{anc}'>#{title}</a>"
+        "<a #{o} class='awesome small silver blink' title='Story: #{title}' href='#{url}#{anc}'>#{title}</a>"
       end
       
       def backlink(with_anchor = true)

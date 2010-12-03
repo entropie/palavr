@@ -2,10 +2,10 @@
 .backlink
   - if @parent_phread
     &larr;
-    %a{:class => "awesome small silver", :href => @parent_phread.url}= "Back to Story <em>#{@parent_phread.title}</em>"
+    = @parent_phread.link
   - if @category
     &larr;
-    %a{:class => "awesome small silver", :href => BoardController.r(@category.url)}= "Back to Catgory <em>#{@category.title}</em>"
+    = @category.link
 
 - if @preview and @preview.kind_of?(Struct)
   #preview

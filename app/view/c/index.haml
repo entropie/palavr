@@ -1,9 +1,9 @@
 %h1= @category.title
 .backlink
   &larr;
-  %a{:class => "awesome small silver", :href => BoardController.r} Back to Catgories
+  = @category.link
   &crarr;
-  %a{:class => "awesome small silver", :href => BoardController.r(:create, :category => @category.id)} Create
+  %a{:class => "awesome small silver blink", :href => BoardController.r(:create, :category => @category.id)} Create
 #threads
   - @threads.each do |thread|
     = render_file "view/thread/_thread.haml", :phread => thread
