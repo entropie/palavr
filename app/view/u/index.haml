@@ -11,6 +11,6 @@
 
   .sg-35.body
     %h2= "Top 5 Threads from #{@user.display_name}"
-    - @user.phreads_sorted[0..5].each do |phread|
+    - @user.phreads_sorted[0..4].each do |phread|
       = render_file "view/thread/_thread.haml", :phread => phread
     
