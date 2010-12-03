@@ -4,7 +4,7 @@
       %a{:href => BoardController.r(:help), :class => "awesome silver", :id => :helplink} Help
   - if session_user
     #usermenu
-      .name= session_user.display_name
+      %a{:class => :name, :href => session_user.profile_url}= session_user.display_name
       %ul
         %li.createst{:class => "awesome"}
           %a{:href => BoardController.r(:create)} Create Story
@@ -21,3 +21,4 @@
       %ul
         %li.createst{:class => "awesome", :style => "margin-right:100px"}
           %a{:href => BoardController.r(:create)} Create Story
+

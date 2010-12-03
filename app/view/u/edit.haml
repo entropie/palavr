@@ -1,0 +1,39 @@
+#editme
+  .sg-34{:class => "body"}
+    .sg-15
+      .userpic
+        %img.usrpic{:src => @user.profile_img(true)}
+    .sg-16
+      .sg-16
+        %h2.st Userdata
+      .sg-17
+        .sg-4
+          %em Nickname
+        .sg-11
+          .value= @user.nick
+      .sg-17
+        .sg-4
+          %em Full Name
+        .sg-11
+          .value= @user.name
+      .sg-17
+        .sg-4
+          %em Email
+        .sg-11
+          .value= @user.email
+      .sg-16
+        %h2.st Images
+      .sg-17 
+        .sg-4
+          %em Avatar
+        .sg-11
+          %form{:class => "profilechng c_avatar", :action => "/u/upload/avatar"}
+            .upl
+              %input#avatar_upload{:type => "file"}
+      .sg-17
+        .sg-4
+          %em Profile
+        .sg-11
+          %form{:class => "profilechng c_profile", :action => "/u/upload/profile"}
+            .upl
+              %input#profile_upload{:type => "file", :class => " "}

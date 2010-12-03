@@ -1,0 +1,19 @@
+#usershow
+  .sg-35.body
+    .sg-15
+      .userpic
+        %img.usrpic{:src => @user.profile_img(true)}
+    .sg-16
+      .sg-16
+        %h2.st Userdata
+      .sg-17
+        .sg-4
+          %em Nickname
+        .sg-11
+          .value= @user.nick
+      .sg-17
+        .sg-4
+          %em Full Name
+        .sg-11
+          .value= @user.name
+  

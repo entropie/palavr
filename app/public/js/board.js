@@ -94,10 +94,21 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories Lalal Keke Foo</a></li>";
      app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
      app += "</ul>";
-     app += '<img class="pic" src="/img/uuser.gif" />';
+     app += '<img class="pic" src="/u/userpic/'+ uid + '" />';
      app += "</div>";
      $(this).hover(function(){
        $(this).append(app);
+         // var avatarurl = '/data/user/' + uid + '/thumb_avatar.gif';
+         // $.ajax({
+         //   url:avatarurl,
+         //   success: function(data){
+         //     $(app).find('pic').attr("src", avatarurl);
+         //     $(app).find('pic').removeClass("inv");
+
+         //   },
+         //   error: function(data){ $(app).find('opic').removeClass("inv"); }
+         // });
+
        $(this).find(".app").delay(800).fadeIn();
      }, function(){
        $(this).find(".app").remove();
@@ -169,6 +180,48 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
   };
 
+  $.fn.mk_ajax_upload = function() {
+      var t = $(this);
+      var upic = $("#editme .userpic");
+      var apic = $("#user .avatar");
+      var imb = $("img", upic);
+      var amb = $("img", apic);
+
+
+      if (t.hasClass("c_profile"))
+      new AjaxUpload("profile_upload", {
+        action: $(t).attr("action"),
+        name: "image",
+        onSubmit: function(file, extension){
+          $(imb).slideUp("slow");
+        },
+        onComplete: function(file, response){
+          $(imb).load(function() {
+          });
+          $(imb).attr("src", $(response).text());
+          $(imb).slideDown();
+
+        }
+      });
+      if (t.hasClass("c_avatar"))
+      new AjaxUpload("avatar_upload", {
+        action: $(t).attr("action"),
+        name: "image",
+        onSubmit: function(file, extension){
+          $(amb).slideUp("slow");
+        },
+        onComplete: function(file, response){
+          $(amb).load(function() {
+          });
+          $(amb).attr("src", $(response).text());
+          $(amb).slideDown();
+
+        }
+      });
+      return false;
+
+  };
+
   $.fn.mk_chapterLinks = function() {
     $(this).each(function(){
       var body = $(".body", this);
@@ -208,6 +261,10 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 google.setOnLoadCallback(function() {
 
   $("#helplink").toggleHelp();
+
+  if($("#editme").length){
+    $("#editme .profilechng").each(function() { $(this).mk_ajax_upload(); });
+  };
 
   if($("#phread").length){
     if($(".tagline").length)

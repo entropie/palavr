@@ -1,0 +1,16 @@
+#user
+  %h1
+    .avatar
+      %img{:src => @user.avatar}
+    = @user.display_name
+
+  - if session_user == @user
+    = render_file "view/u/edit.haml", :user => @user
+  - else
+    = render_file "view/u/view.haml", :user => @user
+
+  .sg-35.body
+    %h2= "Top 5 Threads from #{@user.display_name}"
+    - @user.phreads_sorted[0..5].each do |phread|
+      = render_file "view/thread/_thread.haml", :phread => phread
+    

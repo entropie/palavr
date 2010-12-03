@@ -87,17 +87,24 @@ module Palavr
 
 
       def has_userpic?
-        base = public_dir + "avatar.jpg"
-        thumb = public_dir + "thumb_avatar.jpg"        
-        File.exists?(base) and File.exists?(thumb)
+        base = public_dir + "thumb_avatar.jpg"
+        #thumb = public_dir + "thumb_avatar.jpg"        
+        File.exists?(base) #and File.exists?(thumb)
       end
 
-      def userpic(big = false)
+      def avatar(big = false)
         fname = "/data/user/#{id}/"+"#{big ? "" : "thumb_"}avatar.jpg"
         return "/img/uuser.gif" unless has_userpic?
         fname
       end
 
+      def profile_img(big = false)
+        fname = "/data/user/#{id}/"+"#{big ? "" : "thumb_"}profile.jpg"
+        return "/img/uuser.gif" unless has_userpic?
+        fname
+      end
+
+      
       def display_name
         ret = ''
         ret << (nick||name).to_s
@@ -119,7 +126,7 @@ module Palavr
       end
 
       def profile_url
-        "/u/#{nick||id}"
+        "/u/#{id}"
       end
       
       def profile_link(opts = {})

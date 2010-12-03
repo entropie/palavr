@@ -926,6 +926,83 @@ body
   label
     :display inline
 
+.userpic
+  // :-webkit-box-shadow inset 5px 5px 10px #aaa 
+  // :-moz-box-shadow inset 5px 5px 10px #aaa
+  // :box-shadow inset 5px 5px 10px #aaa
+  :padding-left 10px
+  :padding-bottom 10px  
+  :min-width 420px
+    
+.usrpic
+  :max-width 420px
+  // :border 20px solid
+  // :border-color = !clr_light_silver
+  :-webkit-box-shadow 2px 2px 10px #aaa 
+  :-moz-box-shadow 2px 2px 10px #aaa
+  :box-shadow 2px 2px 10px #aaa
+
+#user
+  h1
+    :position relative
+    :margin-bottom 20px
+  h2.st
+    :border none
+    :font-size 2em
+    :color = !clr_silver
+    :margin-left 10px
+  h2
+    :padding-bottom 5px
+    :margin-bottom 5px
+  .avatar
+    :float left
+    :margin-right 10px
+    :margin-left -72px
+    :bottom -15px
+    img
+      :border 5px solid
+      :border-color = !clr_light_silver
+      :-webkit-box-shadow 2px 2px 10px #aaa 
+      :-moz-box-shadow 2px 2px 10px #aaa
+      :box-shadow 2px 2px 10px #aaa
+      :max-width 64px
+      :max-height 64px      
+
+
+#usershow
+  .body
+    :margin 0px
+    :padding 0px
+
+  
+#editme, #user
+  .upl
+    :margin-top 10px
+  p
+    :font-size 1.3em
+  em
+    :color = !clr_dark_blue
+    :margin-right 10px
+    :font-size 1.4em    
+  .value
+    :font-weight bolder
+    :font-size 1.4em
+  .sg-4, .sg-11, .sg-17
+    :margin 0px
+    :padding 5px
+  .sg-17
+    :padding-top 10px
+    :padding-bottom 10px
+    :margin-left 15px
+    :margin-bottom 15px
+    &:nth-child(even)
+      :background-color = !clr_tablerow
+      &:hover
+        :background-color = !clr_tablerow + 10
+    &:nth-child(odd)
+      :background-color = !clr_tablerow1
+      &:hover
+        :background-color = !clr_tablerow1 + 10
 
 
 
@@ -996,6 +1073,10 @@ body
     :padding 10px
     :-moz-border-radius 5px
     :border-radius 5px
+    .ovpic
+      :position absolute
+      :top 10px
+      :right 10px
     .pic
       :-webkit-box-shadow inset 1px 1px 2px #111 
       :-moz-box-shadow inset 1px 1px 2px #111
