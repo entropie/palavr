@@ -5,7 +5,7 @@
     - if session_user and session_user.liked.include?(@phread)
       = @phread.star(session_user, 12, 12)
   .date{:title => @phread.created_at }= @phread.created_at.to_s(false)
-  - if @inline
+  - if @phread.after_parent_chap
     .append
       %span In Response to paragraph
       %b

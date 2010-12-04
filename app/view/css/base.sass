@@ -201,7 +201,7 @@ h2
   .append
     :float left
     :padding-left 0px
-    :padding-right 0px
+    :padding-right 5px
   .from
     a
       :color = !clr_dark_blue
@@ -652,7 +652,6 @@ a
     :border none
   .append
     :float left
-    :margin-right 7px
 
 #cats
   h1
@@ -894,16 +893,69 @@ body
   :color red
 
 
-
-
+#search_result
+  :position absolute
+  :top 45px
+  :opacity 0.9
+  :right 10px
+  :width 600px
+  :background-color= !clr_dirty_white
+  :z-index 1000
+  :border 5px solid
+  :border-color = !clr_dirty_white - 30
+  :-webkit-box-shadow 2px 2px 5px #aaa 
+  :-moz-box-shadow 2px 2px 2px #aaa
+  :box-shadow inset 2px 2px 2px #aaa
+  :border-radius 10px
+  :-moz-border-radius 10px
+  h1
+    :text-align right
+    :color = !clr_silver
+    :border none
+    :float right
+    :margin 0px
+    :right 10px
+    :margin-top 5px
+    :padding 0px
+  h2
+    :padding-bottom 10px
+  ul
+    li
+      a
+        :color = !clr_dark_blue
+      &:hover
+        :background-color= !clr_dirty_white - 40
+  .close
+    :position absolute
+    :top -15px
+    :right -15px
+    :opacity 0.7
+  .ui-tabs-nav
+    :border 1px solid silver
+  .ui-widget-header
+    :background none
+    :background-color = !clr_dirty_white
+  // .phreads
+  //   :background-color= !clr_dirty_white - 10
+  //   :padding 20px
+  // .user
+  //   :padding 20px    
+  //   :background-color= !clr_dirty_white - 20
+    
 #ssearch
   :background-color #fff
   :position absolute
   :top 105px
   :right 10%
+  .spinner
+    :position absolute
+    :top 4px
+    :right -25px
+    
 #searchform
   :position relative
   :right -10px
+  :z-index 500
   div
     :background url(/img/search1.gif) no-repeat left top
     :padding 0 10px

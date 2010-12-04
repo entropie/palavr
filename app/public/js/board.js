@@ -222,6 +222,44 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
   };
 
+   $.fn.setupSearch = function() {
+     var close_result = function(){
+       $("#search_result").animate({
+         height: "0px",
+         width: "0px",
+         opacity: 0.0
+       }, 1000);
+       $("#search_result").remove();
+     };
+
+     $("form", this).submit(function(){
+       $("#search_result").remove();
+       $.ajax({
+         url: $(this).attr("action"),
+         cache: false,
+         data: {s: $(this).find(".searchthingy").attr("value")},
+         beforeSend: function(){
+           $("#ssearch").append(spinner);
+         },
+         success: function(data){
+           $("#ssearch .spinner").fadeOut(function(){$(this).remove();});
+           $("#ssearch").append(data);
+           $("#ssearch .tabs").tabs();
+           $("#search_result").slideDown(function(){
+             var html = '<img class="inv" src="/img/x.png" />';
+             $(".close", this).html(html);
+             $(".close img", this).fadeIn();
+
+             $(".close img", this).click(close_result);
+             //$("#search_result").slideUp(function(){$(this).remove();});
+           });
+         },
+         error: function(data){  }
+        });
+     return false;
+     });
+   };
+
   $.fn.mk_chapterLinks = function() {
     $(this).each(function(){
       var body = $(".body", this);
@@ -260,6 +298,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 google.setOnLoadCallback(function() {
 
+  $("#ssearch").setupSearch();
+
   $("#helplink").toggleHelp();
 
   if($("#editme").length){
@@ -275,6 +315,7 @@ google.setOnLoadCallback(function() {
   if($("#login").length)
     $("#login").mk_loginForm();
   $("html").mkHelp();
+
 
   $(".uplinkb").each(function(){ $(this).setupUplink(); });
 });

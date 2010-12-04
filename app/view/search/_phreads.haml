@@ -1,0 +1,5 @@
+%h2 Stories
+%ul
+  - @phreads.each do |phread|
+    %li
+      %a{:href => phread.url, :id => "phread_#{phread.id}"}= phread.html_title

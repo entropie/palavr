@@ -1,0 +1,13 @@
+#search_result.inv
+  .close
+  .tabs
+    %ul
+      %li
+        %a{:href => "#tabs-1"} Search Results
+      %li
+        %a{:href => "#tabs-2"} Results for User
+    #tabs-1.tab.phreads
+      = render_file "view/search/_phreads.haml", :phreads => @result[:phreads]
+    #tabs-2.tab.user
+      = render_file "view/search/_user.haml", :phreads => @result[:phreads]
+
