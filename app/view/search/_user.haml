@@ -1,5 +1,9 @@
-%h2 User
-%ul
-  - @phreads.each do |phread|
-    %li
-      %a{:href => phread.url, :id => "phread_#{phread.id}"}= phread.html_title
+-if @user.empty?
+  .info
+    No user found for match
+    %em= @query
+- @user.each do |user|
+  %div
+    .avatar
+      %img{:src => user.avatar}
+    %a{:style => "clear:left", :href => user.profile_url, :id => "usr#{user.id}"}= user.display_name

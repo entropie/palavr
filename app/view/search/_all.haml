@@ -3,11 +3,19 @@
   .tabs
     %ul
       %li
-        %a{:href => "#tabs-1"} Search Results
+        %a{:href => "#tabs-1"} Stories
       %li
-        %a{:href => "#tabs-2"} Results for User
+        %a{:href => "#tabs-2"} By User
+      %li
+        %a{:href => "#tabs-3"} User
+      %li
+        %a{:href => "#tabs-4"} By Tags
     #tabs-1.tab.phreads
-      = render_file "view/search/_phreads.haml", :phreads => @result[:phreads]
-    #tabs-2.tab.user
-      = render_file "view/search/_user.haml", :phreads => @result[:phreads]
+      = render_file "view/search/_phreads.haml", :query => @query, :phreads => @result[:phreads]
+    #tabs-2.tab.fromuser
+      = render_file "view/search/_from_user.haml", :query => @query, :phreads => @result[:fromuser]
+    #tabs-3.tab.user
+      = render_file "view/search/_user.haml", :query => @query, :user => @result[:user]
+    #tabs-4.tab.tags
+      = render_file "view/search/_from_tags.haml", :query => @query, :phreads => @result[:fromtags]
 

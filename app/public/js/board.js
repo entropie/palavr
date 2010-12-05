@@ -228,8 +228,10 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
          height: "0px",
          width: "0px",
          opacity: 0.0
-       }, 1000);
-       $("#search_result").remove();
+         }, 1000,function() {
+           $("#search_result").remove();
+       });
+       $(this).remove();
      };
 
      $("form", this).submit(function(){
@@ -244,7 +246,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
          success: function(data){
            $("#ssearch .spinner").fadeOut(function(){$(this).remove();});
            $("#ssearch").append(data);
-           $("#ssearch .tabs").tabs();
+           $("#ssearch .tabs").tabs({ fx: {opacity: 'toggle' }});
            $("#search_result").slideDown(function(){
              var html = '<img class="inv" src="/img/x.png" />';
              $(".close", this).html(html);

@@ -898,7 +898,7 @@ body
   :top 45px
   :opacity 0.9
   :right 10px
-  :width 600px
+  :width 700px
   :background-color= !clr_dirty_white
   :z-index 1000
   :border 5px solid
@@ -921,10 +921,19 @@ body
     :padding-bottom 10px
   ul
     li
+      :padding 3px
       a
         :color = !clr_dark_blue
       &:hover
         :background-color= !clr_dirty_white - 40
+      &:nth-child(even)
+        :background-color = !clr_dirty_white
+        &:hover
+          :background-color = !clr_tablerow - 10
+      &:nth-child(odd)
+        :background-color = !clr_bg
+        &:hover
+          :background-color = !clr_bg - 10
   .close
     :position absolute
     :top -15px
@@ -932,15 +941,39 @@ body
     :opacity 0.7
   .ui-tabs-nav
     :border 1px solid silver
+    
   .ui-widget-header
     :background none
-    :background-color = !clr_dirty_white
+  .ui-tabs-nav
+    :border none
+  .ui-tabs-selected
+    :background-color = !clr_silver
+    a
+      :margin 0px
+  .avatar
+    :display inline
+    img
+      :max-height 32px
+      :max-width 32px
+  .thread
+    :font-size 0.7em
+    .rating
+      :left -20px
+    .date
+      :display none
   // .phreads
   //   :background-color= !clr_dirty_white - 10
   //   :padding 20px
-  // .user
-  //   :padding 20px    
-  //   :background-color= !clr_dirty_white - 20
+  .user
+  .tab
+    :margin-left 3px
+    :margin-right 3px
+  .info
+    :font-size 1.3em
+    :color = !clr_light_red
+    :text-align center
+    :margin-top 50px
+    :margin-bottom 50px
     
 #ssearch
   :background-color #fff

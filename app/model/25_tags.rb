@@ -7,7 +7,7 @@ module Palavr
   module Database::Tables
 
     class Tag < Table(:tag)
-      many_to_many     :phreads, :class => Phread, :left_key => :parent_id, :right_key => :phread_id
+      many_to_many     :phreads, :class => Phread 
       
       
       Shema = proc{
@@ -17,6 +17,11 @@ module Palavr
           varchar       :tag
         end
       }
+
+
+      def phreads_sorted
+        Phread.sort(phreads)
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
 #threads
   -if @phreads.empty?
     .info
-      No Results for Stories for phrase
+      No Results for Stories from User
       %em= @query
   - @phreads.each do |phread|
     = render_file "view/thread/_thread.haml", :phread => phread
