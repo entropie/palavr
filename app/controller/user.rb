@@ -17,11 +17,16 @@ class UserController < PalavrController
     redirect usr.avatar
   end
   
-  def index(id_or_name, rest = nil)
+  def index(id_or_name = nil, rest = nil)
+    redirect UserController.r(:list) unless id_or_name
+
     @user = User[id_or_name.to_i] || User.find(:nick => id_or_name)
   end
 
-
+  def list
+    @user = User.all
+  end
+  
   # FIXME: filesize and dimension handling; also fix js for upload
   def upload(what)
     imgr = request.params["image"]

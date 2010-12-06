@@ -26,7 +26,7 @@
 !clr_tablerow = #f9f9f9
 !clr_tablerow1 = #ebebf7
 
-!font_family = "tahoma"
+!font_family = "tahoma, 'Times New Roman', Georgia, serif"
 !block_font = "dejavu sans"
 
 .right
@@ -80,6 +80,27 @@ h1
       :-o-transition opacity 1s ease-in-out
       :opacity 1
       
+
+#error
+  :position absolute
+  :top -15px
+  :left 20%
+  :right 20%
+  :border 5px solid red
+  :border-color = !clr_light_red
+  :padding 20px
+  :border-radius 15px
+  :-moz-border-radius 15px
+  :background-color = !clr_silver
+  :opacity 0.7
+  :color = !clr_my_black
+  p
+    :font-size 1.3em
+    :color = !clr_light_red
+    :border-bottom 1px solid
+    :border-color = !clr_light_red
+    :padding 10px
+
 #catlink
   :margin-bottom 20px
 
@@ -896,7 +917,7 @@ body
 #search_result
   :position absolute
   :top 45px
-  :opacity 0.9
+  //:opacity 0.9
   :right 10px
   :width 700px
   :background-color= !clr_dirty_white
@@ -1003,6 +1024,7 @@ body
     :padding 3px 2px 2px 0
     :height 15px
   input
+    :color = !clr_dark_blue
     :vertical-align top
     :margin 0
     :line-height 1
@@ -1128,14 +1150,14 @@ body
   &:hover
     :background-color = !clr_light_silver
     :color = !clr_dark_blue
-    :padding 10px
-    :margin-left -11px
-    :margin-right -11px    
+    :padding 5px
+    :margin-left -5px
+    :margin-right -6px    
     :-moz-border-radius 15px
     :border-radius 15px
-    :-webkit-box-shadow inset 1px 1px 2px #111 
-    :-moz-box-shadow inset 1px 1px 2px #111
-    :box-shadow inset 1px 1px 2px #111
+    :-webkit-box-shadow 1px 1px 2px #111 
+    :-moz-box-shadow 1px 1px 2px #111
+    :box-shadow 1px 1px 2px #111
     :z-index 1000
     &:after
       :margin-top 2px
@@ -1146,10 +1168,10 @@ body
     :z-index 1000
     :opacity 0.9
     :position absolute
-    :top 25px
-    :left 50px
+    :top 20px
+    :left 20px
     :color = !clr_my_black
-    :background-color = !clr_light_silver
+    :background-color = !clr_light_silver + 20
     :border 2px solid #fff
     :border-color = !clr_light_silver - 30
     :-webkit-box-shadow 1px 1px 2px #111 
@@ -1173,16 +1195,18 @@ body
       :-moz-border-radius 5px
       :border-radius 5px
       :max-width 64px
+      :max-height 64px
     ul
       li
         :z-index 1500
-        :margin 0px
+        :margin 0px !important
         :white-space nowrap
-        :padding 0px
-        :margin-left 30px
-        :margin-right 30px
-        :margin-bottom 0px
-        :font-size 16px
+        :padding 0px !important
+        :margin-left 30px !important
+        :margin-right 30px !important
+        :margin-bottom 0px !important
+        :font-size 0.8em
+        :background-color transparent !important
       li.pm
         :list-style-image url(/img/ics/telephone_blue_16.png)
       li.stry

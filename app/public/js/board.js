@@ -98,17 +98,6 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      app += "</div>";
      $(this).hover(function(){
        $(this).append(app);
-         // var avatarurl = '/data/user/' + uid + '/thumb_avatar.gif';
-         // $.ajax({
-         //   url:avatarurl,
-         //   success: function(data){
-         //     $(app).find('pic').attr("src", avatarurl);
-         //     $(app).find('pic').removeClass("inv");
-
-         //   },
-         //   error: function(data){ $(app).find('opic').removeClass("inv"); }
-         // });
-
        $(this).find(".app").delay(800).fadeIn();
      }, function(){
        $(this).find(".app").remove();
@@ -246,6 +235,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
          success: function(data){
            $("#ssearch .spinner").fadeOut(function(){$(this).remove();});
            $("#ssearch").append(data);
+           $("#search_result .uplinkb").each(function(){ $(this).setupUplink(); });
            $("#ssearch .tabs").tabs({ fx: {opacity: 'toggle' }});
            $("#search_result").slideDown(function(){
              var html = '<img class="inv" src="/img/x.png" />';
@@ -257,8 +247,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
            });
          },
          error: function(data){  }
-        });
-     return false;
+       });
+       return false;
      });
    };
 
@@ -317,6 +307,9 @@ google.setOnLoadCallback(function() {
   if($("#login").length)
     $("#login").mk_loginForm();
   $("html").mkHelp();
+
+  if($("#error").length)
+    $("#error").delay(3000).slideUp("slow");
 
 
   $(".uplinkb").each(function(){ $(this).setupUplink(); });

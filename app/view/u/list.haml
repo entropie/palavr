@@ -1,0 +1,5 @@
+#userlist
+  %h1 All Benutzer
+  .sg-35{:style => "margin:0px; margin-top: 20px"}
+    - @user.each do |user|
+      = render_file "view/u/user.haml", :user => user
