@@ -72,6 +72,8 @@ module Palavr
 end
 
 
+Sequel.extension :pagination 
+
 Palavr::Database.load_definitions
 
 

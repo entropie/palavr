@@ -13,6 +13,8 @@ class PhreadController < PalavrController
   }
 
 
+  MaxPhreadsPerPage = 5
+  
   # gernerates a tree of all phreads and subphreads
   def phreadsub(mphread, o = 0)
     str = ''
@@ -42,8 +44,6 @@ class PhreadController < PalavrController
   end
   private :phreadsub
   
-
-
   PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread, :p)
 
 
@@ -84,7 +84,6 @@ class PhreadController < PalavrController
         flash[:error] = e
       end
     end
-
   end
 
   

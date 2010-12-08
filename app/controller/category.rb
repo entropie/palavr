@@ -12,14 +12,17 @@ class CategoryController < PalavrController
     login_required
   }
 
+  PhreadsPerPage = 10
+  
   def cat(catid, title = nil)
   end
 
   
   def index(catid, title = nil)
+    page = (request.params["page"] || 1).to_i
     redirect BoardController.r unless catid
     @category = Category[catid.to_i]
-    @threads = @category.phreads_sorted
+    @threads  = @category.get_ordered_and_paginated(page, PhreadsPerPage)
   end
   
   def choose_cat

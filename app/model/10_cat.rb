@@ -20,8 +20,27 @@ module Palavr
         end
       }
 
-      def phreads_sorted
-        Phread.sort(phreads)
+      def get_ordered
+        phread_ids = Category.join(:phread, :category_id => :id).
+          filter(:category_id => id).select(:phread__id)
+
+        qry = Phread.join(:phreads_users, :phreads_users__phread_id => :id).
+          filter(:phread_id => phread_ids).
+          group_and_count(:phreads_users__phread_id).reverse
+      end
+      
+      def get_ordered_and_paginated(page, off)
+        res = []
+        qry = get_ordered
+        qry.paginate(page, off).to_a.each{|r|
+          res << Phread[r[:phread_id]]
+        }
+        res
+      end
+      
+      
+      def phreads_sorted(s, max)
+        Phread.sort(phreads, s, max)
       end
 
       def self.get_category(cat)

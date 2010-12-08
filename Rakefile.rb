@@ -83,18 +83,7 @@ end
 
 
 task :foo do
-  usr = User[1]
-  #p usr.phreads.first.tags
-  p usr.passwd
-  p User.pwcrypt("system")
-  usr = User[2]
-  #p usr.phreads.first.tags
-  p usr.passwd
-  p User.pwcrypt("foo")
-  usr = User[3]
-  #p usr.phreads.first.tags
-  p usr.passwd
-  p User.pwcrypt("test")
+
 end
 
 

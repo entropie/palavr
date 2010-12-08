@@ -17,6 +17,14 @@ class PalavrController < Ramaze::Controller
   #set_layout        'simple_layout' => [:login, :logout]
 
 
+  def pgint(what, listproc)
+    start = (request.params["page"] || 1).to_i
+    hmany = 5
+    #pp listproc.call(start, hmany).size
+    #    listproc.call
+    #[]
+  end
+  
   def self.ttip(what = nil)
     {
       :write_on   => "write on blabla",
