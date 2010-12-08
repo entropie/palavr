@@ -47,7 +47,7 @@ module Palavr
 
 
       def liked
-        Phread.sort(phread_like)
+        Phread.sort( phread_like.reject{|p| p.op == self} )
       end
       
       def like(obj)
@@ -55,7 +55,7 @@ module Palavr
       end
 
       def unlike(obj)
-        remove_phread_like(obj) if obj.liker.include?(self)
+        remove_phread_like(obj) if obj.liker.include?(self) and obj.op != self
       end
       
       

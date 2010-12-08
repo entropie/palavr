@@ -84,6 +84,20 @@ end
 
 task :foo do
 
+  phread_ids = Category.join(:phread, :category_id => :id).
+    filter(:category_id => 1).select(:phread__id)
+
+  pp phread_ids
+  
+  a = Phread.join(:phreads_users, :phreads_users__phread_id => :id).
+    filter(:phread_id => phread_ids).
+    group_and_count(:phreads_users__phread_id).reverse
+
+  #  pp a.to_a
+
+  pp a.paginate(1, 5).to_a
+  pp a.paginate(2, 5).to_a
+
 end
 
 
