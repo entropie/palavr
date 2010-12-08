@@ -22,23 +22,23 @@ class Time
     when 0..1
       return (distance_in_minutes == 0) ? 'less than a minute' : '1 minute' unless include_seconds
       case distance_in_seconds
-      when 0..4   then 'wenigen sekunden'
-      when 5..9   then 'weniger als 10 sekunden'
-      when 10..19 then 'weniger als 20 sekunden'
-      when 20..39 then 'einer halben minute'
-      when 40..59 then 'weniger als einer minute'
+      when 0..4   then 'few seconds'
+      when 5..9   then 'few seconds'
+      when 10..19 then 'few seconds'
+      when 20..39 then 'about a minute'
+      when 40..59 then 'about a minute'
       else             '1 minute'
       end
 
-    when 2..44           then "#{distance_in_minutes} minuten"
-    when 45..89          then 'einer stunde'
-    when 90..1439        then "#{(distance_in_minutes.to_f / 60.0).round} stunden"
-    when 1440..2879      then 'einem tag'
-    when 2880..43199     then "#{(distance_in_minutes / 1440).round} tagen"
-    when 43200..86399    then 'einem monat'
-    when 86400..525959   then "#{(distance_in_minutes / 43200).round} monaten"
-    when 525960..1051919 then 'einem jahr'
-    else                      "über #{(distance_in_minutes / 525960).round} jahren"
+    when 2..44           then "#{distance_in_minutes} minutes"
+    when 45..89          then 'about an hour'
+    when 90..1439        then "#{(distance_in_minutes.to_f / 60.0).round} hours"
+    when 1440..2879      then 'about a day'
+    when 2880..43199     then "#{(distance_in_minutes / 1440).round} days"
+    when 43200..86399    then 'about a month'
+    when 86400..525959   then "#{(distance_in_minutes / 43200).round} month"
+    when 525960..1051919 then 'about a year'
+    else                      "over #{(distance_in_minutes / 525960).round} years"
     end
   end
   
