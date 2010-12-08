@@ -1,0 +1,11 @@
+.paginate
+  %div
+    %ul
+      - unless @paginated.first_page?
+        %li
+          %a{:href => @category.url + "?page=#{@paginated.prev_page}", :title => "Go to page #{@paginated.prev_page}", :class => "awesome silver ttip"}= @paginated.prev_page
+      %li
+        %span{:class => "awesome current ttip", :title => "You're Here!"}= @paginated.current_page
+      - unless @paginated.last_page?
+        %li
+          %a{:href => @category.url + "?page=#{@paginated.next_page}",  :title => "Go to page #{@paginated.next_page}", :class => "awesome silver ttip"}= @paginated.next_page

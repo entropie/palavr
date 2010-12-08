@@ -29,13 +29,14 @@ module Palavr
           group_and_count(:phreads_users__phread_id).reverse
       end
       
-      def get_ordered_and_paginated(page, off)
+      def get_ordered_and_paginate(page, off)
         res = []
         qry = get_ordered
-        qry.paginate(page, off).to_a.each{|r|
+        paginated = qry.paginate(page, off)
+        paginated.to_a.each{|r|
           res << Phread[r[:phread_id]]
         }
-        res
+        [res, paginated]
       end
       
       
