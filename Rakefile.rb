@@ -82,17 +82,63 @@ task :umigrate do
 end
 
 
+module E
+  def method_missing(m, *a, &b)
+    if self[m.to_sym]
+      self[m.to_sym]
+    else
+      super
+    end
+  end
+end
+
+task :bu do
+  pp Phread[65].get_ordered.to_a
+  puts
+  pp Phread[65].phreads
+end
+
+task :ba do
+  p User[2].like?(25)
+end
+
 task :foo do
 
   phread_ids = Category.join(:phread, :category_id => :id).
-    filter(:category_id => 1).select(:phread__id)
+    filter(:category_id => 2).select(:phread__id)
 
-  pp phread_ids
+
   
-  a = Phread.join(:phreads_users, :phreads_users__phread_id => :id).
-    filter(:phread_id => phread_ids).
-    group_and_count(:phreads_users__phread_id).reverse
+  # a = Phread.filter(:phread_id => phread_ids).
+  #   join(:phreads_users, :phreads_users__phread_id => :id).
+  #   group(:phreads_users__phread_id).reverse.
+  #   join(:user, :phread__op_id => :user__id).
+  #   select(:email, :readonly, :body, :category_id, :mod_user_id, :user_id,
+  #          :created_at, :title, :phread__id).
+  #   order(:phreads_users__phread_id, :phread__id).reverse
 
+  a="SELECT "+
+    "phread.*, user.id as uid, user.email as email, "+
+    "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+    "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+    
+    "FROM phread "+
+    "LEFT JOIN cat ON phread.category_id = cat.id "+
+    "LEFT JOIN user ON phread.op_id = user.id "+
+    "WHERE cat.id = 1 "+
+    "ORDER BY count DESC "
+  
+  
+    
+
+  
+  Palavr::DB[a].paginate(1,1).map{|r| r.extend(E)}.each do |i|
+    p i
+    p i[:count]
+    puts
+    puts
+  end
+
+  exit
   #  pp a.to_a
 
   pp a.paginate(1, 5).to_a

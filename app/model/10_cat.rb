@@ -21,25 +21,29 @@ module Palavr
       }
 
       def get_ordered
-        phread_ids = Category.join(:phread, :category_id => :id).
-          filter(:category_id => id).select(:phread__id)
-
-        qry = Phread.join(:phreads_users, :phreads_users__phread_id => :id).
-          filter(:phread_id => phread_ids).
-          group_and_count(:phreads_users__phread_id).reverse
+        query="SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN cat ON phread.category_id = cat.id "+
+          "LEFT JOIN user ON phread.op_id = user.id "+    
+          "WHERE cat.id = #{id} "+
+          "ORDER BY count DESC "
+        Palavr::DB[query]
       end
       
       def get_ordered_and_paginate(page, off)
-        res = []
-        p 3
-        qry = get_ordered
-        p 2
-        paginated = qry.paginate(page, off)
-        paginated.to_a.each{|r|
-          p 1
-          res << Phread[r[:phread_id]]
-        }
-        [res, paginated]
+        ret = []
+        res = get_ordered.paginate(page, off)
+
+        res = res.to_a.map!{|a| a.extend(Palavr::E)}
+        res
+        # paginated = qry.paginate(page, off)
+        # paginated.to_a.each{|r|
+        #   res << Phread[r[:phread_id]]
+        # }
+        # [res, paginated]
       end
       
       

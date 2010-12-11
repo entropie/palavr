@@ -68,7 +68,26 @@ module Palavr
     str = "Palavr-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]
   end
+
   
+  module E
+
+    def parent
+      @parent = Database::Tables::Phread[Database::Tables::PhreadsPhreads.
+                                         find(:phread_id => self[:id]).parent_id]
+      @parent
+    end
+
+    def method_missing(m, *a, &b)
+      if self.include?(m.to_sym)
+        self[m.to_sym]
+      else
+        super
+      end
+    end
+  end
+  
+
 end
 
 

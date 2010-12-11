@@ -22,11 +22,11 @@ class CategoryController < PalavrController
     page = (request.params["page"] || 1).to_i
     redirect BoardController.r unless catid
     @category = Category[catid.to_i]
-    @threads, @paginated = @category.get_ordered_and_paginate(page, PhreadsPerPage)
+    @threads = @category.get_ordered_and_paginate(page, PhreadsPerPage)
   end
   
   def choose_cat
-    @categories = Category.all
+    @categories = Category.all.to_hash
   end
 end
 

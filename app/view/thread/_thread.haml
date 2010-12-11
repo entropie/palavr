@@ -1,17 +1,17 @@
 .thread{:class => @inline ? "inline" : ""}
   .title
-    %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, :blue)
-    %a{:href => BoardController.r(@phread.url+"#phread")}= @phread.title
-    - if session_user and session_user.liked.include?(@phread)
-      = @phread.star(session_user, 12, 12)
+    %a{:title => "Show Tree", :href => PhreadController.r(:tree, @phread[:id])}= Icon(:flowchart, :blue)
+    %a{:href => PhreadController.r(@phread[:id], @phread[:title])}=@phread.title
+    - if session_user and session_user.like?(@phread[:id])
+      = star(@phread, session_user, false, 12, 12)
   .date{:title => @phread.created_at }= @phread.created_at.to_s(false)
   - if @phread.after_parent_chap
     .append
       %span In Response to paragraph
       %b
         %a{:href => "#{@phread.parent.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
-  .from= "by " + @phread.from.profile_link
-  .count{:title => "#{@phread.phreads.size} Childs"}= @phread.phreads.size
-  .rating= @phread.liker.size
+  .from= "by " + profile_link(phread, @phread[:uid], @phread[:email])
+  .count{:title => "#{@phread.countchilds} Childs"}= @phread.countchilds
+  .rating= @phread.count
   
 

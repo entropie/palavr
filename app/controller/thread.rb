@@ -20,26 +20,29 @@ class PhreadController < PalavrController
     str = ''
     margin = o == 0 ? 0 : 20
 
-    phreads = mphread.phreads_sorted
-
+    phreads = mphread.phreads_sorted #.to_a.map{|a| a.extend(Palavr::E)}
     # skip if there is nothing to do
-    return '' unless phreads.size > 0
+    return '' unless phreads.count > 0
     
     str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
+
+    phreadarr = phreads.to_a
     # inline
-    phreads.select{|mp| mp.after_parent_chap }.each do |phread|
-      str << render_file("view/thread/_thread.haml", :phread => phread, :inline => true)
-      str << phreadsub(phread, o+=1)
+    phreadarr.select{|mp| mp[:after_parent_chap] }.each do |phread|
+      pphread = phread.extend(Palavr::E)      
+      str << render_file("view/thread/_thread.haml", :phread => pphread, :inline => true)
+      str << phreadsub(Phread[phread[:id]], o+=1)
     end
 
     # standard
-    phreads.reject{|mp| mp.after_parent_chap }.each do |phread|
-      str << render_file("view/thread/_thread.haml", :phread => phread)
-      str << phreadsub(phread, o+=1)
+    phreadarr.reject{|mp| mp[:after_parent_chap] }.each do |phread|
+      pphread = phread.extend(Palavr::E)
+      str << render_file("view/thread/_thread.haml", :phread => pphread )
+      str << phreadsub( Phread[phread[:id]], o+=1)
     end
     
-    str << "</div>"    
+    str << "</div>"
     str
   end
   private :phreadsub
@@ -91,9 +94,12 @@ class PhreadController < PalavrController
     @topic, @phreads =
       case arg
       when 'liked'
-        ["Stories I like", session_user.liked]
+        ["Stories I like",
+         session_user.liked
+        ]
       else
-        ["My Stories", session_user.phreads_sorted]
+        ["My Stories",
+         session_user.my]
       end
   end
 
@@ -109,7 +115,7 @@ class PhreadController < PalavrController
     end
   end
   
- 
+  
   def tree(id, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i]
@@ -119,7 +125,7 @@ class PhreadController < PalavrController
   def phreads_for(phreadid, para)
     phreadid = phreadid.to_i
     para = para.delete("para").to_i
-    @phreads = Phread[phreadid].phreads_for_chapter(para)
+    @phreads = Phread[phreadid].phreads_for_chapter(para).to_a.map{|a| a.extend(Palavr::E)}
   end
   
   
@@ -127,6 +133,7 @@ class PhreadController < PalavrController
   def index(id = nil, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i]
+    @childs = @phread.get_ordered.to_a.map{|a| a.extend(Palavr::E)}
   end
 
 end

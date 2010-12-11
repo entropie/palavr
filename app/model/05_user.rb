@@ -46,8 +46,43 @@ module Palavr
       end
 
 
+      def my
+        query = "SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN user ON phread.op_id = user.id "+          
+          "INNER JOIN phreads_users "+
+          "ON phreads_users.phread_id = phread.id "+
+          "AND phread.op_id = #{self.id} "
+        res = Palavr::DB[query]
+        res.map{|a| a.extend(Palavr::E)}
+      end
+
+      
       def liked
-        Phread.sort( phread_like.reject{|p| p.op == self} )
+        query = "SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN user ON phread.op_id = user.id "+          
+          "INNER JOIN phreads_users "+
+          "ON phreads_users.phread_id = phread.id "+
+          "AND phreads_users.user_id = #{self.id} "
+        res = Palavr::DB[query]
+        res.map{|a| a.extend(Palavr::E)}
+      end
+      
+      def like?(pid = nil)
+        query = "SELECT "+
+          "phread.* FROM phread INNER JOIN phreads_users "+
+          "ON phreads_users.phread_id = phread.id "+
+          "AND phreads_users.user_id = #{self.id} "+
+          "WHERE phread.id = #{pid}"
+        res = Palavr::DB[query]
+        not res.to_a.empty?
       end
       
       def like(obj)
@@ -55,7 +90,7 @@ module Palavr
       end
 
       def unlike(obj)
-        remove_phread_like(obj) if obj.liker.include?(self) and obj.op != self
+        remove_phread_like(obj) if obj.liker.include?(self)# and obj.op != self
       end
       
       

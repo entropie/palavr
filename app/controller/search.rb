@@ -12,22 +12,79 @@ class SearchController < PalavrController
   #   login_required
   # }
 
+  def get_ordered
+  end
 
+  
+  
+  def self.search_phreads(squery)
+    like = proc{|title| "(#{title} LIKE BINARY '%#{squery}%')"}
+    query="SELECT "+
+      "phread.*, user.id as uid, user.email as email, "+
+      "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+      "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+
+      "FROM phread "+
+      "LEFT JOIN cat ON phread.category_id = cat.id "+
+      "LEFT JOIN user ON phread.op_id = user.id "+
+      "WHERE " + like.call("phread.title") + " OR " + like.call("phread.body") +  " "+
+      "ORDER BY count DESC  LIMIT 10 "
+    ret = Palavr::DB[query].to_a.map{|a| a.extend(Palavr::E)}
+  end
+
+  def self.search_user(squery)
+    like = proc{|title| "(#{title} LIKE BINARY '%#{squery}%')"}
+    query = "SELECT "+
+      "user.id as uid, user.email as email "+
+      "FROM user "+
+      "WHERE " + like.call("user.name") + " OR " + like.call("user.nick") +  " "+
+      "ORDER BY user.id"
+    ret = Palavr::DB[query].to_a.map{|a| a.extend(Palavr::E)}
+    ret
+  end
+  
+  def self.search_from_user(squery)
+    like = proc{|title| "(#{title} LIKE BINARY '%#{squery}%')"}
+    query = "SELECT "+
+      "phread.*, user.id as uid, user.email as email, "+
+      "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+      "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+      "FROM phread "+
+      "LEFT JOIN user ON phread.op_id = user.id "+          
+      "INNER JOIN phreads_users "+
+      "ON phreads_users.phread_id = phread.id "+
+      "WHERE " + like.call("user.name") + " OR " + like.call("user.nick") +  " "+
+      "GROUP by phread.id " +
+      "ORDER BY count DESC  LIMIT 10"
+    ret = Palavr::DB[query].to_a.map{|a| a.extend(Palavr::E)}
+    ret
+  end
+
+  def self.search_tags(squery)
+    like = proc{|title| "(#{title} LIKE BINARY '%#{squery}%')"}
+    query = "SELECT "+
+      "phread.*, user.id as uid, user.email as email, tag.tag as tag, "+
+      "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+      "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+      "FROM phread "+
+      "LEFT JOIN user ON phread.op_id = user.id "+
+      "LEFT JOIN phreads_tags ON phreads_tags.phread_id = phread.id "+
+      "LEFT JOIN tag ON phreads_tags.tag_id = tag.id "+       
+      "INNER JOIN phreads_users "+
+      "ON phreads_users.phread_id = phread.id "+
+      "WHERE " + like.call("tag") + " " +
+      "GROUP by phread.id " +
+      "ORDER BY tag DESC  LIMIT 10"
+    ret = Palavr::DB[query].to_a.map{|a| a.extend(Palavr::E)}
+    ret
+  end
+  
   def self.search(params)
     result = {}
     query = params["s"].to_s.strip
-    result[:phreads] = Phread.filter(:title.like("%#{query}%") | :body.like("%#{query}%")).limit(10)
-    result[:user]    = User.filter(:name.like("%#{query}%") | :nick.like("%#{query}%"))
-    result[:fromuser]= []
-    User.filter(:name.like("%#{query}%") | :nick.like("%#{query}%")).each do |r|
-      r.phreads_sorted.each do |phread|
-        result[:fromuser] << phread
-      end
-    end
-
-    tags = Tag.find(:tag => query)
-    result[:fromtags] = tags.phreads_sorted.to_a if tags
-    result[:fromtags] ||= []
+    result[:phreads]  = self.search_phreads(query)
+    result[:user]     = self.search_user(query)
+    result[:fromuser] = self.search_from_user(query)
+    result[:fromtags] = self.search_tags(query)
     result
   end
   

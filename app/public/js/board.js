@@ -1,7 +1,8 @@
 
 function debug(msg) {
   //$('#debug').append("<p>" + msg + "</p>");
-  console.log && console.log(msg);
+  if (typeof(console) != 'undefined' && typeof(console.log) == 'function')
+    console.log(msg);
 };
 
 
@@ -139,6 +140,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
   };
 
 
+   // TODO: make tooltip for star/unstar working
   $.fn.mk_like = function() {
     var p = $(this);
     var ll = $(this).find(".like_link");
@@ -160,8 +162,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     });
   };
 
-  $.fn.mkHelp = function() {
-    $(".ttip").tooltip({
+  $.fn.mkHelp = function(what) {
+    $(".ttip", what).tooltip({
       showURL: false,
       left: 50,
       top: -10
@@ -306,7 +308,7 @@ google.setOnLoadCallback(function() {
   };
   if($("#login").length)
     $("#login").mk_loginForm();
-  $("html").mkHelp();
+  $("html").mkHelp($("#wrap"));
 
   if($("#error").length)
     $("#error").delay(3000).slideUp("slow");

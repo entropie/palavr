@@ -33,13 +33,41 @@ module Palavr
           
         end
       }
+      def get_ordered
+        query="SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN user ON phread.op_id = user.id "+
+          "INNER JOIN phreads_phreads as np ON np.phread_id = phread.id "+
+          "AND np.parent_id = #{self.id} "+
+          "ORDER BY COUNT DESC "
+        Palavr::DB[query]
+      end
 
+      def phreads_for_chapter(chapter)
+
+        query="SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN user ON phread.op_id = user.id "+
+          "INNER JOIN phreads_phreads as np ON np.phread_id = phread.id "+
+          "WHERE phread.after_parent_chap = #{chapter} "+
+          "AND np.parent_id = #{self.id} "+
+          "ORDER BY COUNT DESC "
+        Palavr::DB[query]
+      end
+
+      
       def self.sort(phreads, s = 0, max = 5)
         phreads.sort_by{|phread| phread.liker.size }.reverse
       end
       
-      def phreads_sorted(s, max)
-        Phread.sort(phreads, s, max)
+      def phreads_sorted(s = 0, max = 5)
+        get_ordered
       end
       
       def liker
@@ -106,7 +134,7 @@ module Palavr
         chaps.each do |chap, i|
           ret << "<div class='para' id='para#{i}'><ul>"
 
-          str = if (fs=phreads_for_chapter(i).size) > 0
+          str = if (fs=phreads_for_chapter(i).to_a.size) > 0
                   "<li id=\"follow_ups\" class=\"moar\"><a class=\"awesome medium orange\">Follow Ups (#{fs})</a></li>"
                 end || ""
 
@@ -123,12 +151,11 @@ module Palavr
         ret.join
       end
 
+      def email(phread)
+      end
+      
       def readonly?
         readonly == 1
-      end
-
-      def phreads_for_chapter(chapter)
-        Phread.sort(phreads.select{|phr| phr.after_parent_chap == chapter}) || []
       end
 
       def before_create
@@ -174,16 +201,26 @@ module Palavr
       def url
         "/s/#{id}/" + CGI.escape(title.delete("..").strip)
       end
+      def Phread.url(h)
+        "/s/#{h[:id]}/" + CGI.escape(h[:title].delete("..").strip)
+      end
 
-      def star(user, x = 16, y = 16)
+      def star(user, wlink = true, x = 16, y = 16)
+        liked = user.like?(self.id)
         cls, title, img = 
-          if liker.include?(user)
+          if liked
             [:star, :unlike, "starred-small"]
           else
             [:gstar, :like, "starred-small-g"]
           end
         link = "<a class='like_link' href=\"/s/like/#{title}/#{id}\">%s</a>"
-        link % "<img id=\"phread_#{id}\" class=\"#{cls}\" src=\"/img/#{img}.png\" height=\"#{x}\" width=\"#{y}\" title=\"#{title}\" />"
+        title = unless liked then "Like this Story" else "Don't like this Story anymore" end
+        unless wlink
+          link = "%s"
+          title = if liked then "You like this Story" else "You don't like this Story" end
+        end
+        
+        link % "<img id=\"phread_#{id}\" class=\"#{cls} ttip\" src=\"/img/#{img}.png\" height=\"#{x}\" width=\"#{y}\" title=\"#{title}\" />"
       end
       
     end
