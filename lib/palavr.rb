@@ -17,7 +17,7 @@ module Palavr
 
   Version = {
     :major => 0,
-    :minor => 5,
+    :minor => 7,
     :suffix => "alpha"
   }
   

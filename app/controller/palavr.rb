@@ -28,15 +28,12 @@ class PalavrController < Ramaze::Controller
     if uid.kind_of?(Hash)
       return User[uid[:uid]].profile_link
     end
-    User[2].profile_link
+    User[uid].profile_link
   end
   
   def pgint(what, listproc)
     start = (request.params["page"] || 1).to_i
     hmany = 5
-    #pp listproc.call(start, hmany).size
-    #    listproc.call
-    #[]
   end
   
   def self.ttip(what = nil)
