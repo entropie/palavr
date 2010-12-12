@@ -4,14 +4,18 @@
       %a{:href => BoardController.r(:help), :class => "awesome silver", :id => :helplink} Help
   - if session_user
     #usermenu
-      %a{:class => :name, :href => session_user.profile_url}= session_user.display_name
       %ul
-        %li.createst{:class => "awesome"}
+        %li.createst{:class => "awesome silver"}
           %a{:href => BoardController.r(:create)} Create Story
-        %li.own{:class => "awesome"}
+        %li.me{:class => "awesome silver"}
+          %a{:href => session_user.profile_url}= session_user.display_name
+        %li.own{:class => "awesome silver"}
           %a{:href => PhreadController.r(:my)} My Stories
-        %li.liked{:class => "awesome"}
+        %li.liked{:class => "awesome silver"}
           %a{:href => PhreadController.r(:my, :liked)} My Liked Stories
+        - if session_user.authorized?          
+          %li.mod{:class => "awesome silver"}
+            %a{:href => ModController.r} Moderation
         %li.logout{:class => "awesome silver"}
           %a{:href => AuthController.r(:logout)} Logout
   - else
