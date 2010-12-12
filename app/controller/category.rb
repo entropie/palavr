@@ -26,7 +26,7 @@ class CategoryController < PalavrController
   end
   
   def choose_cat
-    @categories = Category.all.to_hash
+    @categories = Category.all
   end
 end
 

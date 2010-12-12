@@ -97,7 +97,7 @@ module Palavr
         else
           category.add_phread(phread)
         end
-        user.like(phread)
+        #user.like(phread)
         phread
       end
 
