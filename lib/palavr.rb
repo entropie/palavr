@@ -72,6 +72,10 @@ module Palavr
   
   module E
 
+    def count
+      self[:count]
+    end
+    
     def parent
       @parent = Database::Tables::Phread[Database::Tables::PhreadsPhreads.
                                          find(:phread_id => self[:id]).parent_id]
