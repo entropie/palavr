@@ -46,7 +46,7 @@ module Palavr
       end
 
 
-      def my
+      def my(limit = 10)
         query = "SELECT "+
           "phread.*, user.id as uid, user.email as email, "+
           "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
@@ -55,13 +55,16 @@ module Palavr
           "LEFT JOIN user ON phread.op_id = user.id "+          
           "INNER JOIN phreads_users "+
           "ON phreads_users.phread_id = phread.id "+
-          "AND phread.op_id = #{self.id} "
+          "AND phread.op_id = #{self.id} "+
+          "GROUP BY phread.id "+
+          "ORDER BY count DESC "+
+          "LIMIT #{limit}"
         res = Palavr::DB[query]
         res.map{|a| a.extend(Palavr::E)}
       end
 
       
-      def liked
+      def liked(limit = 10)
         query = "SELECT "+
           "phread.*, user.id as uid, user.email as email, "+
           "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
@@ -70,7 +73,8 @@ module Palavr
           "LEFT JOIN user ON phread.op_id = user.id "+          
           "INNER JOIN phreads_users "+
           "ON phreads_users.phread_id = phread.id "+
-          "AND phreads_users.user_id = #{self.id} "
+          "AND phreads_users.user_id = #{self.id} "+
+          "LIMIT #{limit}"          
         res = Palavr::DB[query]
         res.map{|a| a.extend(Palavr::E)}
       end

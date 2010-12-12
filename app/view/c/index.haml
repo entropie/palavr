@@ -8,5 +8,4 @@
   - @threads.each do |thread|
     = render_file "view/thread/_thread.haml", :phread => thread
 
-  // - if @paginated
-  //   = render_file "view/c/paginate.haml", :category => @category, :paginated => @paginated
+  = render_file "view/c/paginate.haml", :category => @category, :paginated => @paginated

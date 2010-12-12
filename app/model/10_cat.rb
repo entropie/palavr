@@ -35,15 +35,11 @@ module Palavr
       
       def get_ordered_and_paginate(page, off)
         ret = []
-        res = get_ordered.paginate(page, off)
+        paginated = get_ordered.paginate(page, off)
 
-        res = res.to_a.map!{|a| a.extend(Palavr::E)}
+        res = paginated.to_a.map!{|a| a.extend(Palavr::E)}
         res
-        # paginated = qry.paginate(page, off)
-        # paginated.to_a.each{|r|
-        #   res << Phread[r[:phread_id]]
-        # }
-        # [res, paginated]
+        [res, paginated]
       end
       
       
