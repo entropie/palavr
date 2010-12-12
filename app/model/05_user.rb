@@ -17,9 +17,6 @@ module Palavr
       one_to_many :threads
       one_to_many :privmsgs
 
-      many_to_one :admin
-      many_to_one :mod            
-
       one_to_many :phreads, :key => :op_id
       
       many_to_many :phread_like, :class => Phread, :right_key => :phread_id, :left_key => :user_id
@@ -29,9 +26,11 @@ module Palavr
         DB.create_table :user do
           primary_key :id
 
-          foreign_key :admin_user_id
-          foreign_key :mod_user_id
+          int         :admin, :default => 0
+          int         :mod, :default => 0
 
+          foreign_key :mod_id
+          
           varchar     :name
 
           varchar     :nick, :unique => true, :size => 120
@@ -97,13 +96,20 @@ module Palavr
         remove_phread_like(obj) if obj.liker.include?(self)# and obj.op != self
       end
       
+
+      def authorized?
+        p self
+        p is_admin?
+        p is_mod?
+        is_admin? or is_mod?
+      end
       
       def is_admin?
-        not admin_user_id.nil?
+        not admin == 0
       end
 
       def is_mod?
-        not mod_user_id.nil?
+        not mod == 0
       end
       
       def public_dir

@@ -20,9 +20,9 @@
           %a{:href => AuthController.r(:logout)} Logout
   - else
     #login-link
-      %a{:class => "awesome", :href => AuthController.r(:login, :ruri => request.request_uri)} Login
+      %a{:class => "awesome silver", :href => AuthController.r(:login, :ruri => request.request_uri)} Login
     #usermenu
       %ul
-        %li.createst{:class => "awesome", :style => "margin-right:100px"}
+        %li.createst{:class => "awesome silver", :style => "margin-right:100px"}
           %a{:href => BoardController.r(:create)} Create Story
 

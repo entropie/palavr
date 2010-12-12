@@ -72,8 +72,8 @@ class SearchController < PalavrController
       "INNER JOIN phreads_users "+
       "ON phreads_users.phread_id = phread.id "+
       "WHERE " + like.call("tag") + " " +
-      "GROUP by phread.id " +
-      "ORDER BY tag DESC  LIMIT 10"
+      "GROUP by count, phread.id " +
+      "ORDER BY count DESC  LIMIT 10"
     ret = Palavr::DB[query].to_a.map{|a| a.extend(Palavr::E)}
     ret
   end

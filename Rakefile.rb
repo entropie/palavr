@@ -99,7 +99,7 @@ task :bu do
 end
 
 task :ba do
-  p User[2].like?(25)
+  p User[2].authorized?
 end
 
 task :foo do

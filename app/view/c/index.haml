@@ -1,4 +1,8 @@
-%h1= @category.title
+%h1
+  .pic
+    %img{:src => @category.pic}
+  = @category.title
+
 .backlink
   &larr;
   %a{:class => "blink awesome small silver", :href => BoardController.r} Back to Catgories

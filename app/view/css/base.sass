@@ -63,7 +63,19 @@ h1
   :border-bottom 1px solid
   :border-color = !clr_dark_blue
   :position relative
-
+  .pic
+    :position absolute
+    :top 0px
+    :left -92px
+    img
+      :border 5px solid
+      :border-color = !clr_light_silver
+      :-webkit-box-shadow 2px 2px 10px #aaa 
+      :-moz-box-shadow 2px 2px 10px #aaa
+      :box-shadow 2px 2px 10px #aaa
+      :max-width 64px
+      :max-height 64px      
+  
   .icn
     :opacity 0.2
     :position absolute
@@ -126,6 +138,10 @@ h2
   :background -webkit-gradient(linear, left top, left bottom, color-stop(27%,#e5e5e5), color-stop(100%,#ffffff))
   :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 )
   :height 100px
+  a
+    :color = !clr_dark_blue
+    &:hover
+      :color = !clr_fresh_blue        
 
 #usermenu
   :text-align right
@@ -142,9 +158,13 @@ h2
       :margin-left 20px
     .createst
       a
-        :color = !clr_smoof_orange
+        :color = !clr_dark_blue
         &:hover
-          :color = !clr_straight_orange + 30
+          :color = !clr_fresh_blue
+    a
+      :color = !clr_dark_blue
+      &:hover
+        :color = !clr_fresh_blue        
   .name
     :padding-top 0px
     :padding-left 10px
@@ -708,6 +728,9 @@ a
       :-webkit-box-shadow 2px 2px 2px #aaaaaa 
       :-moz-box-shadow 2px 2px 2px #aaaaaa
       :box-shadow 2px 2px 2px #aaaaaa
+    &:hover
+
+
     &:nth-child(even)
       :border-color = !clr_tablerow - 10
       .main
@@ -735,6 +758,8 @@ a
     :min-height 60px
     :font-size 1.1em
     :min-height 72px
+    :text-shadow 1px 1px 1px #aaaaaa
+
   .main
     .sec
       :float right
@@ -742,7 +767,6 @@ a
       :font-weight bold
       :font-size 1.5em
       :padding 7px
-      :color red
       h1
         :letter-spacing 2px
         :border none

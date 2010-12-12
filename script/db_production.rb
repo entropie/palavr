@@ -13,7 +13,9 @@ s=User.create(
               :email => "system@syst.em",
               :passwd => User.pwcrypt("system"),
               :name  => "root",
-              :nick  => "Gott"
+              :nick  => "Gott",
+              :admin => 1,
+              :mod   => 1
               
               )
 s.save
@@ -23,6 +25,8 @@ me=User.create(
                :passwd => User.pwcrypt("foo"),
                :name  => "Michael Trommer",
                :nick  => "entropie"
+               :admin => 1,
+               :mod   => 1
                )
 me.save
 
