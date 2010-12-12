@@ -171,7 +171,7 @@ module Palavr
       end
 
       def profile_url
-        "/u/#{id}"
+        "/u/#{id}/#{display_name}"
       end
       
       def profile_link(opts = {})

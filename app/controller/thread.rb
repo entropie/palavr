@@ -89,6 +89,18 @@ class PhreadController < PalavrController
     end
   end
 
+
+  def by(uid)
+    @user = User[uid.to_i]
+    @phreads = @user.my
+    
+  end
+
+  def liked(uid)
+    @user = User[uid.to_i]
+    @phreads = @user.liked
+  end
+  
   
   def my(arg = nil)
     @topic, @phreads =

@@ -89,11 +89,10 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
    $.fn.setupUplink = function(){
      var app =  "<div class=\'inv app\'><ul>";
-     var uid =$(this).find(".uplink").attr("href").split("/").reverse()[0];
-     app += "<li class='pm'><a href='#/pm/" + uid + "'>Personal Message</a></li>";
-     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
-     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories Lalal Keke Foo</a></li>";
-     app += "<li class='stry'><a href='#/s/from/" +uid+ "'>All Stories</a></li>";
+     var uid =$(this).find(".uplink").attr("href").split("/").reverse()[1];
+     app += "<li class='pm'><a href='/pm/to/" + uid + "'>Personal Message</a></li>";
+     app += "<li class='stry'><a href='/s/by/" +uid+ "'>All Stories from user</a></li>";
+     app += "<li class='strylk'><a href='/s/liked/" +uid+ "'>Stories this user like </a></li>";
      app += "</ul>";
      app += '<img class="pic" src="/u/userpic/'+ uid + '" />';
      app += "</div>";
