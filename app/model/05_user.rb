@@ -52,8 +52,8 @@ module Palavr
           "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
           "FROM phread "+
           "LEFT JOIN user ON phread.op_id = user.id "+          
-          "INNER JOIN phreads_users "+
-          "ON phreads_users.phread_id = phread.id "+
+          # "INNER JOIN phreads_users "+
+          # "ON phreads_users.phread_id = phread.id "+
           "WHERE phread.op_id = #{self.id} "+
           "GROUP BY phread.id "+
           "ORDER BY count DESC "+
