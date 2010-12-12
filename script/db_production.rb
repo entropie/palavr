@@ -24,7 +24,7 @@ me=User.create(
                :email => "mictro@gmail.com",
                :passwd => User.pwcrypt("foo"),
                :name  => "Michael Trommer",
-               :nick  => "entropie"
+               :nick  => "entropie",
                :admin => 1,
                :mod   => 1
                )
