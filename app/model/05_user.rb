@@ -55,7 +55,7 @@ module Palavr
           "LEFT JOIN user ON phread.op_id = user.id "+          
           "INNER JOIN phreads_users "+
           "ON phreads_users.phread_id = phread.id "+
-          "AND phread.op_id = #{self.id} "+
+          "WHERE phread.op_id = #{self.id} "+
           "GROUP BY phread.id "+
           "ORDER BY count DESC "+
           "LIMIT #{limit}"
