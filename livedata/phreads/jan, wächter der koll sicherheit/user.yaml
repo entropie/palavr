@@ -1,0 +1,11 @@
+--- !ruby/object:Palavr::Database::Tables::User 
+new: false
+values: 
+  :email: 
+  :nick: Erynniakh
+  :passwd: acbd18db4cc2f85cedef654fccc4a4d8
+  :name: 
+  :mod_id: 
+  :mod: 0
+  :admin: 0
+  :id: 5

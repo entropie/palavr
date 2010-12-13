@@ -1,0 +1,13 @@
+--- 
+:title: !str:Sequel::SQL::Blob Millionen von Lichtjahren entfernt
+:created_at: 2010-12-13 02:49:37 +01:00
+:op_id: 5
+:body: !str:Sequel::SQL::Blob "Millionen von Lichtjahren entfernt riss ein Loch im Raum auf und die \xC3\x9Cberreste eines Schiffes schossen heraus. Geborstene Panzerplatten, verschmorte Dr\xC3\xA4hte und gefriergetrocknete Leichen waren alles, das von dem Fluchtschiff wieder in den Normalraum zur\xC3\xBCckkehrte.\xC2\xA0\r\n\
+  Die Station, die sie so heftig verteidigt hatten, wurde eingenommen, doch ihr Widerstand gab Anderen die Zeit, tief im Inneren der Station die Daten des Hauptcomputers zu l\xC3\xB6schen und durch Falsche zu ersetzen.\xC2\xA0\r\n\
+  Ihre Familien erfuhren nichts davon.\xC2\xA0Nur die Familie Galdriels h\xC3\xB6rte nach vier Jahren von seinem Heldenhaften Tod in der Schlacht, und alle seine Br\xC3\xBCder au\xC3\x9Fer dem j\xC3\xBCngsten, der noch nicht laufen konnte brachen auf, es ihm gleich zu tun, wie es ihnen als Geschwistern eines Helden zu stand.\xC2\xA0Ein Jahr sp\xC3\xA4ter wurde der kleinste im Wald von den Hunden des Bischofs zerrissen, wie schon seine Schwester ein Jahrzehnt zuvor.\xC2\xA0"
+:updated_at: 
+:after_parent_chap: 
+:readonly: 0
+:id: 35
+:category_id: 
+:pid: 34

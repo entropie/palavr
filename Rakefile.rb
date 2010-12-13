@@ -110,7 +110,7 @@ def mk_phread_to_yaml(phread, title = nil, last = nil)
   data_path = "livedata/phreads/#{title}"
   FileUtils.mkdir_p(data_path)
 
-  file = File.join(data_path, "phread_%s_%i.yaml" % [title, phread.id])
+  file = File.join(data_path, "phread_%i.yaml" % [phread.id])
   File.open(file, "w+") do |fp|
     fp.write(yamlp)
   end
@@ -153,11 +153,15 @@ end
 
 def phread_yaml_import
   data_path = "livedata/phreads"
-  Dir.chdir(data_path) do
-    contents = Dir.glob('**/*.yaml').to_a.sort
-    last = nil
-    mk_yaml_to_phread(contents)
+  Dir.chdir(data_path) do |a|
+    Dir.glob('**/') do |b|
+      Dir.chdir(b) do
+        contents = Dir.glob('*.yaml').to_a.sort
+        mk_yaml_to_phread(contents)
+      end
+    end
   end
+  p 1
 end
 
 
@@ -168,7 +172,7 @@ task :import do
 end
 
 task :export do
-  ids = [68]
+  ids = [36]
   ids.each do |id|
     pr = Phread[id]
     mk_phread_to_yaml(pr)
