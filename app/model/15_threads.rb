@@ -197,12 +197,16 @@ module Palavr
       def cat_backlink(with_anchor = true)
         category.link
       end
+
+      def url_title
+        CGI.escape(title.delete("..").strip)
+      end
       
       def url
-        "/s/#{id}/" + CGI.escape(title.delete("..").strip)
+        "/s/#{id}/" + url_title
       end
       def Phread.url(h)
-        "/s/#{h[:id]}/" + CGI.escape(h[:title].delete("..").strip)
+        "/s/#{h[:id]}/" + url_title
       end
 
       def star(user, wlink = true, x = 16, y = 16)

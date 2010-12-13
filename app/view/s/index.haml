@@ -1,9 +1,10 @@
-#phread
+.phread
   .top
     %h1
       - unless @phread.readonly?
         .icn
           %a{:class => "ttip", :title => "#{Tooltip(:tree_link)}", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "orange", 24, 24, 32)
+          %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread.id)}= Icon(:news, "orange", 24, 24, 32)          
       = @phread.title
     .line
       - if session_user
@@ -21,7 +22,7 @@
     = @phread.html_body
   - unless @phread.readonly?
     %div{:class => "sub ttip", :title => Tooltip(:write_on)}
-      %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
+      %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
   - if not @stream
     = render_file "view/t/tag_for.haml", :phread => @phread
 - if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0 and not @stream

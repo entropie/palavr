@@ -79,7 +79,7 @@ h1
   .icn
     :opacity 0.2
     :position absolute
-    :right 0px
+    :right -60px
     :top 3px
     :transition opacity 1s ease-in-out
     :-webkit-transition opacity 1s ease-in-out
@@ -479,8 +479,8 @@ a
 #tooltip h3, #tooltip div
   :margin 0
       
-      
-#phread
+
+.phread
   .date
     &:before
       :content " - "
@@ -739,6 +739,29 @@ a
     :border none
   .append
     :float left
+
+#stream
+  .phread
+    .top
+      h1
+        :border none
+        :color = !clr_dark_blue
+        :font-size 1.3em
+      :margin-bottom 5px
+    .sub
+      :position absolute
+      :left 730px
+      :bottom 20px
+      :margin-right -100px
+    .line
+      :text-align right
+      :position absolute
+      :top 36px
+      :left 720px
+      :z-index 500
+      .backlink
+        :display none
+
 
 #cats
   h1

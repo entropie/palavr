@@ -72,6 +72,10 @@ module Palavr
   
   module E
 
+    def url
+      Database::Tables::Phread[self[:id]].url
+    end
+    
     def liker
       Database::Tables::Phread[self[:id]].liker      
     end

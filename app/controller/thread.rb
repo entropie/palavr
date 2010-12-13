@@ -106,7 +106,8 @@ class PhreadController < PalavrController
   end
 
   def stream(pid, rest = nil)
-    @stories = get_stream(Phread[pid.to_i])
+    @phread = Phread[pid.to_i]
+    @stories = get_stream(@phread)
   end
   
   def by(uid)

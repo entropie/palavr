@@ -299,11 +299,11 @@ google.setOnLoadCallback(function() {
     $("#editme .profilechng").each(function() { $(this).mk_ajax_upload(); });
   };
 
-  if($("#phread").length){
+  if($(".phread").length){
     if($(".tagline").length)
       $(".tagline").mk_tags();
-    $("#phread").mk_chapterLinks();
-    $("#phread").mk_like();
+    $("#.hread").mk_chapterLinks();
+    $(".phread").mk_like();
   };
   if($("#login").length)
     $("#login").mk_loginForm();
