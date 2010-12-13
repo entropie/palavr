@@ -13,8 +13,6 @@
         by
         = @phread.from.profile_link
         %span.date= @phread.created_at.to_s(false)
-        // .srating{:title => "#{@phread.liker.size} people like this"}
-        //   = @phread.liker.size
       .backlink
         - if @phread.parent
           = "&larr; " + @phread.backlink
@@ -32,6 +30,11 @@
       - @childs.each do |thread|
         - unless thread.after_parent_chap
           = render_file "view/thread/_thread.haml", :phread => thread
+#liker
+  %h2 People who like this Story
+  %ul
+    - @phread.liker.each do |liker|
+      %li= liker.profile_link
 
 #license
   = render_file "view/license/ccas30.html"

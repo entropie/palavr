@@ -238,7 +238,6 @@ h2
     :float left
     :padding-right 5px
     :text-shadow 1px 1px silver
-      
   &:nth-child(even)
     :background-color = !clr_tablerow
   &:nth-child(odd)
@@ -247,6 +246,7 @@ h2
     :float left
     :padding-left 0px
     :padding-right 5px
+    :text-shadow 1px 1px silver
   > .from
     :text-shadow 1px 1px silver
     a
@@ -261,10 +261,10 @@ h2
       :color = !clr_my_black
   .count
     :padding 5px
-    :padding-top 4px
+    :padding-top 2px
     :padding-bottom 0px
     :position absolute
-    :top 2px
+    :top 6px
     :right 5px
     :font-size 1.2em
     :color = !clr_silver
@@ -405,6 +405,31 @@ a
       li
         :margin-top 10px
 
+#liker
+  :margin-top 50px
+  :border 1px solid silver
+  :padding 20px
+  :max-width 660px
+  :margin-left 10px
+  :-moz-border-radius 5px
+  :border-radius 5px
+  :transition opacity 1s ease-in-out
+  :-webkit-box-shadow inset 2px 2px 4px #aaaaaa 
+  :-moz-box-shadow inset 2px 2px 4px #aaaaaa
+  :box-shadow inset 2px 2px 4px #aaaaaa
+  :background-color = !clr_light_silver
+  &:hover
+    a:link, a:visited
+      :color = !clr_my_black
+    
+  h2
+    :color = !clr_silver
+    :border none
+    :margin-bottom 10px
+  > ul
+    > li
+      :display inline
+  
 #license
   :margin-top 50px
   :opacity 0.3
@@ -632,8 +657,6 @@ a
       .spinner
         :margin-left 345px
     .subphread
-      // :border 1px solid
-      // :border-color = !clr_light_silver
       :padding-top 10px
       :padding-top 5px
       :margin-top 25px
@@ -648,7 +671,8 @@ a
         :top 0px
         :right -65px
       .rating
-        :font-size 0.9em
+        :margin-top 3px
+        :font-size 1.3em !important
         :padding 0px
         :padding-left 3px
         .from
@@ -663,6 +687,7 @@ a
 #tree
   .count
     :height 17px
+    :top 3px
   .rating
     :left -40px
     :font-size 1.1em
@@ -693,7 +718,6 @@ a
     .from
       a
         :color = !clr_dark_blue
-     
   .thread.inline, .inline
     :font-size 0.8em
     :background-color = !clr_tablerow1 + 10
@@ -708,6 +732,8 @@ a
   .box
     :border-left 1px dashed
     :border-color = !clr_silver
+    a.loadmore
+      :color = !clr_dark_blue !important
   > .box
     :margin-bottom 30px
     :border none

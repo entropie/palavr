@@ -27,19 +27,24 @@ class PhreadController < PalavrController
     str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
 
-    phreadarr = phreads.to_a
-    # inline
-    phreadarr.select{|mp| mp[:after_parent_chap] }.each do |phread|
-      pphread = phread.extend(Palavr::E)      
-      str << render_file("view/thread/_thread.haml", :phread => pphread, :inline => true)
-      str << phreadsub(Phread[phread[:id]], o+=1)
-    end
+    unless o > 10
+      phreadarr = phreads.to_a
+      # inline
+      phreadarr.select{|mp| mp[:after_parent_chap] }.each do |phread|
+        pphread = phread.extend(Palavr::E)      
+        str << render_file("view/thread/_thread.haml", :phread => pphread, :inline => true)
+        str << phreadsub(Phread[phread[:id]], o+=1)
+      end
 
-    # standard
-    phreadarr.reject{|mp| mp[:after_parent_chap] }.each do |phread|
-      pphread = phread.extend(Palavr::E)
-      str << render_file("view/thread/_thread.haml", :phread => pphread )
-      str << phreadsub( Phread[phread[:id]], o+=1)
+      # standard
+      phreadarr.reject{|mp| mp[:after_parent_chap] }.each do |phread|
+        pphread = phread.extend(Palavr::E)
+        str << render_file("view/thread/_thread.haml", :phread => pphread )
+        str << phreadsub( Phread[phread[:id]], o+=1)
+      end
+    else
+      # TODO:
+      str << "<a class='loadmore' href='/s/tree/#{mphread.id}'>... More follow ups. Click to load</a>"
     end
     
     str << "</div>"

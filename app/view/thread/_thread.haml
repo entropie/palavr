@@ -4,14 +4,14 @@
     %a{:href => PhreadController.r(@phread[:id], @phread[:title])}=@phread.title
     - if session_user and session_user.like?(@phread[:id])
       = star(@phread, session_user, false, 12, 12)
-  .date{:title => @phread.created_at }= @phread.created_at.to_s(false)
+  .date{:title => @phread.created_at, :class => "ttip"}= @phread.created_at.to_s(false)
   - if @phread.after_parent_chap
     .append
       %span In Response to paragraph
       %b
         %a{:href => "#{@phread.parent.url}#para#{@phread.after_parent_chap}"}=  "##{@phread.after_parent_chap+1}"
   .from= "by " + profile_link(phread, @phread[:uid], @phread[:email])
-  .count{:title => "#{@phread.countchilds} Childs"}= @phread.countchilds
+  .count{:title => "#{@phread.countchilds} Childs", :class => "ttip"}= @phread.countchilds
   .rating= @phread.count
   
 

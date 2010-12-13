@@ -66,11 +66,9 @@ class SearchController < PalavrController
       "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
       "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
       "FROM phread "+
-      "LEFT JOIN user ON phread.op_id = user.id "+
       "LEFT JOIN phreads_tags ON phreads_tags.phread_id = phread.id "+
-      "LEFT JOIN tag ON phreads_tags.tag_id = tag.id "+       
-      "INNER JOIN phreads_users "+
-      "ON phreads_users.phread_id = phread.id "+
+      "LEFT JOIN tag ON phreads_tags.tag_id = tag.id "+
+      "LEFT JOIN user ON phread.op_id = user.id "+
       "WHERE " + like.call("tag") + " " +
       "GROUP by count, phread.id " +
       "ORDER BY count DESC  LIMIT 10"

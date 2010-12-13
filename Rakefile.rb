@@ -19,7 +19,7 @@ task :todo do
   files = Hash.new{|h,k| h[k] = []}
   Dir.glob('{lib,app}/**/*.rb') do |file|
     lastline = todo = comment = long_comment = false
- 
+    
     File.readlines(file).each_with_index do |line, lineno|
       lineno += 1
       comment = line =~ /^\s*?#.*?$/
@@ -62,7 +62,7 @@ end
 task :deploy => [:umigrate, :migrate, :todo, :development, :todofile] do
 end
 
-task :live => [:umigrate, :migrate, :todo, :production, :mk_live] do
+task :live => [:umigrate, :migrate, :todo, :production, :mk_live, :import] do
 end
 
 task :development do
@@ -102,6 +102,80 @@ task :ba do
   p User[2].authorized?
 end
 
+
+def mk_phread_to_yaml(phread, title = nil, last = nil)
+  yamlp = phread.values.merge(:pid => last.id).to_yaml
+  title ||= phread.title.to_a.select{|c| c =~ /[a-zA-Z]/}.join.downcase
+
+  data_path = "livedata/phreads/#{title}"
+  FileUtils.mkdir_p(data_path)
+
+  file = File.join(data_path, "phread_%s_%i.yaml" % [title, phread.id])
+  File.open(file, "w+") do |fp|
+    fp.write(yamlp)
+  end
+  File.open( File.join(data_path, "user.yaml"), 'w+' ) do |fp|
+    fp.write(phread.op.to_yaml)
+  end
+  phread.phreads.each do |pr|
+    mk_phread_to_yaml(pr, title, phread)
+  end
+end
+
+
+def mk_from_yaml(yphread, user, last = nil)
+    nh = {
+      :title => yphread[:title],
+      :body  => yphread[:body]
+    }
+
+  phr = Phread.create(nh)
+  phr.op = user
+  Category[yphread[:category_id]].add_phread(phr) unless last
+  last.add_phread(phr) if last
+  phr.save
+end
+
+def mk_yaml_to_phread(files, last = nil, user = nil)
+  ufile = files.select{|f| f =~ /user/}.shift
+  user = YAML::load(File.readlines(ufile).join)
+  nuser = User.find_or_create(:email => user.email, :nick => user.nick, :passwd => user.passwd)
+
+  last = nil
+  
+  files.each do |file|
+    next if file =~ /user/
+    yphread = YAML::load(File.readlines(file).join)
+    last = mk_from_yaml(yphread, nuser, last)
+  end
+
+end
+
+def phread_yaml_import
+  data_path = "livedata/phreads"
+  Dir.chdir(data_path) do
+    contents = Dir.glob('**/*.yaml').to_a.sort
+    last = nil
+    mk_yaml_to_phread(contents)
+  end
+end
+
+
+require "yaml"
+
+task :import do
+  phread_yaml_import
+end
+
+task :export do
+  ids = [68]
+  ids.each do |id|
+    pr = Phread[id]
+    mk_phread_to_yaml(pr)
+  end
+end
+
+
 task :foo do
 
   phread_ids = Category.join(:phread, :category_id => :id).
@@ -128,7 +202,7 @@ task :foo do
     "ORDER BY count DESC "
   
   
-    
+  
 
   
   Palavr::DB[a].paginate(1,1).map{|r| r.extend(E)}.each do |i|
