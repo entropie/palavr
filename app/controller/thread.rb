@@ -95,10 +95,23 @@ class PhreadController < PalavrController
   end
 
 
+  def get_stream(phread, rest = nil)
+    ret = []
+    ret << render_file("view/s/index.haml", :phread => phread, :stream => true)
+    begin
+      ret << get_stream(Phread[phread.get_ordered.first[:id]])
+    rescue
+    end
+    ret
+  end
+
+  def stream(pid, rest = nil)
+    @stories = get_stream(Phread[pid.to_i])
+  end
+  
   def by(uid)
     @user = User[uid.to_i]
     @phreads = @user.my
-    
   end
 
   def liked(uid)

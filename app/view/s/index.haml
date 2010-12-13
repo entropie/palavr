@@ -22,19 +22,21 @@
   - unless @phread.readonly?
     %div{:class => "sub ttip", :title => Tooltip(:write_on)}
       %a{:class => "awesome orange medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
-  = render_file "view/t/tag_for.haml", :phread => @phread
-- if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0
+  - if not @stream
+    = render_file "view/t/tag_for.haml", :phread => @phread
+- if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0 and not @stream
   %div{:id => :threads, :class => "ttip sub"}
     %h2{:class => "ttip", :title => "#{Tooltip(:follow_ups)}" } Follow Ups
     %threads
-      - @childs.each do |thread|
+      - @childs and @childs.each do |thread|
         - unless thread.after_parent_chap
           = render_file "view/thread/_thread.haml", :phread => thread
-#liker
-  %h2 People who like this Story
-  %ul
-    - @phread.liker.each do |liker|
-      %li= liker.profile_link
-
-#license
-  = render_file "view/license/ccas30.html"
+- if not @stream
+  #liker
+    %h2 People who like this Story
+    %ul
+      - @phread.liker.each do |liker|
+        %li= liker.profile_link
+- if not @stream
+  #license
+    = render_file "view/license/ccas30.html"

@@ -4,6 +4,7 @@
     %a{:href => PhreadController.r(@phread[:id], @phread[:title])}=@phread.title
     - if session_user and session_user.like?(@phread[:id])
       = star(@phread, session_user, false, 12, 12)
+    %a{:title => "Show Tree", :href => PhreadController.r(:stream, @phread[:id])}= Icon(:news, :blue)      
   .date{:title => @phread.created_at, :class => "ttip"}= @phread.created_at.to_s(false)
   - if @phread.after_parent_chap
     .append

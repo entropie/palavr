@@ -72,6 +72,40 @@ module Palavr
   
   module E
 
+    def liker
+      Database::Tables::Phread[self[:id]].liker      
+    end
+
+    def html_body
+      Database::Tables::Phread[self[:id]].html_body
+    end
+    def tags
+      Database::Tables::Phread[self[:id]].tags
+    end
+    def phreads
+      Database::Tables::Phread[self[:id]].phreads
+    end
+    
+    def backlink
+      ''
+    end
+
+    def category
+      Database::Tables::Category[self[:category_id]] or parent.category
+    end
+
+    def parent_id
+      3
+    end
+    
+    def from
+      Database::Tables::User[self[:op_id]]
+    end
+    
+    def readonly?
+      self["readonly?".to_sym]
+    end
+    
     def count
       self[:count]
     end
