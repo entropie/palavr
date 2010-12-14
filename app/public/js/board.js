@@ -144,6 +144,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     var p = $(this);
     var ll = $(this).find(".like_link");
     var url = ll.attr("href");
+    ll.unbind("click");
     ll.click(function(){
       ll.html(spinner);
       $.ajax({
@@ -262,6 +263,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
         var url = "/s/phreads_for/" + phreadid + "/" + $(this).attr("id") + "?offset=0";
         var index = $(body).find(".para").index(p);
         var rest = $(body).find(".para:gt(" + index + ")");
+        $(".moar", p).find("a").unbind("click");
         $(".moar", p).find("a").click(function(){
           var link = $(this);
           link.hide();
@@ -297,6 +299,9 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
        success: function(data){
          $("#lmore").parent().slideUp(function(){ $(this).remove(); });
          $("#stream").append(data);
+         $("#stream").find(".phread").mk_chapterLinks();
+         $("#stream").find(".phread").mk_like();
+
          $("#lmore").setup_load_more();
        }
      });

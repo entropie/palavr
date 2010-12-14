@@ -768,6 +768,8 @@ a
     
 #stream
   .phread
+    .writemore
+      :display none
     .top
       h1
         :border none
@@ -775,6 +777,7 @@ a
         :font-size 1.3em
       :margin-bottom 5px
     .sub
+      :display none
       :position absolute
       :left 730px
       :bottom 20px
@@ -785,8 +788,12 @@ a
       :top 36px
       :left 720px
       :z-index 500
+      :color = !clr_dark_blue
+      .uplink
+        :color = !clr_dark_blue
       .backlink
         :display none
+      
 
 
 #cats

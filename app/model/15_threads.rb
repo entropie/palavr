@@ -33,6 +33,21 @@ module Palavr
           
         end
       }
+
+      def get_ordered_stream(f = true)
+        query="SELECT "+
+          "phread.*, user.id as uid, user.email as email, "+
+          "(SELECT COUNT(*) FROM phreads_users WHERE phread.id = phreads_users.phread_id) as count, "+
+          "(SELECT COUNT(*) FROM phreads_phreads WHERE phread.id = phreads_phreads.parent_id) as countchilds "+              
+          "FROM phread "+
+          "LEFT JOIN user ON phread.op_id = user.id "+
+          "INNER JOIN phreads_phreads as np ON np.phread_id = phread.id "+
+          "AND np.parent_id = #{self.id} and phread.after_parent_chap IS " + (f ? "" : ' NOT ') + "NULL " + 
+          "ORDER BY COUNT DESC "
+        Palavr::DB[query]
+      end
+
+
       def get_ordered
         query="SELECT "+
           "phread.*, user.id as uid, user.email as email, "+

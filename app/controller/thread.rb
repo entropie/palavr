@@ -103,8 +103,11 @@ class PhreadController < PalavrController
     
     ret << render_file("view/s/index.haml", :phread => phread, :stream => true)
     begin
-      ret << get_stream(Phread[phread.get_ordered.first[:id]], off+=1)
+      phreads = [phread.get_ordered_stream.first, phread.get_ordered_stream(false).first].flatten
+      id = phreads.compact.sort_by{|pr| (pr[:countchilds])+(pr[:count]+1)**2}.reverse.first[:id]
+      ret << get_stream(Phread[id], off+=1)
     rescue
+      ''
     end
     ret
   end
