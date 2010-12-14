@@ -286,35 +286,31 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     });
   };
 
-   // $.fn.slide_click = function() {
-   //   $(this).bind("click", function() {
-   //     $('#threads').slideUp();
-   //     history.pushState({path: this.path}, '', this.href);
-   //     $.get(this.href, function(data) {
-   //       $('#threads').html($(data));
-   //       $('#threads').slideDown();
 
-   //       $("#threads .paginate").find("a").slide_click();
-   //     });
-   //     debug(1);
-   //     return false;
-   //   });
-   // };
+   var stream_append = function(){
+     $("#lmore").parent().append(spinner);
+     $("#lmore").text("Loading...");
+     $.ajax({
+       type: "GET",
+       url: $("#lmore").attr("href"),
+       success: function(data){
+         $("#lmore").parent().slideUp(function(){ $(this).remove(); $("#lmore").setup_load_more(); });
+         $("#stream").append(data);
+       }
+     });
+   };
 
+   $.fn.setup_load_on_scroll = function(){
+     $(window).scroll(function(){
+        if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+          stream_append.call();
+        };
+     });
+   };
 
    $.fn.setup_load_more = function() {
      $(this).parent().click(function(){
-       $(this).append(spinner);
-       $.ajax({
-         type: "GET",
-         url: $("#lmore").attr("href"),
-         success: function(data) {
-           $("#lmore").parent().slideUp(function(){ $(this).remove(); $("#lmore").setup_load_more(); });
-           $("#stream").append(data);
-         },
-         complete: function(){
-         }
-       });
+       stream_append.call();
        return false;
      });
    };
@@ -350,6 +346,8 @@ google.setOnLoadCallback(function() {
   $(".uplinkb").each(function(){ $(this).setupUplink(); });
 
  // $(".paginate").find("a").slide_click();
- $("#lmore").setup_load_more();
-
+  if($("#stream").length){
+    $("#lmore").setup_load_more();
+    $("html").setup_load_on_scroll();
+}
 });
