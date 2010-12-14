@@ -286,10 +286,45 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     });
   };
 
+   // $.fn.slide_click = function() {
+   //   $(this).bind("click", function() {
+   //     $('#threads').slideUp();
+   //     history.pushState({path: this.path}, '', this.href);
+   //     $.get(this.href, function(data) {
+   //       $('#threads').html($(data));
+   //       $('#threads').slideDown();
+
+   //       $("#threads .paginate").find("a").slide_click();
+   //     });
+   //     debug(1);
+   //     return false;
+   //   });
+   // };
+
+
+   $.fn.setup_load_more = function() {
+     $(this).parent().click(function(){
+       $(this).append(spinner);
+       $.ajax({
+         type: "GET",
+         url: $("#lmore").attr("href"),
+         success: function(data) {
+           $("#lmore").parent().slideUp(function(){ $(this).remove(); $("#lmore").setup_load_more(); });
+           $("#stream").append(data);
+         },
+         complete: function(){
+         }
+       });
+       return false;
+     });
+   };
 
 })(jQuery);
 
 google.setOnLoadCallback(function() {
+  $(window).bind('popstate', function() {
+
+  });
 
   $("#ssearch").setupSearch();
 
@@ -302,7 +337,7 @@ google.setOnLoadCallback(function() {
   if($(".phread").length){
     if($(".tagline").length)
       $(".tagline").mk_tags();
-    $("#.hread").mk_chapterLinks();
+    $(".phread").mk_chapterLinks();
     $(".phread").mk_like();
   };
   if($("#login").length)
@@ -312,6 +347,9 @@ google.setOnLoadCallback(function() {
   if($("#error").length)
     $("#error").delay(3000).slideUp("slow");
 
-
   $(".uplinkb").each(function(){ $(this).setupUplink(); });
+
+ // $(".paginate").find("a").slide_click();
+ $("#lmore").setup_load_more();
+
 });

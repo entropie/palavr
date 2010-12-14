@@ -5,8 +5,8 @@
 
 class PhreadController < PalavrController
   map "/s"
-  set_layout_except("layout" => [:phreads_for, :like, :unlike])
-
+  
+  layout(:layout) { !request.xhr? } 
   helper :auth
   before(:my, :like, :unlike){
     login_required
@@ -95,17 +95,26 @@ class PhreadController < PalavrController
   end
 
 
-  def get_stream(phread, rest = nil)
+  def get_stream(phread, off = 0)
     ret = []
+    if off >= MaxPhreadsPerPage
+      return ["<div class='morebox'><a id='lmore' href='/s/more/#{phread.id}'>Load More</a></div>"]
+    end
+    
     ret << render_file("view/s/index.haml", :phread => phread, :stream => true)
     begin
-      ret << get_stream(Phread[phread.get_ordered.first[:id]])
+      ret << get_stream(Phread[phread.get_ordered.first[:id]], off+=1)
     rescue
     end
     ret
   end
 
   def stream(pid, rest = nil)
+    @phread = Phread[pid.to_i]
+    @stories = get_stream(@phread)
+  end
+
+  def more(pid)
     @phread = Phread[pid.to_i]
     @stories = get_stream(@phread)
   end
