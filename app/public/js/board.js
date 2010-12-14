@@ -288,14 +288,16 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 
    var stream_append = function(){
+     if(!$("#lmore").length) return false;
      $("#lmore").parent().append(spinner);
      $("#lmore").text("Loading...");
      $.ajax({
        type: "GET",
        url: $("#lmore").attr("href"),
        success: function(data){
-         $("#lmore").parent().slideUp(function(){ $(this).remove(); $("#lmore").setup_load_more(); });
+         $("#lmore").parent().slideUp(function(){ $(this).remove(); });
          $("#stream").append(data);
+         $("#lmore").setup_load_more();
        }
      });
    };

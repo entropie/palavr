@@ -5,7 +5,6 @@
     
 class CategoryController < PalavrController
   map "/c"
-  #set_layout_except("layout" => [])
   layout(:layout){ !request.xhr? } 
 
   
