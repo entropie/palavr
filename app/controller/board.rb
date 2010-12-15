@@ -21,11 +21,17 @@ class BoardController < PalavrController
   
   def index
     @categories = Category.all
+    @active_users = User.all.sort_by{|u| u.liked.size}.reverse.first(5)
+    @recent_stories = Phread.all.sort_by{|pr| pr.liker.size}.reverse.first(5)    
   end
 
   def help
   end
 
+  def error
+    @error = request.env[Rack::RouteExceptions::EXCEPTION]
+  end
+  
   def logout
     redirect AuthController.r(:logout)
   end

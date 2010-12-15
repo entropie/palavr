@@ -1,8 +1,8 @@
 #tree
   %h1
-    Tree for
-    %em= @phread.title
-    = "<span class='unimp'>(#{@phread.category.title})"
+    .pic
+      %img{:src => @phread.category.pic}
+    = @phread.title
   .backlink
     = "&larr; " + @phread.category.link
     = "&larr; " + @phread.link

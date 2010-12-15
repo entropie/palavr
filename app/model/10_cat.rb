@@ -29,7 +29,7 @@ module Palavr
           "LEFT JOIN cat ON phread.category_id = cat.id "+
           "LEFT JOIN user ON phread.op_id = user.id "+    
           "WHERE cat.id = #{id} "+
-          "ORDER BY count DESC "
+          "ORDER BY count DESC, phread.created_at DESC "
         Palavr::DB[query]
       end
       

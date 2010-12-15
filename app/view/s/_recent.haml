@@ -1,0 +1,9 @@
+.box.story
+  %h3 Recent Stories
+  %ul
+    - @recent_stories.each do |phread|
+      %li
+        %a{:href => phread.url}= phread.title
+        by
+        %em
+          %a{:href => phread.op.profile_url}= phread.op.display_name

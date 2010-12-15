@@ -1,7 +1,8 @@
 .thread{:class => @inline ? "inline" : ""}
   .title
     %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread[:id])}= Icon(:news, :blue)      
-    %a{:href => @phread.url}=@phread.title
+    %a{:href => @phread.url}
+      =@phread.title
     - if session_user and session_user.like?(@phread[:id])
       = star(@phread, session_user, false, 12, 12)
   .date{:title => @phread.created_at, :class => "ttip"}= @phread.created_at.to_s(false)

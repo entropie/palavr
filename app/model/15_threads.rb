@@ -57,7 +57,7 @@ module Palavr
           "LEFT JOIN user ON phread.op_id = user.id "+
           "INNER JOIN phreads_phreads as np ON np.phread_id = phread.id "+
           "AND np.parent_id = #{self.id} "+
-          "ORDER BY COUNT DESC "
+          "ORDER BY COUNT DESC, phread.created_at DESC "
         Palavr::DB[query]
       end
 
@@ -96,12 +96,14 @@ module Palavr
       end
 
       def self.create_from_struct(struc, user, category, org = nil)
-        [:title, :body].each do |e|
+        [:body].each do |e|
           raise MissingInput, "missing #{e}" if struc.send(e).to_s.strip.empty?
         end
 
         phread = Phread.create(:title => struc.title,
                                :body  => struc.body)
+
+        raise MissingInput, "no user" unless user
         phread.op = user
         phread.after_parent_chap = struc.p.to_i if struc.p and not struc.p.empty?
 
@@ -139,6 +141,12 @@ module Palavr
         end
       end
 
+
+      def title
+        t = super.to_s.strip
+        t.empty? ? body[0..60] : t
+      end
+      
       def html_title
         title
       end

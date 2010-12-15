@@ -31,6 +31,8 @@ class Innate::Session
 end
 (controller + libs).each{|lib| require lib}
 
+# TODO: does not work
+#Rack::RouteExceptions.route(Exception, BoardController.r(:error)) 
 
 
 puts "\n%s starts up\n\n" % Palavr.version if __FILE__ == $0

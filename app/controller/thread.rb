@@ -8,12 +8,13 @@ class PhreadController < PalavrController
   
   layout(:layout) { !request.xhr? } 
   helper :auth
-  before(:my, :like, :unlike){
+  before(:my, :like, :unlike, :create){
     login_required
   }
 
 
-  MaxPhreadsPerPage = 5
+  MaxPhreadsPerPage = 10
+  MaxPhreadsPerStreamPage = 5
   
   # gernerates a tree of all phreads and subphreads
   def phreadsub(mphread, o = 0)
@@ -27,7 +28,7 @@ class PhreadController < PalavrController
     str << "<div class=\"box\" style=\"margin-left:#{margin}px\">"
 
 
-    unless o > 10
+    unless o >= MaxPhreadsPerPage
       phreadarr = phreads.to_a
       # inline
       phreadarr.select{|mp| mp[:after_parent_chap] }.each do |phread|
@@ -51,7 +52,7 @@ class PhreadController < PalavrController
     str
   end
   private :phreadsub
-  
+
   PthreadStruct = Struct.new(:title, :body, :category, :submit, :phreadid, :preview, :phread, :p)
 
 
@@ -97,7 +98,7 @@ class PhreadController < PalavrController
 
   def get_stream(phread, off = 0)
     ret = []
-    if off >= MaxPhreadsPerPage
+    if off >= MaxPhreadsPerStreamPage
       return ["<div class='morebox'><a id='lmore' href='/s/more/#{phread.id}'>Load More</a></div>"]
     end
     
@@ -161,7 +162,7 @@ class PhreadController < PalavrController
   
   def tree(id, phread = nil)
     redirect BoardController.r unless phread or id
-    @phread = Phread[id.to_i]
+    @phread = Phread[id.to_i] #..extend(Palavr::E)
   end
   
 

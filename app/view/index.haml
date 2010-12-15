@@ -1,4 +1,7 @@
-%h1{:id => :catlink} Categories
-#cats
+#cats{:class => "sg-22"}
+  %h1{:id => :catlink} Categories
   - @categories.each do |cat|
     = render_file "view/c/_cat.haml", :cat => cat
+#sidebar{:class => "sg-10"}
+  = render_file "view/s/_recent.haml", :recent_stories => @recent_stories
+  = render_file "view/s/_mactive.haml", :active_users => @active_users
