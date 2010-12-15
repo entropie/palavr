@@ -183,7 +183,7 @@ task :import do
 end
 
 task :export do
-  ids = [39]
+  ids = [48]
   ids.each do |id|
     pr = Phread[id]
     mk_phread_to_yaml(pr)

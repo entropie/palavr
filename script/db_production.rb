@@ -62,6 +62,12 @@ b.save
 cats << b
 
 
+b=Category.create(:title => "Myths",
+                  :description => Faker::Lorem.paragraph)
+b.add_mod(me)
+b.save
+cats << b
+
 =begin
 Local Variables:
   mode:ruby
