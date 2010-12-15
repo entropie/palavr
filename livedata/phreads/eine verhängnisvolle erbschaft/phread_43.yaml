@@ -1,0 +1,36 @@
+--- 
+:title: !str:Sequel::SQL::Blob 
+:created_at: 2010-12-15 23:42:35 +01:00
+:updated_at: 
+:body: !str:Sequel::SQL::Blob "\"Mr. Cameron\", sagte ich, \"werden Sie auf eine schwache Frau R\xC3\xBCcksicht nehmen und mir etwas erz\xC3\xA4hlen, das ich schrecklich gern wissen w\xC3\xBCrde?\"\r\n\
+  Er tappte geradewegs in die Falle mit dieser vollst\xC3\xA4ndigen Abwesenheit von Schlagfertigkeit oder von geringstem Argwohn (Ich \xC3\xBCberlasse es Dir, den richtigen Ausdruck zu w\xC3\xA4hlen), die so oft m\xC3\xA4nnlich, und so selten weiblich ist.\r\n\
+  \"Nat\xC3\xBCrlich werde ich das\", antwortete er.\r\n\
+  \"Dann erz\xC3\xA4hlen Sie mir,\" fuhr ich fort, \"warum Sie immer darauf bestehen, uns um neun Uhr zu verlassen?\"\r\n\
+  Er erschrak und schaute mich so traurig und so vorwurfsvoll an, da\xC3\x9Fich alles, was ich besa\xC3\x9F, gegeben h\xC3\xA4tte, um die unbesonnen Worte zur\xC3\xBCckzurufen, die eben \xC3\xBCber meine Lippen gekommen waren.\r\n\
+  \"Wenn ich es Ihnen erz\xC3\xA4hle,\" antwortete er, nachdem er einen Augenblick mit sich gek\xC3\xA4mpft hatte, \"darf ich Ihnen zuerst eine Frage stellen, und werden Sie mir versprechen, sie zu beantworten?\"\r\n\
+  Ich gab ihm mein Versprechen und wartete gespannt darauf, was als n\xC3\xA4chstes kommen w\xC3\xBCrde.\r\n\
+  \"Miss Brading\", sagte er, \"seien Sie ehrlich, denken Sie, ich bin verr\xC3\xBCckt?\"\r\n\
+  Es war unm\xC3\xB6glich, ihn auszulachen: er sprach diese seltsamen Worte ernst - finster m\xC3\xB6chte ich fast sagen.\r\n\
+  \"Kein solcher Gedanke ist mir jemals in den Sinn gekommen.\", antwortete ich.\r\n\
+  Er sah mich sehr ernst an.\r\n\
+  \"Sie geben mir Ihr Ehrenwort darauf?\"\r\n\
+  \"Mein Ehrenwort.\"\r\n\
+  Ich antwortete mit vollkommener Aufrichtigkeit und ich stellte ihn offensichtlich dahingehend zufrieden, da\xC3\x9F ich die Wahrheit gesprochen hatte. Er nahm meine Hand und f\xC3\xBChrte sie dankbar an seine Lippen.\r\n\
+  \"Danke,\" sagte er einfach. \"Sie ermutigen mich, Ihnen eine sehr traurige Geschichte zu erz\xC3\xA4hlen.\"\r\n\
+  \"Ihre eigene Geschichte?\" fragte ich.\r\n\
+  \"Ja, meine eigene Geschichte. Lassen Sie mich damit beginnen, wieso ich darauf bestehe, Ihr Haus immer zur selben Zeit zu verlassen. Immer wenn ich ausgehe, bin ich an ein Versprechen zu der Person gebunden, mit der ich in Eastbourne zusammenlebe, und zwar um viertel nach neun zur\xC3\xBCckzukehren.\"\r\n\
+  \"Die Person, mit der Sie zusammenleben?\" wiederholte ich. \"Sie leben in einer Herberge, nicht wahr?\"\r\n\
+  \"Ich lebe, Miss Brading, unter der F\xC3\xBCrsorge eines Doktors, der ein Heim f\xC3\xBCr Geisteskranke f\xC3\xBChrt. Er hat sich ein Haus f\xC3\xBCr seine wohlhabenderen Patienten an der K\xC3\xBCste gekauft; und er erlaubt mir tags\xC3\xBCber Freiheit, unter der Bedingung, da\xC3\x9F ich mein Versprechen abends treu erf\xC3\xBClle. Es ist eine Viertelstunde Fu\xC3\x9Fmarsch von Ihrem Haus zu dem des Doktors, und es ist eine Regel, da\xC3\x9F die Patienten sich um halb zehn zur\xC3\xBCckziehen.\"\r\n\
+  Hier war also das Geheimnis, welches mich arg best\xC3\xBCrzte, als es endlich gel\xC3\xBCftet wurde! Die Enth\xC3\xBCllung verschlug mir die Sprache. Unbewu\xC3\x9Ft und instinktiv trat ich ein paar Schritte von ihm zur\xC3\xBCck. Er starrte mit seinen traurigen Augen mit einem ergreifenden Blick des Flehens auf mich.\r\n\
+  \"Schleichen Sie sich nicht davon\", sagte er. \"Sie denken nicht, da\xC3\x9Fich verr\xC3\xBCckt bin.\"\r\n\
+  Ich war zu verwirrt und beunruhigt, um das Richtige zu sagen, und gleichzeitig hatte ich ihn zu gern, um auf seine Bitte nicht zu antworten. Ich nahm seine Hand und dr\xC3\xBCckte sie schweigend. Er wendete seinen Kopf f\xC3\xBCr einen Augenblick ab. Ich glaubte, eine Tr\xC3\xA4ne auf seiner Wange zu sehen. Ich f\xC3\xBChlte seine Hand, die sich zitternd um meine schlo\xC3\x9F. Er beherrschte sich mit einer \xC3\xBCberraschenden Entschlossenheit; er sprach mit vollkommener Ruhe, als er mich wieder ansah.\r\n\
+  \"Wollen Sie meine Geschichte erfahren,\" fragte er, \"nach dem, was ich Ihnen gerade erz\xC3\xA4hlt habe?\"\r\n\
+  \"Ich bin begierig darauf, sie zu h\xC3\xB6ren\", antwortete ich, \"Sie wissen nicht, wieviel Mitgef\xC3\xBChl ich f\xC3\xBCr Sie habe. Ich bin zu bek\xC3\xBCmmert, um mich in Worten ausdr\xC3\xBCcken zu k\xC3\xB6nnen.\"\r\n\
+  \"Sie sind die freundlichste und liebensw\xC3\xBCrdigste Frau, die es gibt!\", sagte er mit gr\xC3\xB6\xC3\x9Fter Inbrunst und gleichzeitig mit dem \xC3\xA4u\xC3\x9Fersten Respekt.\r\n\
+  Wir setzten uns in eine grasbedeckte Aush\xC3\xB6hlung des Felsens, wobei wir auf den gewaltigen, grauen Ozean sahen. Das Tageslicht begann zu schwinden, als ich die Geschichte h\xC3\xB6rte, die mich zu Roland Camerons Frau machen sollte."
+:op_id: 2
+:after_parent_chap: 
+:readonly: 0
+:id: 43
+:category_id: 
+:pid: 42

@@ -1,0 +1,11 @@
+--- !ruby/object:Palavr::Database::Tables::User 
+new: false
+values: 
+  :email: mictro@gmail.com
+  :mod_id: 
+  :nick: entropie
+  :passwd: acbd18db4cc2f85cedef654fccc4a4d8
+  :name: Michael Trommer
+  :mod: 1
+  :id: 2
+  :admin: 1
