@@ -10,7 +10,4 @@
         %a{:href => @cat.url}= @cat.title
     %p.desc
       = @cat.description
-    .sec{:class => :modlist}
-      %em Moderators:
-      = @cat.mods.map{|mod| mod.display_name}.join(", ")
   

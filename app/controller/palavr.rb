@@ -65,6 +65,11 @@ class PalavrController < Ramaze::Controller
   def Icon(which, clr = "orange", h = 12, w = 12, icons = 16)
     "<img width=\"#{w}\" height=\"#{h}\" class=\"icon\" src=\"/img/ics/#{which}_#{clr}_#{icons}.png\" />"
   end
+
+  def TIcon(which, clr = "dark", h = 12, w = 12, icons = 16)
+    "<img width=\"#{w}\" height=\"#{h}\" class=\"ticon\" src=\"/img/tokenics/#{clr}/#{which.to_s.capitalize}.png\" />"
+  end
+
   
   def login_required
     unless logged_in?

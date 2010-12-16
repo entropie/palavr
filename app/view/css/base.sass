@@ -24,6 +24,8 @@
 !clr_dark_bblue = #325980
 !clr_light_ggreen = #5E8032
 !clr_dark_ggreen = #374D1A
+!clr_light_rred = #D9753F
+!clr_dark_rred = #963B3B
   
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green - 20
@@ -802,7 +804,7 @@ a
 
 #sidebar
   :margin 0px
-  :margin-top 40px
+  :margin-top 35px
   :margin-left 10px
   h3
     :border-bottom 1px solid silver
@@ -810,17 +812,23 @@ a
     :font-size 1.3em
     :text-align center
   .box
+    :position relative
+    .ticon
+      :opacity 0.7
+      :position absolute
+      :top 0px
+      :left 5px 
+    :margin-top 30px
     :border-radius 15px
     :-moz-border-radius 15px
     :border 1px solid
     :background -moz-linear-gradient(top, #eeeeee 0%, #ffffff 60%)
     :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(60%,#ffffff))
     :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#eeeeeee',GradientType=0 )
-    :-webkit-box-shadow inset 1px 1px 2px #aaaaaa 
-    :-moz-box-shadow inset 1px 1px 2px #aaaaaa
-    :box-shadow inset 1px 1px 2px #aaaaaa
+    // :-webkit-box-shadow 2px 2px 2px #aaaaaa 
+    // :-moz-box-shadow 2px 2px 2px #aaaaaa
+    // :box-shadow 2px 2px 2px #aaaaaa
     &.user
-      :margin-top 30px
       :border-color = !clr_light_bblue
       h3
         :color = !clr_dark_bblue 
@@ -838,6 +846,15 @@ a
         :color = !clr_dark_ggreen
         a
           :color = !clr_dark_ggreen
+    &.mliked
+      :border-color = !clr_light_rred
+      h3
+        :color = !clr_dark_rred
+        :border-bottom-color  = !clr_light_rred
+      ul
+        :color = !clr_dark_rred
+        a
+          :color = !clr_dark_rred
     ul
       :margin-top 15px
       :margin-bottom 15px      
@@ -863,7 +880,7 @@ a
     :border-radius 15px
     :position relative
     :border 5px solid #aaaaaa
-    :margin-bottom 42px
+    :margin-bottom 23px
     .img > a > img
       :-webkit-box-shadow 2px 2px 2px #aaaaaa 
       :-moz-box-shadow 2px 2px 2px #aaaaaa
@@ -1075,6 +1092,7 @@ body
 #wrap
   :margin-left 10%
   :margin-right 10%
+  :min-width 940px
   
     
 .silver
@@ -1180,6 +1198,7 @@ body
   :position absolute
   :top 105px
   :left 900px
+  :width 164px
   .spinner
     :position absolute
     :top 4px

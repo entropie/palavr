@@ -1,5 +1,6 @@
 .box.story
   %h3 Recent Stories
+  = TIcon(:update, :light, 42, 42)
   %ul
     - @recent_stories.each do |phread|
       %li
