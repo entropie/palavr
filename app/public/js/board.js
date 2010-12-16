@@ -322,6 +322,16 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      });
    };
 
+  $.fn.setupSidebar = function(what) {
+    $(this).each(function(){
+      $(this).find(".box").click(function(){
+        $(this).find("ul").slideToggle();
+        $(this).find("ul").parent().toggleClass("active");
+      });
+
+    });
+  };
+
 })(jQuery);
 
 google.setOnLoadCallback(function() {
@@ -356,5 +366,9 @@ google.setOnLoadCallback(function() {
   if($("#stream").length){
     $("#lmore").setup_load_more();
     $("html").setup_load_on_scroll();
-}
+  }
+
+  if($("#sidebar").length){
+    $("#sidebar").setupSidebar();
+  }
 });

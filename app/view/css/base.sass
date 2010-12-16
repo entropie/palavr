@@ -20,12 +20,12 @@
 !clr_button_green = #667711
 !clr_menubar_bg = #d5d5d5
 
-!clr_light_bblue = #5D82A8
-!clr_dark_bblue = #325980
-!clr_light_ggreen = #5E8032
-!clr_dark_ggreen = #374D1A
-!clr_light_rred = #D9753F
-!clr_dark_rred = #963B3B
+!clr_light_bblue = #706B88
+!clr_dark_bblue = #595666
+!clr_light_ggreen = #86A57E
+!clr_dark_ggreen = #6A7C66
+!clr_light_rred = #BC8F95
+!clr_dark_rred = #7A2F37
   
 !clr_bg_green = #6dbd01
 !clr_dark_green = !clr_bg_green - 20
@@ -807,28 +807,25 @@ a
   :margin-top 35px
   :margin-left 10px
   h3
-    :border-bottom 1px solid silver
+    //:border-bottom 2px solid silver
     :padding 10px 10px 10px 10px
     :font-size 1.3em
     :text-align center
   .box
     :position relative
     .ticon
-      :opacity 0.7
+      :opacity 0.8
       :position absolute
       :top 0px
       :left 5px 
-    :margin-top 30px
-    :border-radius 15px
-    :-moz-border-radius 15px
+    :margin-top 5px
+    :border-radius 10px
+    :-moz-border-radius 10px
     :border 1px solid
     :background -moz-linear-gradient(top, #eeeeee 0%, #ffffff 60%)
     :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(60%,#ffffff))
     :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#eeeeeee',GradientType=0 )
-    // :-webkit-box-shadow 2px 2px 2px #aaaaaa 
-    // :-moz-box-shadow 2px 2px 2px #aaaaaa
-    // :box-shadow 2px 2px 2px #aaaaaa
-    &.user
+    &.user.active
       :border-color = !clr_light_bblue
       h3
         :color = !clr_dark_bblue 
@@ -837,7 +834,9 @@ a
         :color = !clr_dark_bblue
         a
           :color = !clr_dark_bblue
-    &.story
+      :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(60%,#ffffff))
+    &.story.active
+      :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(60%,#ffffff))
       :border-color = !clr_light_ggreen
       h3
         :color = !clr_dark_ggreen
@@ -846,20 +845,23 @@ a
         :color = !clr_dark_ggreen
         a
           :color = !clr_dark_ggreen
-    &.mliked
-      :border-color = !clr_light_rred
+    &.mliked.active
+      :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(60%,#ffffff))
+      :border-color = !clr_dark_rred
       h3
         :color = !clr_dark_rred
-        :border-bottom-color  = !clr_light_rred
+        :border-bottom-color  = !clr_dark_rred
       ul
         :color = !clr_dark_rred
         a
           :color = !clr_dark_rred
     ul
-      :margin-top 15px
+      :border-top 1px solid silver
+      :margin-top 5px
       :margin-bottom 15px      
       :margin-left 1px
-      :margin-right 1px      
+      :margin-right 1px
+      :padding-top 10px
       :font-size 0.75em
       li
         :padding 5px 10px 5px 10px

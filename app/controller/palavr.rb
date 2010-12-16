@@ -77,7 +77,7 @@ class PalavrController < Ramaze::Controller
       call(AuthController.r(:login, :ruri => request.request_uri))
     end
   end
-  
+
   def session_user
     if session and session[:username].to_s.strip.size > 0
       User.find(:email => session[:username]) or User.find(:nick => session[:username])

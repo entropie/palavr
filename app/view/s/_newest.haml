@@ -1,7 +1,7 @@
 .box.mliked
   %h3 Most Liked Stories
   = TIcon(:favorites, :light, 42, 42)
-  %ul
+  %ul.inv
     - @recent_stories.each do |phread|
       %li
         %a{:href => phread.url}= phread.title
