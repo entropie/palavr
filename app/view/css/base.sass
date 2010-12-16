@@ -1090,11 +1090,58 @@ body
   :font-size 0.9em
   :min-width 980px
   :font-family = !font_family
-  :margin-bottom 50px
 #wrap
   :margin-left 10%
   :margin-right 10%
   :min-width 940px
+
+#foot
+  :clear both
+  :padding-left 10%
+  :padding-right 10%
+  :padding-top 50px
+  :padding-bottom 50px  
+  :background-color = !clr_dark_blue
+  :color = !clr_silver
+  :-webkit-box-shadow 0px -5px 5px #aaa 
+  :-moz-box-shadow 0px -5px 5px #aaa
+  :box-shadow inset 0px -5px 5px #aaa
+  :border-top 2px solid
+  :border-top-color = !clr_dark_blue + 50
+  :text-align center
+  .sg-10
+    :border-left 1px solid
+    :border-left-color = !clr_dark_blue + 20    
+    :padding 10px
+    :padding-top 0px
+    :padding-left 0px
+    :margin 0px
+  h4
+    :padding 5px
+    :font-size 1.3em
+    :margin-bottom 20px
+    :color = !clr_dark_grey
+    :background-color = !clr_dark_blue + 20
+  ul
+    :margin-left 10px
+  .license
+    :font-size 0.8em
+    :margin-top 20px
+    :padding-top 20px
+    :background-color = !clr_dark_blue - 3
+    .licensepic
+      :margin-top 2px
+      :margin-right 15px
+      :float left
+  ul.aff
+    li
+      :float left
+      :margin-right 10px
+      img
+        :opacity 0.5
+      &:hover
+        img
+          :opacity 1
   
     
 .silver
