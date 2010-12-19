@@ -139,13 +139,11 @@ class PhreadController < PalavrController
     @topic, @phreads =
       case arg
       when 'liked'
-        ["Stories I like",
-         session_user.liked
-        ]
+        ["Stories I like", session_user.liked]
       else
-        ["My Stories",
-         session_user.my]
+        ["My Stories", session_user.my]
       end
+    @title = @topic
   end
 
   
