@@ -21,7 +21,7 @@ class AuthController < PalavrController
   
   def login
     redirect BoardController.r if session_user
-
+    @title = "Authentication"
     @ruri = request.params["ruri"]
     if @ruri =~ /^http/
       @ruri.gsub!(/https?:\/\//, '')

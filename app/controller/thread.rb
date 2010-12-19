@@ -115,6 +115,7 @@ class PhreadController < PalavrController
 
   def stream(pid, rest = nil)
     @phread = Phread[pid.to_i]
+    @title = "Stream: " + @phread.title    
     @stories = get_stream(@phread)
   end
 
@@ -163,6 +164,7 @@ class PhreadController < PalavrController
   def tree(id, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i] #..extend(Palavr::E)
+    @title = "Tree: " + @phread.title
   end
   
 
@@ -170,6 +172,7 @@ class PhreadController < PalavrController
     phreadid = phreadid.to_i
     para = para.delete("para").to_i
     @phreads = Phread[phreadid].phreads_for_chapter(para).to_a.map{|a| a.extend(Palavr::E)}
+
   end
   
   
@@ -177,6 +180,7 @@ class PhreadController < PalavrController
   def index(id = nil, phread = nil)
     redirect BoardController.r unless phread or id
     @phread = Phread[id.to_i]
+    @title = @phread.title
     @childs = @phread.get_ordered.to_a.map{|a| a.extend(Palavr::E)}
   end
 

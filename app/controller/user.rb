@@ -19,12 +19,13 @@ class UserController < PalavrController
   
   def index(id_or_name = nil, rest = nil)
     redirect UserController.r(:list) unless id_or_name
-
     @user = User[id_or_name.to_i] || User.find(:nick => id_or_name)
+    @title = "Profile: #{@user.display_name}"
   end
 
   def list
     @user = User.all
+    @title = "Users"
   end
   
   # FIXME: filesize and dimension handling; also fix js for upload

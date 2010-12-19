@@ -23,6 +23,7 @@ class CategoryController < PalavrController
     page = (request.params["page"] || 1).to_i
     redirect BoardController.r unless catid
     @category = Category[catid.to_i]
+    @title = @category.title
     @threads, @paginated = @category.get_ordered_and_paginate(page, PhreadsPerPage)
   end
   

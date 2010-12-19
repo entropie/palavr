@@ -16,6 +16,7 @@ class BoardController < PalavrController
   end
 
   def create
+    @title = "New Story"
     redirect PhreadController.r(:create, request.params)
   end
   
