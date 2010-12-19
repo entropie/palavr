@@ -1,6 +1,13 @@
-Readme, blabla
+Readme
 
-The idea is to write a replacement for this Full Featured Boards
-written in PHP (like VBulletin).
+The idea is to write a full featured Story-writing system where users
+can start to write parts of a story, and others can contribute to
+create multiple trees with potentially multiple different endings.
+
+Also, there will be a way to create styories where users can choose
+what they do, and read on at the specific tree. [1]
+
 
 KISS is the first doctrine. Ramaze is the framework.
+
+* [1] http://en.wikipedia.org/wiki/Gamebook
