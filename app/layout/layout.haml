@@ -40,52 +40,6 @@
             %p= err
       = @content
       .push
-    #foot
-      .sg-36
-        .sg-1
-        .sg-9
-          %h4 You
-          %ul
-            %li Login
-            %li Me
-            %li User
-            %li Stories
-            %li Categories
-        .sg-9
-          %h4 Stories
-          %ul
-            %li Recent
-            %li Top Rated
-            %li My
-            %li Friends
-        .sg-9
-          %h4 Used Software
-          %ul.aff
-            %li
-              %a{:href => "//www.linux.org"}
-                %img{:src => "/img/aff/linux.png", :width => 32, :height => 32}
-            %li
-              %a{:href => "//www.ruby-lang.org"}
-                %img{:src => "/img/aff/ruby.png", :width => 32, :height => 32}
-            %li
-              %a{:href => "//www.github.com"}
-                %img{:src => "/img/aff/github.png", :width => 32, :height => 32}
-            %li
-              %a{:href => "//git-scm.com"}
-                %img{:src => "/img/aff/git.png", :width => 32, :height => 32}
-            %li
-              %a{:href => "//www.gnu.org/software/emacs/"}
-                %img{:src => "/img/aff/emacs.png", :width => 32, :height => 32}
-            %li
-              %a{:href => "//www.mysql.com/"}
-                %img{:src => "/img/aff/mysql.png", :width => 32, :height => 32}            
-      .div{:style => "clear:both"}
-      .license
-        .sg-36        
-          .sg-5
-          .sg-25  
-            %p
-              = render_file "view/license/ccas30.html"
-        .div{:style => "clear:both"}
+    = render_file "view/foot.haml"
 
           
