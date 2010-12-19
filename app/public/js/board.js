@@ -325,11 +325,22 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
   $.fn.setupSidebar = function(what) {
     $(this).each(function(){
       $(this).find(".box h3").click(function(){
-        $(this).parent().find("ul").slideToggle();
+        $(this).parent().find(".inv").slideToggle();
         $(this).parent().find("ul").parent().toggleClass("active");
       });
 
     });
+  };
+  $.fn.setupFontSel = function() {
+    $("#fontsel .contents select").change(function(){
+      var what = $(this).attr("name");
+      var which = $(this).attr("value");
+      if(which == "") alert(1)
+      $("head .dynfont_" + what).attr("href", "/css/select/" + what + "/" + which);
+    });
+    // $("#fontsel .selecter").click(function(){
+    //   $("#fontsel .contents").slideToggle();
+    // });
   };
 
 })(jQuery);
@@ -337,6 +348,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 google.setOnLoadCallback(function() {
   // $(window).bind('popstate', function() {
   // });
+
+  $("html").setupFontSel();
 
   $("#ssearch").setupSearch();
 

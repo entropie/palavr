@@ -24,8 +24,6 @@
     %div{:class => "sub ttip", :title => Tooltip(:write_on)}
       %a{:class => "awesome silver medium", :href => BoardController.r(:create, :phreadid => @phread.id)} Write On!
   - if not @stream
-    #disqus
-      = render_file "view/disqus.html"
     = render_file "view/t/tag_for.haml", :phread => @phread
 - if @phread.phreads.size > 0 and @phread.phreads.reject{|p| p.after_parent_chap}.size > 0 and not @stream
   %div{:id => :threads, :class => "ttip sub"}
@@ -35,6 +33,8 @@
         - unless thread.after_parent_chap
           = render_file "view/thread/_thread.haml", :phread => thread
 - if not @stream
+  #disqus
+    = render_file "view/disqus.html"
   #liker
     %h2 People who like this Story
     %ul

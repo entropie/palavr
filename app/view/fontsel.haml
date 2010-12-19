@@ -1,0 +1,10 @@
+#fontsel.box
+  %h3 Select Font
+  .contents.inv
+    - [:default, :block].each do |what|
+      %div
+        = Tooltip("fontsel_#{what}_desc".to_sym)
+        %select{:name => what}
+          %option{:value => ''} Select Font
+          - CSSController::GFontSet[what].each do |font, opts|
+            %option{:value => font}= font

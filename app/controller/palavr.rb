@@ -16,7 +16,6 @@ class PalavrController < Ramaze::Controller
   set_layout_except 'layout' # => [:login, :logout]
   #set_layout        'simple_layout' => [:login, :logout]
 
-
   def bhom(obj)
   end
 
@@ -50,7 +49,9 @@ class PalavrController < Ramaze::Controller
       :passwd     => "password",
       :rpasswd    => "repeat password",
       :phread_cr_title => "title",
-      :phread_cr_body  => "body"
+      :phread_cr_body  => "body",
+      :fontsel_block_desc   => "Block Font",
+      :fontsel_default_desc => "Overall Font"
     }
   end
   
