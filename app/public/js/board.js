@@ -309,7 +309,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
    $.fn.setup_load_on_scroll = function(){
      $(window).scroll(function(){
-        if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+        if  ($(window).scrollTop() > $(document).height() - $(window).height() - 450){
           stream_append.call();
         };
      });
@@ -335,9 +335,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 })(jQuery);
 
 google.setOnLoadCallback(function() {
-  $(window).bind('popstate', function() {
-
-  });
+  // $(window).bind('popstate', function() {
+  // });
 
   $("#ssearch").setupSearch();
 
