@@ -807,10 +807,11 @@ a
   :margin-top 35px
   :margin-left 10px
   h3
-    //:border-bottom 2px solid silver
     :padding 10px 10px 10px 10px
     :font-size 1.3em
     :text-align center
+    :cursor pointer
+    :z-index 2000
   .box
     :position relative
     .ticon
@@ -1085,18 +1086,28 @@ a
   .center
     :text-align center
 
+html
+  :height 100%
+
 body
   :color = !clr_my_black1
   :font-size 0.9em
   :min-width 980px
   :font-family = !font_family
+  :height 100%
 #wrap
-  :margin-left 10%
   :margin-right 10%
   :min-width 940px
-
-#foot
+  :height auto !important
+  :height 100%
+  :min-height 100%
+  :margin 0 auto -100px
+  :margin-left 10%
+.push
+  :height 0px
   :clear both
+  
+#foot
   :padding-left 10%
   :padding-right 10%
   :padding-top 50px
@@ -1109,7 +1120,9 @@ body
   :border-top 2px solid
   :border-top-color = !clr_dark_blue + 50
   :text-align center
-  .sg-10
+  :height 250px
+  :clear both
+  .sg-9
     :border-left 1px solid
     :border-left-color = !clr_dark_blue + 20    
     :padding 10px

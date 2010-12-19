@@ -324,9 +324,9 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
   $.fn.setupSidebar = function(what) {
     $(this).each(function(){
-      $(this).find(".box").click(function(){
-        $(this).find("ul").slideToggle();
-        $(this).find("ul").parent().toggleClass("active");
+      $(this).find(".box h3").click(function(){
+        $(this).parent().find("ul").slideToggle();
+        $(this).parent().find("ul").parent().toggleClass("active");
       });
 
     });
