@@ -325,8 +325,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
   $.fn.setupSidebar = function(what) {
     $(this).each(function(){
       $(this).find(".box h3").click(function(){
-        $(this).parent().find(".inv").slideToggle();
-        $(this).parent().find("ul").parent().toggleClass("active");
+        $(this).parent().find("ul, >div").slideToggle();
+        $(this).parent().find("ul, >div").parent().toggleClass("active");
       });
 
     });
@@ -335,7 +335,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     $("#fontsel .contents select").change(function(){
       var what = $(this).attr("name");
       var which = $(this).attr("value");
-      if(which == "") alert(1)
+      if(which == "") return false;
       $("head .dynfont_" + what).attr("href", "/css/select/" + what + "/" + which);
     });
     // $("#fontsel .selecter").click(function(){
