@@ -309,7 +309,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
    $.fn.setup_load_on_scroll = function(){
      $(window).scroll(function(){
-        if  ($(window).scrollTop() > $(document).height() - $(window).height() - 450){
+        if  ($(window).scrollTop() >= $(document).height() - $(window).height() - 100){
           stream_append.call();
         };
      });

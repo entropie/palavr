@@ -2,20 +2,27 @@
   .sg-36
     .sg-1
     .sg-9
-      %h4 You
+      %h4 Common
       %ul
-        %li Login
-        %li Me
-        %li User
-        %li Stories
-        %li Categories
+        - if session_user
+          %li
+            %a{:class => "", :href => session_user.profile_url} Your Profile
+        - else
+          %li
+            %a{:class => "", :href => AuthController.r(:login, :ruri => request.request_uri)} Login
+        %li
+          %a{:class => "", :href => BoardController.r(:categories)} Categories
     .sg-9
       %h4 Stories
       %ul
-        %li Recent
-        %li Top Rated
-        %li My
-        %li Friends
+        %li
+          %a{:class => "", :href => PhreadController.r(:recent)} Recent Stories
+        %li
+          %a{:class => "", :href => PhreadController.r(:top)} Top Stories
+        %li
+          %a{:class => "", :href => PhreadController.r(:my)} Yours
+        %li
+          %a{:class => "", :href => PhreadController.r(:my, :friends)} Friends
     .sg-9
       %h4 Used Software
       %ul.aff

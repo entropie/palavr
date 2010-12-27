@@ -89,7 +89,7 @@ h1
   .pic
     :position absolute
     :top 0px
-    :left -72px
+    :left -92px
     img
       :border 5px solid
       :border-color = !clr_light_silver
@@ -98,7 +98,7 @@ h1
       :box-shadow 2px 2px 10px #aaa
       :max-width 64px
       :max-height 64px      
-  
+
   .icn
     :opacity 0.2
     :position absolute
@@ -138,6 +138,9 @@ h1
 
 #catlink
   :margin-bottom 20px
+  :font-size 3em
+  :font-variant small-caps
+  :letter-spacing 5px
 
 
 h2
@@ -607,6 +610,18 @@ a
       :color = !clr_dark_blue
       :margin-right 10px
       :max-width 700px
+      .perm
+        :position absolute
+        :top -1px
+        :left -30px
+        a
+          :color = !clr_light_silver
+          &:hover,&:active
+            :color = !clr_my_black
+    .lis
+      :margin-top 8px
+      :float right
+      :margin-left 10px
     .by
       :display block
       :margin-top 7px
@@ -815,6 +830,7 @@ a
 
   
 #stream
+  :margin-top 50px
   .phread
     .writemore
       :display none
@@ -822,7 +838,8 @@ a
       h1
         :border none
         :color = !clr_dark_blue
-        :font-size 1.3em
+        :font-size 1.5em
+        :margin-top 10px
       :margin-bottom 5px
     .sub
       :display none
@@ -831,12 +848,15 @@ a
       :bottom 20px
       :margin-right -100px
     .line
-      :text-align right
       :position absolute
-      :top 36px
+      :top -2px
       :left 720px
       :z-index 500
       :color = !clr_dark_blue
+      .by
+        :display block
+        :clear both
+      .rating
       .uplink
         :color = !clr_dark_blue
       .backlink
@@ -1143,7 +1163,7 @@ body
   :height 100%
   :min-height 100%
   :margin 0 auto -100px
-  :margin-left 7%
+  :margin-left 10%
 .push
   :height 200px
   :clear both
@@ -1300,7 +1320,7 @@ body
   :background-color #fff
   :position absolute
   :top 105px
-  :left 850px
+  :right 10%
   :width 164px
   .spinner
     :position absolute
