@@ -349,12 +349,12 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
         $(this).animate({
           marginLeft: "30px",
           opacity: 1
-        }, 1000);
+        }, 500);
       }, function(){
         $(this).animate({
           marginLeft: "0px",
           opacity: 0.3
-        }, 500);
+        }, 200);
       });;
     });
   };
