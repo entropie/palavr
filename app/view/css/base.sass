@@ -73,9 +73,6 @@ ul
   :margin 0px
 
 .icon
-  :opacity 0.6
-  :filter alpha(opacity=60)
-  
   
 h1
   :text-shadow -1px -1px 2px silver
@@ -872,7 +869,7 @@ a
     :font-size 1.3em
     :text-align center
     :cursor pointer
-    :z-index 2000
+    :z-index 500
   .box
     :position relative
     .ticon
@@ -1237,11 +1234,11 @@ body
 #search_result
   :position absolute
   :top 45px
-  //:opacity 0.9
+  :opacity 0.9
   :right 10px
   :width 700px
   :background-color= !clr_dirty_white
-  :z-index 1000
+  :z-index 3000
   :border 5px solid
   :border-color = !clr_dirty_white - 30
   :-webkit-box-shadow 2px 2px 5px #aaa 
@@ -1470,22 +1467,12 @@ body
   :nowrap nowrap
   :z-index 100
   &:hover
-    :background-color = !clr_light_silver
-    :color = !clr_dark_blue
-    :padding 5px
-    :margin-left -5px
-    :margin-right -6px    
-    :-moz-border-radius 15px
-    :border-radius 15px
-    :-webkit-box-shadow 1px 1px 2px #111 
-    :-moz-box-shadow 1px 1px 2px #111
-    :box-shadow 1px 1px 2px #111
+    :border-bottom 3px solid
+    :border-color = !clr_fresh_blue
+    :color = !clr_fresh_blue
     :z-index 1000
-    &:after
-      :margin-top 2px
-      :content " "
     .uplink
-      :color = !clr_dark_blue
+      :color = !clr_fresh_blue
   .app
     :z-index 1000
     :opacity 0.9
@@ -1496,9 +1483,9 @@ body
     :background-color = !clr_light_silver + 20
     :border 2px solid #fff
     :border-color = !clr_light_silver - 30
-    :-webkit-box-shadow 1px 1px 2px #111 
-    :-moz-box-shadow 1px 1px 2px #111
-    :box-shadow 1px 1px 2px #111
+    :-webkit-box-shadow 2px 2px 2px #eee
+    :-moz-box-shadow 2px 2px 2px #eee
+    :box-shadow 2px 2px 2px #eee
     :padding 10px
     :-moz-border-radius 5px
     :border-radius 5px

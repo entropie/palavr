@@ -1,6 +1,6 @@
 .thread{:class => @inline ? "inline" : ""}
   .title
-    %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread[:id])}= Icon(:news, :blue)      
+    %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread[:id])}= Icon(:news, :blue) 
     %a{:href => @phread.url}
       =@phread.title
     - if session_user and session_user.like?(@phread[:id])

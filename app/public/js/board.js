@@ -141,24 +141,26 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
    // TODO: make tooltip for star/unstar working
   $.fn.mk_like = function() {
-    var p = $(this);
-    var ll = $(this).find(".like_link");
-    var url = ll.attr("href");
-    ll.unbind("click");
-    ll.click(function(){
-      ll.html(spinner);
-      $.ajax({
-        type: "GET",
-        url: url,
-        success: function(data){
-          ll.parent().html(data);
-        },
-        complete: function(){
-          ll.unbind("click");
-          $(p).mk_like();
-        }
+    $(this).each(function(){
+      var p = $(this);
+      var ll = $(this).find(".like_link");
+      var url = ll.attr("href");
+      ll.unbind("click");
+      ll.click(function(){
+        ll.html(spinner);
+        $.ajax({
+          type: "GET",
+          url: url,
+          success: function(data){
+            ll.parent().html(data);
+          },
+          complete: function(){
+            ll.unbind("click");
+            $(p).mk_like();
+          }
+        });
+        return false;
       });
-      return false;
     });
   };
 
@@ -301,7 +303,8 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
          $("#stream").append(data);
          $("#stream").find(".phread").mk_chapterLinks();
          $("#stream").find(".phread").mk_like();
-
+         $("#stream .icon").setup_icon_over();
+         $("html").mkHelp("#stream");
          $("#lmore").setup_load_more();
        }
      });
@@ -310,6 +313,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
    $.fn.setup_load_on_scroll = function(){
      $(window).scroll(function(){
         if  ($(window).scrollTop() >= $(document).height() - $(window).height() - 100){
+          //setTimeout("stream_append.call()", 2000);
           stream_append.call();
         };
      });
@@ -319,6 +323,23 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      $(this).parent().click(function(){
        stream_append.call();
        return false;
+     });
+   };
+
+   $.fn.setup_icon_over = function() {
+     $(this).each(function(){
+       $(this).unbind();
+       var hvimg = $(this).attr("data-himg");
+                    debug(hvimg);
+       if(hvimg){
+         $(this).hover(function(){
+           $(this).attr("data-oimg", $(this).attr("src"));
+           $(this).attr("src", hvimg);
+         }, function(){
+           $(this).attr("src", $(this).attr("data-oimg"));
+         });
+       }
+
      });
    };
 
@@ -345,7 +366,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
 
 })(jQuery);
 
-google.setOnLoadCallback(function() {
+$(document).ready(function () {
   // $(window).bind('popstate', function() {
   // });
 
@@ -383,4 +404,6 @@ google.setOnLoadCallback(function() {
   if($("#sidebar").length){
     $("#sidebar").setupSidebar();
   }
+  $(".icon").setup_icon_over();
+
 });

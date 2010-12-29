@@ -16,9 +16,6 @@ class PalavrController < Ramaze::Controller
   set_layout_except 'layout' # => [:login, :logout]
   #set_layout        'simple_layout' => [:login, :logout]
 
-  def bhom(obj)
-  end
-
   def star(phread, suser, link = true, x = 12, y = 12)
     Phread[phread[:id]].star(suser, link, x, y)
   end
@@ -28,11 +25,6 @@ class PalavrController < Ramaze::Controller
       return User[uid[:uid]].profile_link
     end
     User[uid].profile_link
-  end
-  
-  def pgint(what, listproc)
-    start = (request.params["page"] || 1).to_i
-    hmany = 5
   end
   
   def self.ttip(what = nil)
@@ -63,8 +55,18 @@ class PalavrController < Ramaze::Controller
     PalavrController::ttip[what]    
   end
   
-  def Icon(which, clr = "orange", h = 12, w = 12, icons = 16)
-    "<img width=\"#{w}\" height=\"#{h}\" class=\"icon\" src=\"/img/ics/#{which}_#{clr}_#{icons}.png\" />"
+  def Icon(which, clr = "orange", h = 12, w = 12, icons = 16, opt = {})
+    puts
+    ostr = ' '
+    if not opt.empty?
+      opt.each_pair { |k, v|
+        case k
+        when "data-hoverimg-color"
+          ostr << " data-HIMG='%s' " % "/img/ics/#{which}_#{v}_#{icons}.png"
+        end
+      }
+    end
+    "<img#{ostr}width=\"#{w}\" height=\"#{h}\" class=\"icon\" src=\"/img/ics/#{which}_#{clr}_#{icons}.png\" />"
   end
 
   def TIcon(which, clr = "dark", h = 12, w = 12, icons = 16)

@@ -11,8 +11,10 @@
         .rating
           = @phread.star(session_user)
       .lis
-        %a{:class => "ttip", :title => "#{Tooltip(:tree_link)}", :href => PhreadController.r(:tree, @phread.id)}= Icon(:flowchart, "grey", 16, 16, 32)
-        %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread.id)}= Icon(:news, "grey", 16, 16, 32)
+        %a{:class => "ttip", :title => "#{Tooltip(:tree_link)}", :href => PhreadController.r(:tree, @phread.id)}
+          = Icon(:flowchart, "grey", 16, 16, 16, "data-hoverimg-color" => "blue")
+        %a{:class => "ttip", :title => "#{Tooltip(:stream_link)}", :href => PhreadController.r(:stream, @phread.id)}
+          = Icon(:news, "grey", 16, 16, 16, "data-hoverimg-color" => "blue")
       %span.by
         by
         = @phread.from.profile_link
