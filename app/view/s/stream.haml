@@ -2,4 +2,7 @@
   = @stories
 #license
   = render_file "view/license/ccas30.html"
+#socialfoo
+  = render_file "view/thread/social.haml", :title => @title, :uri => (request.env["REQUEST_URI"] + "#stream")
+
 

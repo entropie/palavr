@@ -115,7 +115,7 @@ class PhreadController < PalavrController
 
   def stream(pid, rest = nil)
     @phread = Phread[pid.to_i]
-    @title = "Stream: " + @phread.title    
+    @title = "Entire Story: " + @phread.title    
     @stories = get_stream(@phread)
   end
 
@@ -154,7 +154,7 @@ class PhreadController < PalavrController
     unless request.xhr?
       redirect phread.url
     else
-      phread.star(session_user)
+      phread.star(session_user, true, 24, 24)
     end
   end
   

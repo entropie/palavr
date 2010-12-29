@@ -343,6 +343,22 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      });
    };
 
+  $.fn.setup_social_foo = function() {
+    $(this).find("li").each(function(){
+      $(this).hover(function(){
+        $(this).animate({
+          marginLeft: "30px",
+          opacity: 1
+        }, 1000);
+      }, function(){
+        $(this).animate({
+          marginLeft: "0px",
+          opacity: 0.3
+        }, 500);
+      });;
+    });
+  };
+
   $.fn.setupSidebar = function(what) {
     $(this).each(function(){
       $(this).find(".box h3").click(function(){
@@ -405,5 +421,9 @@ $(document).ready(function () {
     $("#sidebar").setupSidebar();
   }
   $(".icon").setup_icon_over();
+
+  if($("#socialfoo").length){
+    $("#socialfoo").setup_social_foo();
+  }
 
 });
