@@ -306,6 +306,7 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
          $("#stream .icon").setup_icon_over();
          $("html").mkHelp("#stream");
          $("#lmore").setup_load_more();
+         $("#stream .uplinkb").each(function(){ $(this).setupUplink(); });
        }
      });
    };
@@ -330,7 +331,6 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
      $(this).each(function(){
        $(this).unbind();
        var hvimg = $(this).attr("data-himg");
-                    debug(hvimg);
        if(hvimg){
          $(this).hover(function(){
            $(this).attr("data-oimg", $(this).attr("src"));
