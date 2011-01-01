@@ -111,6 +111,9 @@ module Palavr
       def is_mod?
         not mod == 0
       end
+      def mod?
+        is_mod?
+      end
       
       def public_dir
         ud = Palavr::Opts[:data_dir] + "/user/#{id}/"

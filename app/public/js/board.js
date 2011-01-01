@@ -347,14 +347,14 @@ spinner = "<div class=\"spinner\"><img src=\"/img/spinner.gif\" /></div>";
     $(this).find("li").each(function(){
       $(this).hover(function(){
         $(this).animate({
-          marginLeft: "30px",
+          marginLeft: "25px",
           opacity: 1
         }, 500);
       }, function(){
         $(this).animate({
           marginLeft: "0px",
           opacity: 0.3
-        }, 200);
+        }, 50);
       });;
     });
   };

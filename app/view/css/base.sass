@@ -122,7 +122,7 @@ h1
       :padding-right 20px
       :padding-left 10px      
       :margin-bottom 15px
-      :opacity 0.3
+      :opacity 0.15
 
 #error
   :position absolute
@@ -238,7 +238,7 @@ h2
   :height 100px
   :width 300px
   :position absolute
-  :top 0px
+  :top -20px
   :left 4%
   :font-size 42pt
 
@@ -633,19 +633,23 @@ a
       :margin-left 10px
     .by
       :display block
-      :margin-top 7px
+      :margin-top 10px
       :float right
       ul
         :margin 0px
         li
           :padding 0px
     .backlink
+      :margin-top 8px
       :float left      
       :color = !clr_silver
     .line
       :text-align right
       :color = !clr_silver
       :max-width 700px
+      :padding-bottom 40px
+      :border-bottom 1px solid
+      :border-color = !clr_light_silver
     .srating
       :color= !clr_light_silver
       :position absolute
@@ -658,7 +662,7 @@ a
       &:hover
         :color= !clr_silver
     .rating
-      :margin-top 7px
+      :margin-top 8px
       :display block
       :float right
       :padding-left 10px
@@ -859,6 +863,7 @@ a
       :bottom 20px
       :margin-right -100px
     .line
+      :border none
       :position absolute
       :top -7px
       :left 720px
