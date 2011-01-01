@@ -40,11 +40,12 @@
 - if not @stream
   #disqus
     = render_file "view/disqus.html"
-  #liker
-    %h2 People who like this Story
-    %ul
-      - @phread.liker.each do |liker|
-        %li= liker.profile_link
+  - if @phread.liker.size > 0
+    #liker
+      %h2 People who like this Story
+      %ul
+        - @phread.liker.each do |liker|
+          %li= liker.profile_link
 - if not @stream
   #license
     = render_file "view/license/ccas30.html"
