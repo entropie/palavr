@@ -98,9 +98,6 @@ module Palavr
       
 
       def authorized?
-        p self
-        p is_admin?
-        p is_mod?
         is_admin? or is_mod?
       end
       
