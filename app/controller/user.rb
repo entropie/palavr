@@ -5,7 +5,7 @@
 
 class UserController < PalavrController
   map "/u"
-  set_layout_except("layout" => [:help, :upload, :userpic])
+  layout(:layout) { !request.xhr? }
   
   helper :auth
   before(:me){
@@ -27,7 +27,7 @@ class UserController < PalavrController
     @user = User.all
     @title = "Users"
   end
-  
+
   # FIXME: filesize and dimension handling; also fix js for upload
   def upload(what)
     imgr = request.params["image"]

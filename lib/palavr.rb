@@ -14,6 +14,7 @@ module Palavr
   Source = File.dirname(File.dirname(File.expand_path(__FILE__)))
 
   $: << File.join(Source, "lib/palavr")
+  $: << File.join(Source, "../innate/lib/")
 
   Version = {
     :major => 0,
@@ -62,7 +63,7 @@ module Palavr
                       :password => '',
                       :logger => Logger.new( STDOUT ),
                       :host => "localhost",
-                      :socket => "/tmp/mysql.sock")
+                      :socket => "/var/run/mysqld/mysqld.sock")
   end
   def self.version
     str = "Palavr-%i.%i" % [Version[:major], Version[:minor]]

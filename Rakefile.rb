@@ -4,8 +4,9 @@
 #
 
 require 'rubygems'
-require '../ramaze/lib/ramaze'
 require "lib/palavr"
+require '../ramaze/lib/ramaze'
+
 
 include Palavr::Database::Tables
 

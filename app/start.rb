@@ -5,8 +5,8 @@
 
 
 require "rubygems"
-require '../../ramaze/lib/ramaze'
 require "../lib/palavr"
+require '../../ramaze/lib/ramaze'
 
 module GLog
   def self.<<(str, type = :debug)
@@ -44,7 +44,7 @@ elsif `hostname`.strip == "io"
   Ramaze.start(:host => "kommunism.us",
                :port => 8090)
 else
-  Ramaze.start(:host => "localhost",
+  Ramaze.start(:host => "0.0.0.0",
                :port => 8080)
 end
 

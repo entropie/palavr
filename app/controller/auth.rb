@@ -5,8 +5,8 @@
 
 class AuthController < PalavrController
 
-  set_layout_except("layout" => [:check_username])
-  
+  layout(:layout) { !request.xhr? }
+
   map "/auth"
 
   def check_username

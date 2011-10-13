@@ -13,7 +13,7 @@ class PalavrController < Ramaze::Controller
   
   include Palavr::Database::Tables
   
-  set_layout_except 'layout' # => [:login, :logout]
+  layout(:layout) { !request.xhr? }
   #set_layout        'simple_layout' => [:login, :logout]
 
   def star(phread, suser, link = true, x = 12, y = 12)

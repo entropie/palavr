@@ -5,7 +5,8 @@
 
 class HelpController < PalavrController
   map "/help"
-  set_layout_except("layout" => [:index, :write_on, :write_more])
+
+  layout "layout" => [:help]
 
   helper :auth
 

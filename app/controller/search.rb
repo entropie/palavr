@@ -5,7 +5,7 @@
 
 class SearchController < PalavrController
   map "/search"
-  set_layout_except("layout" => [:_all])
+  layout(:layout) { !request.xhr? }
   
   # helper :auth
   # before(:me){

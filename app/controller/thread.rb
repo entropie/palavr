@@ -6,7 +6,7 @@
 class PhreadController < PalavrController
   map "/s"
   
-  layout(:layout) { !request.xhr? } 
+  layout(:layout) { !request.xhr? }
   helper :auth
   before(:my, :like, :unlike, :create){
     login_required

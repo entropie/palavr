@@ -5,7 +5,8 @@
 
 class ModController < PalavrController
   map "/mod"
-  set_layout_except("layout" => [])
+
+  layout(:layout) { !request.xhr? }
 
   helper :auth
   # before(:my, :like, :unlike){

@@ -5,9 +5,9 @@
     
 class CategoryController < PalavrController
   map "/c"
-  layout(:layout){ !request.xhr? } 
-
   
+  layout(:layout){ !request.xhr? }
+
   helper :auth
   before(:create){
     login_required

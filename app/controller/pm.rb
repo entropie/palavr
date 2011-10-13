@@ -5,7 +5,7 @@
 
 class PMController < PalavrController
   map "/pm"
-  set_layout_except("layout" => [:all, :phread])
+  layout(:layout) { !request.xhr? }
   
   helper :auth
 

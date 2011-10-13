@@ -6,8 +6,8 @@
 
 class TagsController < PalavrController
   map "/t"
-  set_layout_except("layout" => [:all, :phread])
-  
+  layout(:layout) { !request.xhr? }
+ 
   helper :auth
 
   before(:create){
